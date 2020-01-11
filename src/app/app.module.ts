@@ -8,12 +8,16 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PatientComponent } from './pages/patient/patient.component';
+import { PatientsComponent } from './pages/patients/patients.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    PatientComponent,
+    PatientsComponent
   ],
   imports: [
     BrowserModule,
