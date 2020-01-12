@@ -1,3 +1,108 @@
-<p>
-  patient works!
-</p>
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Nuevo Paciente</h1>
+        </div>
+    </div>
+    <!--/.row-->
+
+
+    <h3><small>Nombre de paciente</small></h3>
+
+    <div class="container">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/patients">
+          <i class="fa fa-arrow-left"></i>
+          Regresar
+        </button>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+                <form (ngSubmit)="guardar( f )" #f="ngForm">
+                    <div class="form-group">
+                        <label>Folio expediente</label>
+                        <input type="text" [(ngModel)]="patient.expedient" name="expedient" class="form-control" disabled="disabled" placeholder="Folio expediente">
+                        <small class="form-text text-muted">Este campo es autogenerado</small>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" [(ngModel)]="patient.name" name="name" class="form-control" placeholder="Nombre" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido Paterno</label>
+                                <input type="text" [(ngModel)]="patient.lastName" name="lastName" class="form-control" placeholder="Apellido Paterno" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido Materno</label>
+                                <input type="text" [(ngModel)]="patient.lastNameSecond" name="lastNameSecond" class="form-control" placeholder="Apellido Materno">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Row nombre  -->
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" [(ngModel)]="patient.birthdate" name="birthdate" class="form-control" placeholder="Fecha de nacimiento" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha de Alta</label>
+                                <input type="date" [(ngModel)]="patient.registerdate" name="registerdate" class="form-control" placeholder="Fecha de Alta" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="fase">Fase:</label>
+                                <select class="form-control" [(ngModel)]="patient.phase" name="phase" id="fase">
+                                <option value="Inicial">Inicial</option>
+                                <option value="Intermedia">Intermedia</option>
+                                <option value="Avanzada">Avanzada</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fin de Row fecha  -->
+                    <div class="form-group">
+                        <label for="cargaFoto">Cargar fotografía</label>
+                        <input type="file" [(ngModel)]="patient.img" name="img" class="form-control-file" id="cargaFoto">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="apoyo">Apoyo técnico:</label>
+                        <select multiple class="form-control" [(ngModel)]="patient.technicalSupport" name="technicalSupport" id="apoyo">
+                        <option value="Andadera">Andadera</option>
+                        <option value="Aretes">Aretes</option>
+                        <option value="Bastón">Bastón</option>
+                        <option value="Calzado">Calzado</option>
+                        <option value="Lentes">Lentes</option>
+                        <option value="Placa">Placa</option>
+                      </select>
+                        <small>Mantén presionado CTRL o SHIFT para seleccionar más de uno.</small>
+                    </div>
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary w-25">
+                          <i class="fa fa-save"></i>
+                        Guardar
+                      </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
