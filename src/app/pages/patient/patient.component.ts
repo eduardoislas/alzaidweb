@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientModel } from '../../models/patient.model';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { PatientModel, Patient } from '../../models/patient.model';
 import { PatientsService } from '../../services/patients.service';
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-patient',
@@ -14,9 +15,21 @@ export class PatientComponent implements OnInit {
 
   patient = new PatientModel();
 
-  constructor(private patientsService: PatientsService, private router: Router) { }
+  constructor(private patientsService: PatientsService, 
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    
+    if ( id !== 'nuevo' ){
+      this.patientsService.getPatient(id)
+      .subscribe( (resp: Patient) => {
+        this.patient = resp.patient;
+        this.patient._id = id;
+      });
+    }
+
   }
 
   guardar( form: NgForm ){
@@ -24,6 +37,7 @@ export class PatientComponent implements OnInit {
     if ( form.invalid ){
       return;
     }
+
     Swal.fire(
       'Guardando',
       'Espere por favor...',
@@ -31,27 +45,28 @@ export class PatientComponent implements OnInit {
       );
     Swal.showLoading();
 
-    console.log(this.patient);
+    let peticion: Observable<any>;
 
-    this.patientsService.crearPaciente( this.patient)
-    .subscribe( resp => {
-      console.log(resp);
-      Swal.close();
+    if ( this.patient._id) {
+      peticion = this.patientsService.actualizarPaciente( this.patient);
+    }
+    else {
+      peticion = this.patientsService.crearPaciente( this.patient);
+    }
 
+    peticion.subscribe(resp => {
       Swal.fire({
         icon: 'success',
-        title: 'Registro guardado',
-        text: 'Paciente registrado correctamente'
+        title: this.patient.name + ' '+ this.patient.lastName,
+        text: 'Se actualizó correctamente'
       });
-      this.router.navigateByUrl('/patients');
+      this.router.navigateByUrl('/patients'); 
     }, (err) => {
-      console.log(err.error.err.message);
       Swal.fire({
         icon: 'error',
         title: 'No se pudo guardar el paciente',
         text: err.error.err.message
       });
     });
-
   }
 }

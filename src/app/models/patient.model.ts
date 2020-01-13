@@ -3,6 +3,7 @@
 
 export class PatientModel{
 
+    _id: string;
     expedient: number;
     name: string;
     lastName: string;
@@ -13,4 +14,15 @@ export class PatientModel{
     technicalSupport: [];
     img: string;
     
+}
+
+export class RootPatient {
+    success: boolean;
+    patients: PatientModel[];
+    count: number;
+}
+
+export class Patient {
+    success: boolean;
+    patient: PatientModel;
 }

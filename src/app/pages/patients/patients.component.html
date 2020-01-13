@@ -18,36 +18,44 @@
             </div>
         </div>
 
-        <table class="table mt-3 table-hover animated fadeIn">
+        <table *ngIf="!cargndo && patients.length > 0" class="table mt-3 table-hover animated fadeIn">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Expediente</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Fecha de Nacimiento</th>
                     <th scope="col">Fase</th>
+                    <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                <tr *ngFor="let patient of patients; let i = index">
+                    <th scope="row">{{patient.expedient}} </th>
+                    <td>{{ patient.name }} {{patient.lastName}} {{patient.lastNameSecond}}</td>
+                    <td>{{ patient.birthdate }}</td>
+                    <td>{{ patient.phase }}</td>
+                    <td>
+                        <button class="btn btn-info mr-1" [routerLink]="['/patient', patient._id ]">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="btn btn-danger mr-1" (click)="bajaPatient( patient, i )">
+                            <i class="fa fa-arrow-down"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
 
-        <div class="alert alert-warning text-center mt-3">
-            <h4 class="alert-heading">Cargando</h4>
+        <div *ngIf="!cargando && patients.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
+            <h4 class="alert-heading">No existe información</h4>
             <p>
                 <i class="fa fa-exclamation fa-2x"></i>
             </p>
             <p class="mb-0">
-                Espere por favor
             </p>
         </div>
 
-        <div class="alert alert-info text-center mt-3">
+        <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn">
             <h4 class="alert-heading">Cargando</h4>
             <p>
                 <i class="fa fa-refresh fa-spin fa-2x"></i>
