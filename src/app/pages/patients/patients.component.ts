@@ -45,10 +45,11 @@ export class PatientsComponent implements OnInit {
             'Se ha dado de baja al paciente.',
             'success'
           )
+          this.patients.splice(i, 1);
+          this.patientsService.bajaPatient( patient._id).subscribe();
         }
       })
 
-      this.patients.splice(i, 1);
-      this.patientsService.bajaPatient( patient._id).subscribe();
+      
     }
   }

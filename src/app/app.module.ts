@@ -11,6 +11,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { PatientComponent } from './pages/patient/patient.component';
 import { PatientsComponent } from './pages/patients/patients.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { UsersComponent } from './pages/users/users.component';
+import { UserComponent } from './pages/user/user.component';
+import { DailyrecordsComponent } from './pages/dailyrecords/dailyrecords.component';
+import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { HeaderComponent } from './shared/header/header.component';
     LoginComponent,
     PatientComponent,
     PatientsComponent,
-    HeaderComponent
+    HeaderComponent,
+    UsersComponent,
+    UserComponent,
+    DailyrecordsComponent,
+    DailyrecordComponent
   ],
   imports: [
     BrowserModule,

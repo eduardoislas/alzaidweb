@@ -1,9 +1,8 @@
 <app-header></app-header>
-
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Listado de Pacientes</h1>
+            <h1 class="page-header">Listado de Usuarios</h1>
         </div>
     </div>
     <!--/.row-->
@@ -12,33 +11,31 @@
     <div class="container">
         <div class="row">
             <div class="col text-right">
-                <button routerLink="/patient/nuevo" class="btn btn-primary">
+                <button routerLink="/user/nuevo" class="btn btn-primary">
                   <i class="fa fa-plus"></i> Agregar
                 </button>
             </div>
         </div>
 
-        <table *ngIf="!cargando && patients.length > 0" class="table mt-3 table-hover animated fadeIn">
+        <table *ngIf="!cargando && users.length > 0" class="table mt-3 table-hover animated fadeIn">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Expediente</th>
+                    <th scope="col">#</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Fecha de Nacimiento</th>
-                    <th scope="col">Fase</th>
+                    <th scope="col">Rol</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let patient of patients; let i = index">
-                    <th scope="row">{{patient.expedient}} </th>
-                    <td>{{ patient.name }} {{patient.lastName}} {{patient.lastNameSecond}}</td>
-                    <td>{{ patient.birthdate }}</td>
-                    <td>{{ patient.phase }}</td>
+                <tr *ngFor="let user of users; let i = index">
+                    <th scope="row">{{(i+1)}} </th>
+                    <td>{{ user.name }} </td>
+                    <td>{{ user.role }}</td>
                     <td>
-                        <button class="btn btn-info mr-1" [routerLink]="['/patient', patient._id ]">
+                        <button class="btn btn-info mr-1" [routerLink]="['/user', user._id ]">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button class="btn btn-danger mr-1" (click)="bajaPatient( patient, i )">
+                        <button class="btn btn-danger mr-1" (click)="bajaUser( user, i )">
                             <i class="fa fa-arrow-down"></i>
                         </button>
                     </td>
@@ -46,7 +43,7 @@
             </tbody>
         </table>
 
-        <div *ngIf="!cargando && patients.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
+        <div *ngIf="!cargando && users.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
             <h4 class="alert-heading">No existe información</h4>
             <p>
                 <i class="fa fa-exclamation fa-2x"></i>
