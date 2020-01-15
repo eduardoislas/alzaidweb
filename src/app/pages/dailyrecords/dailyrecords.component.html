@@ -1,4 +1,69 @@
 <app-header></app-header>
-<p>
-    dailyrecords works!
-</p>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Registros Diarios</h1>
+        </div>
+    </div>
+    <!--/.row-->
+
+
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col text-right">
+                <button routerLink="/patient/nuevo" class="btn btn-primary">
+                  <i class="fa fa-plus"></i> Agregar
+                </button>
+            </div>
+        </div> -->
+
+        <table *ngIf="!cargando && drs.length > 0" class="table mt-3 table-hover animated fadeIn">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Paciente</th>
+                    <th scope="col">Hora entrada</th>
+                    <th scope="col">Hora salida</th>
+                    <th scope="col">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dr of drs; let i = index">
+                    <th scope="row">{{ i+1}} </th>
+                    <td>{{ dr.date }}</td>
+                    <td>{{ dr.patient.name }} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</td>
+                    <td>{{ dr.date }}</td>
+                    <td>{{ dr.exitHour }}</td>
+                    <td>
+                        <button class="btn btn-info mr-1" [routerLink]="['/dr', dr._id ]">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div *ngIf="!cargando && drs.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
+            <h4 class="alert-heading">No existe información</h4>
+            <p>
+                <i class="fa fa-exclamation fa-2x"></i>
+            </p>
+            <p class="mb-0">
+            </p>
+        </div>
+
+        <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn">
+            <h4 class="alert-heading">Cargando</h4>
+            <p>
+                <i class="fa fa-refresh fa-spin fa-2x"></i>
+            </p>
+            <p class="mb-0">
+                Espere por favor
+            </p>
+        </div>
+
+    </div>
+</div>
