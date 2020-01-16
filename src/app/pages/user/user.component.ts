@@ -3,8 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { UsuarioModel, User } from '../../models/user.model';
 import { UsersService } from '../../services/users.service';
+import { CatalogsService } from '../../services/catalogs.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { CatalogModel } from '../../models/catalog.model';
 
 @Component({
   selector: 'app-user',
@@ -14,13 +16,21 @@ import { Observable } from 'rxjs';
 export class UserComponent implements OnInit {
 
   user = new UsuarioModel();
+  roles: CatalogModel[] = [];
 
   constructor(private usersService: UsersService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private catalogsService: CatalogsService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+
+    //Llenar lista de roles
+    this.catalogsService.getCatalogsType('rol')
+      .subscribe((resp: any) =>{
+        this.roles = resp;
+      });
 
     if ( id !== 'nuevo' ){
       this.usersService.getUser(id)

@@ -70,10 +70,9 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <label for="fase">Fase:</label>
-                                <select class="form-control" [(ngModel)]="patient.phase" name="phase" id="fase">
-                                <option value="Inicial">Inicial</option>
-                                <option value="Intermedia">Intermedia</option>
-                                <option value="Avanzada">Avanzada</option>
+                                <select [(ngModel)]=patient.phase class="form-control" name="phase" id="fase">
+                                <option *ngFor="let phase of phases" 
+                                [value]="phase.name">{{phase.name}}</option>
                               </select>
                             </div>
                         </div>
@@ -84,15 +83,13 @@
                         <input type="file" [(ngModel)]="patient.img" name="img" class="form-control-file" id="cargaFoto">
                     </div>
 
+
+
                     <div class="form-group">
                         <label for="apoyo">Apoyo técnico:</label>
                         <select multiple class="form-control" [(ngModel)]="patient.technicalSupport" name="technicalSupport" id="apoyo">
-                        <option value="Andadera">Andadera</option>
-                        <option value="Aretes">Aretes</option>
-                        <option value="Bastón">Bastón</option>
-                        <option value="Calzado">Calzado</option>
-                        <option value="Lentes">Lentes</option>
-                        <option value="Placa">Placa</option>
+                        <option *ngFor="let s of support" 
+                        [value]="s.name">{{s.name}}</option>
                       </select>
                         <small>Mantén presionado CTRL o SHIFT para seleccionar más de uno.</small>
                     </div>

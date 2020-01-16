@@ -44,18 +44,9 @@
                         <div class="col-sm-8">
                             <div class="form-group">
                                 <label for="role">Rol:</label>
-                                <select class="form-control" [(ngModel)]="user.role" name="role" id="role">
-                                <option value="ADMIN">Administración</option>
-                                <option value="COORDINADOR">Coordinación</option>
-                                <option value="ENFERMERIA">Enfermería</option>
-                                <option value="FASE_INICIAL">Fase Inicial</option>
-                                <option value="FASE_INTERMEDIA">Fase Intermedia</option>
-                                <option value="FASE_AVANZADA">Fase Avanzada</option>
-                                <option value="FISIOTERAPIA">Fisioterapia</option>
-                                <option value="HIGIENE">Higiene</option>
-                                <option value="NUTRICION">Nutrición</option>
-                                <option value="PSICOLOGO">Psicólogo</option>
-                                <option value="FAMILIAR">Familiar</option>
+                                <select class="form-control" [(ngModel)]="user.role" name="role" id="role"> 
+                                    <option *ngFor="let rol of roles" 
+                                    [value]="rol.name">{{rol.name}}</option>
                               </select>
                             </div>
                         </div>

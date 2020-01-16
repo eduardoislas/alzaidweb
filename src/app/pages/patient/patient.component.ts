@@ -5,6 +5,8 @@ import { PatientModel, Patient } from '../../models/patient.model';
 import { PatientsService } from '../../services/patients.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { CatalogsService } from '../../services/catalogs.service';
+import { CatalogModel } from 'src/app/models/catalog.model';
 
 @Component({
   selector: 'app-patient',
@@ -14,13 +16,28 @@ import { Observable } from 'rxjs';
 export class PatientComponent implements OnInit {
 
   patient = new PatientModel();
+  support: CatalogModel[] = [];
+  phases: CatalogModel[] = [];
 
   constructor(private patientsService: PatientsService, 
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private catalogsService: CatalogsService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
+
+    //Llenar lista de Fases
+    this.catalogsService.getCatalogsType('fase')
+      .subscribe((resp: any) =>{
+        this.phases = resp;
+      });
+
+    //Llenar lista de Apoyo técnico
+    this.catalogsService.getCatalogsType('apoyo')
+      .subscribe((resp: any) =>{
+        this.support = resp;
+      });
     
     if ( id !== 'nuevo' ){
       this.patientsService.getPatient(id)

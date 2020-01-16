@@ -10,6 +10,8 @@ import { UsersComponent } from './pages/users/users.component';
 import { UserComponent } from './pages/user/user.component';
 import { DailyrecordsComponent } from './pages/dailyrecords/dailyrecords.component';
 import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component';
+import { CatalogsComponent } from './pages/catalogs/catalogs.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 
 const routes: Routes = [
   { path: 'home'    , component: HomeComponent, canActivate:[ AuthGuard ] },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'user/:id'   , component: UserComponent },
   { path: 'dailyrecords'   , component: DailyrecordsComponent },
   { path: 'dailyrecord/:id'   , component: DailyrecordComponent },
+  { path: 'catalogs'   , component: CatalogsComponent },
+  { path: 'catalog/:id'   , component: CatalogComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

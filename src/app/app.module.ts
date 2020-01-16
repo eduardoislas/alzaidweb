@@ -15,6 +15,8 @@ import { UsersComponent } from './pages/users/users.component';
 import { UserComponent } from './pages/user/user.component';
 import { DailyrecordsComponent } from './pages/dailyrecords/dailyrecords.component';
 import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component';
+import { CatalogsComponent } from './pages/catalogs/catalogs.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component'
     UsersComponent,
     UserComponent,
     DailyrecordsComponent,
-    DailyrecordComponent
+    DailyrecordComponent,
+    CatalogsComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
