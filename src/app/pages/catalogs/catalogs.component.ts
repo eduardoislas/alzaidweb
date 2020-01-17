@@ -12,10 +12,14 @@ export class CatalogsComponent implements OnInit {
 
   catalogs: CatalogModel[] = [];
   cargando = false;
+  tipos = [];
+
 
   constructor(private catalogsService: CatalogsService) { }
 
+
   ngOnInit() {
+    this.tipos = ['rol', 'fase', 'apoyo', 'actividad', 'diagnostico', 'medicamento', 'alergias'];
     this.cargando = true;
     this.catalogsService.getCatalogs()
     .subscribe((resp: any) => {
@@ -23,6 +27,7 @@ export class CatalogsComponent implements OnInit {
       this.cargando = false;
     } )
   }
+
 
 
   bajaCatalog( catalog: CatalogModel, i: number){

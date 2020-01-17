@@ -17,7 +17,7 @@
                 </button>
             </div>
         </div>
-
+        <hr>
         <table *ngIf="!cargando && patients.length > 0" class="table mt-3 table-hover animated fadeIn">
             <thead class="thead-dark">
                 <tr>
@@ -32,7 +32,7 @@
                 <tr *ngFor="let patient of patients; let i = index">
                     <th scope="row">{{patient.expedient}} </th>
                     <td>{{ patient.name }} {{patient.lastName}} {{patient.lastNameSecond}}</td>
-                    <td>{{ patient.birthdate }}</td>
+                    <td>{{ patient.birthdate |date:"dd-MM-yyyy" }}</td>
                     <td>{{ patient.phase }}</td>
                     <td>
                         <button class="btn btn-info mr-1" [routerLink]="['/patient', patient._id ]">

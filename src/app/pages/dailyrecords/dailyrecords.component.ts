@@ -12,12 +12,13 @@ export class DailyrecordsComponent implements OnInit {
 
   drs: DailyRecordModel[] = [];
   cargando = false;
+  fecha = new Date();
 
   constructor(private dailyrecordsService: DailyrecordsService) { }
 
   ngOnInit() {
     this.cargando = true;
-    this.dailyrecordsService.getDailyRecords()
+    this.dailyrecordsService.getDailyRecords(this.fecha)
     .subscribe((resp: any) => {
       this.drs = resp;
       this.cargando = false;
