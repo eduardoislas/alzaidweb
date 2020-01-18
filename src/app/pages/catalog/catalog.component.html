@@ -1,3 +1,72 @@
-<p>
-  catalog works!
-</p>
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Catálogos</h1>
+        </div>
+    </div>
+    <!--/.row-->
+
+
+
+    <div class="container">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/catalogs">
+          <i class="fa fa-arrow-left"></i>
+          Regresar
+        </button>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+                <form (ngSubmit)="guardar( f )" #f="ngForm">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label>Nombre de elemento</label>
+                                <input type="text" [(ngModel)]="catalog.name" name="name" class="form-control" placeholder="Nombre de elemento de catálogo" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="role">Tipo de catálogo:</label>
+                                <select class="form-control" [(ngModel)]="catalog.type" name="type" id="type"> 
+                                  <option *ngFor="let t of tipos" 
+                                  [value]="t">{{t}}</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="catalog.type ==='Actividad'">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+
+                                <label for="role">Tipo de actividad*: </label>
+                                <select class="form-control" [(ngModel)]="catalog.classification" name="classification" id="classification"> 
+                                <option *ngFor="let c of clasesAct" 
+                                [value]="c">{{c}}</option>
+                          </select>
+                                <small> *Solo aplica para las actividades</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary w-25">
+                        <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,6 +8,7 @@ export class RootCatalog {
     _id: string;
     name: string;
     type: string;
+    classification: string;
   }
 
 

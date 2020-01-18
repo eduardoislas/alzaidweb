@@ -57,5 +57,15 @@ export class CatalogsService {
 
     }
 
+    crearCatalog( catalog: CatalogModel){ 
+      return this.http.post(`${ this.url }/catalog`, catalog)
+      .pipe(
+        map( (resp: any) => {
+          catalog._id = resp.catalog._id;
+          return catalog;
+        })
+      );
+   }
+ 
 }
  
