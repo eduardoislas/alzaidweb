@@ -18,16 +18,17 @@
 
                 <div class="panel-body articles-container">
 
-                    <div class="article border-bottom">
+                    <div class="article border-bottom" *ngFor="let noti of notifications">
                         <div class="col-xs-12">
                             <div class="row">
                                 <div class="col-xs-2 col-md-2 date">
-                                    <div class="large">06</div>
-                                    <div class="text-muted">Enero</div>
+                                    <div class="large">{{noti.date |date:"dd"}}</div>
+                                    <div class="text-muted">{{noti.date |date:"MMMM"}}</div>
                                 </div>
                                 <div class="col-xs-10 col-md-10">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
+                                    <h3>{{noti.patient.name}} {{noti.patient.lastName}} {{noti.patient.lastNameSecond}}</h3>
+                                    <h4><a href="">{{noti.type}}</a></h4>
+                                    <p>{{noti.description}}</p>
                                 </div>
                             </div>
                         </div>
@@ -35,45 +36,31 @@
                     </div>
                     <!--End .article-->
 
-                    <div class="article border-bottom">
-                        <div class="col-xs-12">
-                            <div class="row">
-                                <div class="col-xs-2 col-md-2 date">
-                                    <div class="large">08</div>
-                                    <div class="text-muted">Enero</div>
-                                </div>
-                                <div class="col-xs-10 col-md-10">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <!--End .article-->
-
-                    <div class="article">
-                        <div class="col-xs-12">
-                            <div class="row">
-                                <div class="col-xs-2 col-md-2 date">
-                                    <div class="large">01</div>
-                                    <div class="text-muted">Febrero</div>
-                                </div>
-                                <div class="col-xs-10 col-md-10">
-                                    <h4><a href="#">Lorem ipsum dolor sit amet</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at sodales nisl. Donec malesuada orci ornare risus finibus feugiat.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <!--End .article-->
                 </div>
+
             </div>
-            <!--End .articles-->
+            <!--/.col-->
+
+
+            <div *ngIf="!cargando && notifications.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
+                <h4 class="alert-heading">No hay notificaiones pendientes</h4>
+                <p>
+                    <i class="fa fa-exclamation fa-2x"></i>
+                </p>
+                <p class="mb-0">
+                </p>
+            </div>
+
+            <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn">
+                <h4 class="alert-heading">Cargando</h4>
+                <p>
+                    <i class="fa fa-refresh fa-spin fa-2x"></i>
+                </p>
+                <p class="mb-0">
+                    Espere por favor
+                </p>
+            </div>
 
         </div>
-        <!--/.col-->
+        <!--/.row-->
     </div>
-    <!--/.row-->
-</div>

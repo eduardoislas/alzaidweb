@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,10 @@ import { DailyrecordsComponent } from './pages/dailyrecords/dailyrecords.compone
 import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component';
 import { CatalogsComponent } from './pages/catalogs/catalogs.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
@@ -39,7 +43,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
