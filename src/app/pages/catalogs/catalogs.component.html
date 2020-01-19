@@ -34,9 +34,6 @@
                     <td>{{ cat.name }} </td>
                     <td>{{ cat.type }}</td>
                     <td>
-                        <button class="btn btn-info mr-1" [routerLink]="['/user', cat._id ]">
-                          <i class="fa fa-pencil"></i>
-                      </button>
                         <button class="btn btn-danger mr-1" (click)="bajaCatalog( cat, i )">
                           <i class="fa fa-arrow-down"></i>
                       </button>
