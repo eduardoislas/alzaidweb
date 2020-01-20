@@ -1,4 +1,184 @@
 <app-header></app-header>
-<p>
-    dailyrecord works!
-</p>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Registro Diario</h1>
+            <h4><strong>Adulto: </strong>{{dr.patient.name}} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</h4>
+            <h4><strong>Fecha: </strong>{{dr.date |date:"dd-MM-yyyy" }}</h4>
+            <h4><strong>Hora entrada: </strong>{{dr.date |date:"h:mm a" }}</h4>
+            <h4 *ngIf="dr.exit"><strong>Hora salida: </strong>{{dr.exitHour |date:"h:mm a" }}</h4>
+        </div>
+    </div>
+    <!--/.row-->
+
+
+
+    <div class="container">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/dailyrecords">
+          <i class="fa fa-arrow-left"></i>
+          Regresar
+        </button>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+
+            <div class="col-sm-6">
+                <h3 class="card-header">Signos Vitales</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Signo</th>
+                            <th scope="col">Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let vs of dr.vitalSigns">
+                            <td>{{vs.date |date:"h:mm a"}}</td>
+                            <td>{{vs.vitalSign}}</td>
+                            <td *ngIf="!vs.valueB">{{vs.value}}</td>
+                            <td *ngIf="vs.valueB">{{vs.value}}/{{vs.valueB}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-6">
+                <h3 class="card-header">Apoyo Técnico</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Apoyo del día</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let ts of dr.technicalSupport">
+                            <td>{{ts.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+
+            <div class="col-sm-6">
+                <h3 class="card-header">Conductas</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Puntuación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of dr.attitude">
+                            <td>{{a.name}}</td>
+                            <td>{{a.score}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-6">
+                <h3 class="card-header">Comportamientos</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Puntuación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let b of dr.behavior">
+                            <td>{{b.name}}</td>
+                            <td>{{b.score}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="row animated fadeIn faster">
+
+            <div class="col-sm-6">
+                <h3 class="card-header">Crisis</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Momento del día</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Observación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of dr.crisis">
+                            <td>{{c.time}}</td>
+                            <td>{{c.name}}</td>
+                            <td>{{c.observation}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-6">
+                <h3 class="card-header">Higiene</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Momento del día</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Observación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of dr.hygiene">
+                            <td>{{c.time}}</td>
+                            <td>{{c.name}}</td>
+                            <td>{{c.observation}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+
+            <div class="col-sm-12">
+                <h3 class="card-header">Comida</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Desempeño</th>
+                            <th>Cantidad</th>
+                            <th>Tipo de Comida</th>
+                            <th>Independencia</th>
+                            <th>Funcional</th>
+                            <th>Masticación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let m of dr.meal">
+                            <td>{{m.type}}</td>
+                            <td>{{m.performance}}</td>
+                            <td>{{m.quantity}}</td>
+                            <td>{{m.foodType}}</td>
+                            <td>{{m.independence}}</td>
+                            <td>{{m.functional}}</td>
+                            <td>{{m.chewingPerformance}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

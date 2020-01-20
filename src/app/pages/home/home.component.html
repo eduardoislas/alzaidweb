@@ -13,33 +13,58 @@
             <div class="panel panel-default articles">
                 <div class="panel-heading">
                     Notificaciones vigentes
-                    <span class="pull-right clickable panel-toggle panel-button-tab-left"><em class="fa fa-toggle-up"></em></span>
                 </div>
-
-                <div class="panel-body articles-container">
-
-                    <div class="article border-bottom" *ngFor="let noti of notifications">
-                        <div class="col-xs-12">
-                            <div class="row">
-                                <div class="col-xs-2 col-md-2 date">
-                                    <div class="large">{{noti.date |date:"dd"}}</div>
-                                    <div class="text-muted">{{noti.date |date:"MMMM"}}</div>
-                                </div>
-                                <div class="col-xs-10 col-md-10">
-                                    <h3>{{noti.patient.name}} {{noti.patient.lastName}} {{noti.patient.lastNameSecond}}</h3>
-                                    <h4>{{noti.type}}</h4>
-                                    <p>{{noti.description}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <!--End .article-->
-
-                </div>
-
             </div>
             <!--/.col-->
+
+
+            <div class="row animated fadeIn faster">
+                <div class="col-sm-6" *ngFor="let noti of notifications">
+                    <div *ngIf="noti.high_priority" class="panel panel-danger">
+                        <div class="col-xs-2 col-md-2">
+                            <div class="large">{{noti.date |date:"dd"}}</div>
+                            <div class="text-dark">{{noti.date |date:"MMMM"}}</div>
+                        </div>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{noti.patient.name}} {{noti.patient.lastName}} {{noti.patient.lastNameSecond}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-8">
+                                <h4>{{noti.type}}</h4>
+                                <p>{{noti.description}}</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <div *ngFor="let a of noti.area">{{a}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="!noti.high_priority" class="panel panel-info">
+                        <div class="col-xs-2 col-md-2">
+                            <div class="large">{{noti.date |date:"dd"}}</div>
+                            <div class="text-dark">{{noti.date |date:"MMMM"}}</div>
+                        </div>
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{noti.patient.name}} {{noti.patient.lastName}} {{noti.patient.lastNameSecond}}</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-sm-8">
+                                <h4>{{noti.type}}</h4>
+                                <p>{{noti.description}}</p>
+                            </div>
+                            <div class="col-sm-2">
+                                <div *ngFor="let a of noti.area">{{a}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
 
 
             <div *ngIf="!cargando && notifications.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">

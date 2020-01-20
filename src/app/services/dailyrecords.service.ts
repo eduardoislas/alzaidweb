@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RootDailyRecord, DailyRecordModel } from '../models/dailyrecord.model';
+import { RootDailyRecord, DailyRecordModel, DailyRecord } from '../models/dailyrecord.model';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -39,6 +39,9 @@ private crearArreglo(drsObj: RootDailyRecord){
     }
   }
 
+  getDailyRecord( id: string ){
+    return this.http.get<DailyRecord>(`${ this.url }/dailyrecord/id/${ id }`)
+  }
 
 
 

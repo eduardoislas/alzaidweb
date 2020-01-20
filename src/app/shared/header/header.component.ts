@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { UsuarioModel, User } from '../../models/user.model';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private auth: AuthService, private router: Router) { }
+  username: String = '';
+  User: UsuarioModel = new UsuarioModel();
+
+  constructor( private auth: AuthService, private router: Router, private userService: UsersService) { }
 
   ngOnInit() {
+    this.username = localStorage.getItem('username');
+    
   }
 
   

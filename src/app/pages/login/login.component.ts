@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
 
     this.auth.login( this.usuario)
     .subscribe( resp => {
-      console.log(resp);
       Swal.close();
 
       if ( this.recordarme ){
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit {
 
       this.router.navigateByUrl('/home');
     }, (err) => {
-      console.log(err.error.err.message);
       Swal.fire({
         icon: 'error',
         title: 'Error al autenticar',
