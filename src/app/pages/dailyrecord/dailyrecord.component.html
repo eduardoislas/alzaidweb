@@ -180,5 +180,41 @@
 
         </div>
 
+        <div class="row animated fadeIn faster">
+            <div class="col-sm-12">
+                <h3 class="card-header">Bitácora de Fase {{dr.patient.phase}}</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Orientación lugar:</th>
+                            <td>{{dr.phaseBinnacle.orientation}}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="2">Orientación tiempo:</th>
+                            <td>{{dr.phaseBinnacle.date}}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="3">Observación:</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3">{{dr.phaseBinnacle.observation}}</td>
+                        </tr>
+                        <tr>
+                            <th>Actividad</th>
+                            <th>Tipo de Actividad</th>
+                            <th>Desempeño</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let p of dr.phaseBinnacle.activities">
+                            <td>{{p.name}}</td>
+                            <td>{{p.classification}}</td>
+                            <td>{{p.performance}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>

@@ -18,6 +18,7 @@ export class PatientComponent implements OnInit {
   patient = new PatientModel();
   support: CatalogModel[] = [];
   phases: CatalogModel[] = [];
+  allergies: CatalogModel[] = [];
 
   constructor(private patientsService: PatientsService, 
     private router: Router,
@@ -38,6 +39,12 @@ export class PatientComponent implements OnInit {
       .subscribe((resp: any) =>{
         this.support = resp;
       });
+    
+      //Llenar lista de Alergias
+    this.catalogsService.getCatalogsType('alergia')
+    .subscribe((resp: any) =>{
+      this.allergies = resp;
+    });
     
     if ( id !== 'nuevo' ){
       this.patientsService.getPatient(id)

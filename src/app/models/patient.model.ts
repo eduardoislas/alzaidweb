@@ -1,3 +1,4 @@
+import { TechnicalSupport } from './dailyrecord.model';
 
 
 
@@ -11,7 +12,11 @@ export class PatientModel{
     birthdate: Date;
     registerdate: Date;
     phase: string;
-    technicalSupport: [];
+    technicalSupport?: TechnicalSupport[];
+    diagnosis?: any[];
+    allergies?: any[];
+    medicines?: any[];
+    physicalLimitations?: any[];
     img: string;
     
 }

@@ -20,6 +20,8 @@ export class DailyRecordModel {
     hygiene: Hygiene[];
     meal: Meal[];
     exitHour: Date;
+    enterHour: Date;
+    phaseBinnacle: PhaseBinnacle;
   }
 
 export class DailyRecord {
@@ -74,4 +76,11 @@ export class VitalSignModel {
     independence?: number;
     functional?: number;
     chewingPerformance?: number;
+  }
+
+  export class PhaseBinnacle{
+    orientation: boolean;
+    date: boolean;
+    observation: string;
+    activities: any[];
   }

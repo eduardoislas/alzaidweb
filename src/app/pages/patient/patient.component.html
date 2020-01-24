@@ -78,21 +78,42 @@
                         </div>
                     </div>
                     <!-- Fin de Row fecha  -->
-                    <div class="form-group">
-                        <label for="cargaFoto">Cargar fotografía</label>
-                        <input type="file" [(ngModel)]="patient.img" name="img" class="form-control-file" id="cargaFoto">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="cargaFoto">Cargar fotografía</label>
+                                <input type="file" [(ngModel)]="patient.img" name="img" class="form-control-file" id="cargaFoto">
+                            </div>
+                        </div>
                     </div>
 
-
-
-                    <div class="form-group">
-                        <label for="apoyo">Apoyo técnico:</label>
-                        <select multiple class="form-control" [(ngModel)]="patient.technicalSupport" name="technicalSupport" id="apoyo">
-                        <option *ngFor="let s of support" 
-                        [value]="s.name">{{s.name}}</option>
-                      </select>
-                        <small>Mantén presionado CTRL o SHIFT para seleccionar más de uno.</small>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="apoyo">Apoyo técnico:</label>
+                                <div class="checkbox" [(ngModel)]="patient.technicalSupport" name="technicalSupport" id="technicalSupport" ngDefaultControl *ngFor="let s of support">
+                                    <label><input type="checkbox" [value]="s.name">{{s.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="alergias">Alergias:</label>
+                                <div class="checkbox" [(ngModel)]="patient.allergies" name="allergies" id="allergies" ngDefaultControl *ngFor="let a of allergies">
+                                    <label><input type="checkbox" [value]="a.name">{{a.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="alergias">Limitaciones Físicas:</label>
+                                <div class="checkbox">
+                                    <input type="text" [(ngModel)]="patient.physicalLimitations" name="physicalLimitation" id="physicalLimitation" class="form-control" placeholder="Limitaciones físicas">
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <!-- Fin de Row fecha  -->
 
                     <hr>
                     <div class="form-group text-center">

@@ -35,7 +35,7 @@
                     <th scope="row">{{ i+1}} </th>
                     <td>{{ dr.date |date:"dd-MM-yyyy" }}</td>
                     <td>{{ dr.patient.name }} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</td>
-                    <td>{{ dr.date |date:"h:mm a"}}</td>
+                    <td>{{ dr.enterHour |date:"h:mm a"}}</td>
                     <td>{{ dr.exitHour |date:"h:mm a"}}</td>
                     <td>
                         <button class="btn btn-info mr-1" [routerLink]="['/dailyrecord', dr._id ]">
