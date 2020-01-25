@@ -12,16 +12,16 @@ export class DailyRecordModel {
     _id: string;
     date: Date;
     patient: PatientModel;
-    vitalSigns: VitalSignModel[];
-    technicalSupport: TechnicalSupport[];
-    attitude: Attitude[];
-    behavior: Behavior[];
-    crisis: Crisis[];
-    hygiene: Hygiene[];
-    meal: Meal[];
-    exitHour: Date;
+    vitalSigns?: VitalSignModel[];
+    technicalSupport?: TechnicalSupport[];
+    attitude?: Attitude[];
+    behavior?: Behavior[];
+    crisis?: Crisis[];
+    hygiene?: Hygiene[];
+    meal?: Meal[];
+    exitHour?: Date;
     enterHour: Date;
-    phaseBinnacle: PhaseBinnacle;
+    phaseBinnacle?: PhaseBinnacle;
   }
 
 export class DailyRecord {
@@ -82,5 +82,11 @@ export class VitalSignModel {
     orientation: boolean;
     date: boolean;
     observation: string;
-    activities: any[];
+    activities: Activity[];
+  }
+
+  export class Activity{
+    name: string;
+    classification: string;
+    performance: number;
   }

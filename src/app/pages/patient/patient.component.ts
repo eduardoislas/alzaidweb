@@ -45,6 +45,7 @@ export class PatientComponent implements OnInit {
     .subscribe((resp: any) =>{
       this.allergies = resp;
     });
+
     
     if ( id !== 'nuevo' ){
       this.patientsService.getPatient(id)

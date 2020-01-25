@@ -23,7 +23,6 @@ export class DailyrecordComponent implements OnInit {
       .subscribe( (resp: DailyRecord) => {
         this.dr = resp.dr;
         this.dr._id = id;
-        console.log(this.dr);
       });
 
   }

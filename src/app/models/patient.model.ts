@@ -16,7 +16,7 @@ export class PatientModel{
     diagnosis?: any[];
     allergies?: any[];
     medicines?: any[];
-    physicalLimitations?: any[];
+    physicalLimitations?: PhysicalLimitation[];
     img: string;
     
 }
@@ -31,3 +31,8 @@ export class Patient {
     success: boolean;
     patient: PatientModel;
 }
+
+export class PhysicalLimitation {
+    _id: string;
+    name: string;
+  }

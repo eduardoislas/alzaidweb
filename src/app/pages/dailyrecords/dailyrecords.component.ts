@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DailyrecordsService } from '../../services/dailyrecords.service';
 import { DailyRecordModel } from 'src/app/models/dailyrecord.model';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dailyrecords',
