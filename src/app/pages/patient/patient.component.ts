@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { PatientModel, Patient } from '../../models/patient.model';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { PatientModel, Patient, PhysicalLimitation } from '../../models/patient.model';
 import { PatientsService } from '../../services/patients.service';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
@@ -13,56 +13,86 @@ import { CatalogModel } from 'src/app/models/catalog.model';
   templateUrl: './patient.component.html',
   styleUrls: ['./patient.component.css']
 })
-export class PatientComponent implements OnInit {
 
-  patient = new PatientModel();
-  support: CatalogModel[] = [];
+export class PatientComponent implements OnInit{
+
   phases: CatalogModel[] = [];
+  technicalSupport: CatalogModel[] = [];
   allergies: CatalogModel[] = [];
+  diagnosis: CatalogModel[] = [];
+  forma:FormGroup;
+  patient: PatientModel = new PatientModel();
 
   constructor(private patientsService: PatientsService, 
-    private router: Router,
-    private route: ActivatedRoute,
-    private catalogsService: CatalogsService) { }
+        private router: Router,
+        private route: ActivatedRoute,
+        private catalogsService: CatalogsService) {
+    
+    this.forma = new FormGroup({
+      '_id': new FormControl({value:'', disabled:true}),
+      'expedient': new FormControl({value:'', disabled:true}),
+      'name': new FormControl('', Validators.required),
+      'lastName': new FormControl('', Validators.required),
+      'lastNameSecond': new FormControl(),
+      'birthdate': new FormControl('', Validators.required),
+      'registerdate': new FormControl('', Validators.required),
+      'phase': new FormControl('', Validators.required),
+      'img': new FormControl(),
+      'physicalLimitations': new FormArray([
+        new FormControl()
+      ]),
+      'technicalSupport': new FormArray([]),
+      'allergies': new FormArray([]),
+      'diagnosis': new FormArray([])
+    })
 
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
 
-    //Llenar lista de Fases
-    this.catalogsService.getCatalogsType('fase')
+  }
+    ngOnInit() {
+      const id = this.route.snapshot.paramMap.get('id');
+
+      this.catalogsService.getCatalogsType('fase')
       .subscribe((resp: any) =>{
         this.phases = resp;
       });
-
-    //Llenar lista de Apoyo técnico
-    this.catalogsService.getCatalogsType('apoyo')
+      this.catalogsService.getCatalogsType('apoyo')
       .subscribe((resp: any) =>{
-        this.support = resp;
+        this.technicalSupport = resp;
       });
-    
-      //Llenar lista de Alergias
-    this.catalogsService.getCatalogsType('alergia')
-    .subscribe((resp: any) =>{
-      this.allergies = resp;
-    });
+      this.catalogsService.getCatalogsType('alergia')
+      .subscribe((resp: any) =>{
+        this.allergies = resp;
+      });
+      this.catalogsService.getCatalogsType('diagnostico')
+      .subscribe((resp: any) =>{
+        this.diagnosis = resp;
+      });
 
-    
-    if ( id !== 'nuevo' ){
+      if ( id !== 'nuevo' ){
       this.patientsService.getPatient(id)
       .subscribe( (resp: Patient) => {
-        this.patient = resp.patient;
-        this.patient._id = id;
+        this.forma.setValue(resp.patient);
+        //this.forma.controls['_id'].controls = id;
       });
+
+
     }
 
   }
 
-  guardar( form: NgForm ){
 
-    if ( form.invalid ){
-      return;
-    }
+  agregarPl(){
+    (<FormArray>this.forma.controls['physicalLimitations']).push(
+      new FormControl()
+    )
+  }
 
+ 
+  guardar(){
+    if ( this.forma.invalid ){
+            return;
+          }
+      
     Swal.fire(
       'Guardando',
       'Espere por favor...',
@@ -71,13 +101,17 @@ export class PatientComponent implements OnInit {
     Swal.showLoading();
 
     let peticion: Observable<any>;
+    // if ( this.forma.controls._id){
+    //   peticion = this.patientsService.actualizarPaciente( this.forma.value);
+    //   console.log('actualizar');
+    // }
+    // else {
+    //   peticion = this.patientsService.crearPaciente( this.forma.value);
+    //   console.log('guardar');
+    // }
 
-    if ( this.patient._id) {
-      peticion = this.patientsService.actualizarPaciente( this.patient);
-    }
-    else {
-      peticion = this.patientsService.crearPaciente( this.patient);
-    }
+    peticion = this.patientsService.crearPaciente( this.cambiarFormaModel(this.forma));
+    console.log(this.patient);
 
     peticion.subscribe(resp => {
       Swal.fire({
@@ -94,4 +128,185 @@ export class PatientComponent implements OnInit {
       });
     });
   }
-}
+
+  cambiarFormaModel(form:FormGroup) {
+
+    this.patient.name = form.controls.name.value;
+    this.patient.lastName = form.controls.lastName.value;
+    this.patient.lastNameSecond = form.controls.lastNameSecond.value;
+    this.patient.birthdate = form.controls.birthdate.value;
+    this.patient.registerdate = form.controls.registerdate.value;
+    this.patient.phase = form.controls.phase.value;
+    this.patient.img = form.controls.img.value;
+
+    this.patient.physicalLimitations = form.controls.physicalLimitations.value;
+    this.patient.technicalSupport = form.controls.technicalSupport.value;
+    this.patient.allergies = form.controls.allergies.value;
+    this.patient.diagnosis = form.controls.diagnosis.value;
+
+    return this.patient;
+    }
+
+
+    onCheckChange(event) {
+      const formArray: FormArray = this.forma.get('technicalSupport') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+          i++;
+        });
+      }
+
+    }
+
+
+    onCheckChangeAllergies(event) {
+      const formArray: FormArray = this.forma.get('allergies') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+          i++;
+        });
+      }
+
+    }
+
+    onCheckChangeDiagnosis(event) {
+      const formArray: FormArray = this.forma.get('diagnosis') as FormArray;
+    
+      /* Selected */
+      if(event.target.checked){
+        // Add a new control in the arrayForm
+        formArray.push(new FormControl(event.target.value));
+      }
+      /* unselected */
+      else{
+        // find the unselected element
+        let i: number = 0;
+    
+        formArray.controls.forEach((ctrl: FormControl) => {
+          if(ctrl.value == event.target.value) {
+            // Remove the unselected element from the arrayForm
+            formArray.removeAt(i);
+            return;
+          }
+          i++;
+        });
+      }
+
+    }
+  }
+
+
+
+
+// export class PatientComponent implements OnInit {
+
+//   patient = new PatientModel();
+//   support: CatalogModel[] = [];
+//   phases: CatalogModel[] = [];
+//   allergies: CatalogModel[] = [];
+
+//   constructor(private patientsService: PatientsService, 
+//     private router: Router,
+//     private route: ActivatedRoute,
+//     private catalogsService: CatalogsService) { }
+
+//   ngOnInit() {
+//     const id = this.route.snapshot.paramMap.get('id');
+
+//     //Llenar lista de Fases
+//     this.catalogsService.getCatalogsType('fase')
+//       .subscribe((resp: any) =>{
+//         this.phases = resp;
+//       });
+
+//     //Llenar lista de Apoyo técnico
+//     this.catalogsService.getCatalogsType('apoyo')
+//       .subscribe((resp: any) =>{
+//         this.support = resp;
+//       });
+    
+//       //Llenar lista de Alergias
+//     this.catalogsService.getCatalogsType('alergia')
+//     .subscribe((resp: any) =>{
+//       this.allergies = resp;
+//     });
+
+    
+//     if ( id !== 'nuevo' ){
+//       this.patientsService.getPatient(id)
+//       .subscribe( (resp: Patient) => {
+//         this.patient = resp.patient;
+//         this.patient._id = id;
+//       });
+//     }
+
+//   }
+
+//   guardar( form: NgForm ){
+
+//     if ( form.invalid ){
+//       return;
+//     }
+
+//     Swal.fire(
+//       'Guardando',
+//       'Espere por favor...',
+//       'info', 
+//       );
+//     Swal.showLoading();
+
+//     let peticion: Observable<any>;
+
+//     if ( this.patient._id) {
+//       peticion = this.patientsService.actualizarPaciente( this.patient);
+//     }
+//     else {
+//       peticion = this.patientsService.crearPaciente( this.patient);
+//     }
+
+//     peticion.subscribe(resp => {
+//       Swal.fire({
+//         icon: 'success',
+//         title: this.patient.name + ' '+ this.patient.lastName,
+//         text: 'Se actualizó correctamente'
+//       });
+//       this.router.navigateByUrl('/patients'); 
+//     }, (err) => {
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'No se pudo guardar el paciente',
+//         text: err.error.err.message
+//       });
+//     });
+//   }
+// }

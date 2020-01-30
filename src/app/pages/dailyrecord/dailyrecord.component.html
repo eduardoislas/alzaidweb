@@ -73,12 +73,14 @@
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Puntuación</th>
+                            <th scope="col">Momento del día</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let a of dr.attitude">
                             <td>{{a.name}}</td>
                             <td>{{a.score}}</td>
+                            <td>{{a.time}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,12 +93,14 @@
                         <tr>
                             <th scope="col">Nombre</th>
                             <th scope="col">Puntuación</th>
+                            <th scope="col">Momento del día</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let b of dr.behavior">
                             <td>{{b.name}}</td>
                             <td>{{b.score}}</td>
+                            <td>{{b.time}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -111,16 +115,16 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Momento del día</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Observación</th>
+                            <th scope="col">Momento del día</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let c of dr.crisis">
-                            <td>{{c.time}}</td>
                             <td>{{c.name}}</td>
                             <td>{{c.observation}}</td>
+                            <td>{{c.time}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -131,16 +135,16 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Momento del día</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Observación</th>
+                            <th scope="col">Momento del día</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let c of dr.hygiene">
-                            <td>{{c.time}}</td>
                             <td>{{c.name}}</td>
                             <td>{{c.observation}}</td>
+                            <td>{{c.time}}</td>
                         </tr>
                     </tbody>
                 </table>

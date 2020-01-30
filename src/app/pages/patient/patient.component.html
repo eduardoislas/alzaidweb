@@ -1,12 +1,243 @@
 <app-header></app-header>
 
+
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Paciente</h1>
         </div>
     </div>
-    <!--/.row-->
+
+    <div class="container">
+
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/patients">
+          <i class="fa fa-arrow-left"></i>
+          Regresar
+        </button>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Folio expediente</label>
+                                <input type="text" formControlName="expedient" class="form-control" placeholder="Folio expediente">
+                                <small class="form-text text-muted">Este campo es autogenerado</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" formControlName="name" class="form-control" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido Paterno</label>
+                                <input type="text" formControlName="lastName" class="form-control" placeholder="Apellido Paterno">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido Materno</label>
+                                <input type="text" formControlName="lastNameSecond" class="form-control" placeholder="Apellido Materno">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha de Nacimiento</label>
+                                <input type="date" formControlName="birthdate" class="form-control" placeholder="Fecha de nacimiento">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha de Alta</label>
+                                <input type="date" formControlName="registerdate" class="form-control" placeholder="Fecha de Alta">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="phase">Fase:</label>
+                                <select class="form-control" formControlName="phase" id="phase">
+                                <option *ngFor="let phase of phases" 
+                                [value]="phase.name">{{phase.name}}</option>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label for="cargaFoto">Cargar fotografía</label>
+                                <input type="file" formControlName="img" class="form-control-file" id="img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <!-- <div class="col-sm-4">
+                            <div class="form-group" formArrayName="technicalSupport">
+                                <label for="technicalSupport">Apoyo técnico</label>
+                                <div class="checkbox p-l-50" name="technicalSupport" id="technicalSupport" ngDefaultControl *ngFor="let s of technicalSupport; let i = index">
+                                    <label><input type="checkbox" [value]="s.name" (change)="onCheckChange($event)">{{s.name}}</label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="col-sm-4">
+                            <div class="form-group" formArrayName="allergies">
+                                <label for="allergies">Alergias</label>
+                                <div class="checkbox p-l-50" name="allergies" id="allergies" ngDefaultControl *ngFor="let s of allergies; let i = index">
+                                    <label><input type="checkbox" [value]="s.name" (change)="onCheckChangeAllergies($event)">{{s.name}}</label>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-sm-4 text-center">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Diagnósticos</button>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 text-center">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Apoyo Técnico</button>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4 text-center">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal2">Alergias</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group" formArrayName="physicalLimitations">
+                                <label for="physicalLimitations">Limitaciones Físicas</label>
+                                <input *ngFor="let ps of forma.controls.physicalLimitations.value; let i = index" type="text" [formControlName]="i" class="form-control" id="physicalLimitations">
+                            </div>
+                            <button (click)="agregarPl()" type="button" class="btn btn-primary">Otra...</button>
+                        </div>
+
+                        <!-- <div class="col-sm-6">
+                            <div class="form-group" formArrayName="medicines">
+                                <label for="medicines">Medicamentos</label>
+                                <input *ngFor="let ps of forma.controls['physicalLimitations'].controls; let i = index" type="text" [formControlName]="i" class="form-control" id="physicalLimitations">
+                            </div>
+                            <button (click)="agregarPl()" type="button" class="btn btn-primary">Otra...</button>
+                        </div> -->
+
+                    </div>
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                          <i class="fa fa-save"></i>
+                        Guardar
+                      </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <form [formGroup]="forma" novalidate="novalidate">
+
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Apoyo técnico</h4>
+                        </div>
+
+                        <div class="form-group" formArrayName="technicalSupport">
+                            <div class="checkbox p-l-50" name="technicalSupport" id="technicalSupport" ngDefaultControl *ngFor="let s of technicalSupport; let i = index">
+                                <label><input type="checkbox" [value]="s.name" (change)="onCheckChange($event)">{{s.name}}</label>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade" id="myModal2" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Alergias</h4>
+                        </div>
+                        <div class="form-group" formArrayName="allergies">
+                            <div class="checkbox p-l-50" name="allergies" id="allergies" ngDefaultControl *ngFor="let s of allergies; let i = index">
+                                <label><input type="checkbox" [value]="s.name" (change)="onCheckChangeAllergies($event)">{{s.name}}</label>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="myModal3" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Diagnósticos</h4>
+                        </div>
+                        <div class="form-group" formArrayName="diagnosis">
+                            <div class="checkbox p-l-50" name="diagnosis" id="diagnosis" ngDefaultControl *ngFor="let s of diagnosis; let i = index">
+                                <label><input type="checkbox" [value]="s.name" (change)="onCheckChangeDiagnosis($event)">{{s.name}}</label>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+<!-- <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Paciente</h1>
+        </div>
+    </div>
 
 
 
@@ -52,7 +283,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Fin de Row nombre  -->
 
                     <div class="row">
                         <div class="col-sm-4">
@@ -77,7 +307,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Fin de Row fecha  -->
+            
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
@@ -107,7 +337,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Fin de Row fecha  -->
+                
 
                     <hr>
                     <div class="form-group text-center">
@@ -120,11 +350,11 @@
             </div>
         </div>
 
-        <!-- Modal Apoyo Técnico-->
+     
         <div class="modal fade" id="myModal" role="dialog">
             <div class="modal-dialog">
 
-                <!-- Modal content-->
+              
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -143,11 +373,11 @@
             </div>
         </div>
 
-        <!-- Modal Alergias-->
+     
         <div class="modal fade" id="myModal2" role="dialog">
             <div class="modal-dialog">
 
-                <!-- Modal content-->
+               
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -169,4 +399,4 @@
 
 
     </div>
-</div>
+</div> -->

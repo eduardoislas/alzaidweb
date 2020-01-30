@@ -46,11 +46,13 @@ export class VitalSignModel {
     _id: string;
     name: string;
     score: number;
+    time: string;
   }
   export class Behavior {
     _id: string;
     name: string;
     score: number;
+    time: string;
   }
 
   export class Crisis {
