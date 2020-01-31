@@ -137,7 +137,7 @@ export class PatientComponent implements OnInit{
     this.patient.birthdate = form.controls.birthdate.value;
     this.patient.registerdate = form.controls.registerdate.value;
     this.patient.phase = form.controls.phase.value;
-    this.patient.img = form.controls.img.value;
+    this.patient.img = "https://img.icons8.com/color/48/000000/matrix-architect.png";
 
     this.patient.physicalLimitations = form.controls.physicalLimitations.value;
     this.patient.technicalSupport = form.controls.technicalSupport.value;

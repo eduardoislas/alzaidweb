@@ -24,7 +24,7 @@ export class DailyrecordComponent implements OnInit {
         this.dr = resp.dr;
         this.dr._id = id;
       });
-
+      console.log(this.dr);
   }
 
 }

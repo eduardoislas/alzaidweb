@@ -9,12 +9,13 @@ import { map } from 'rxjs/operators';
 export class DailyrecordsService {
 
   private url = 'https://alzaid.herokuapp.com';
-  // private url2 = 'http://localhost:3000';
+  // private url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
 
 getDailyRecords(fecha: Date) {
+  // return this.http.get(`${ this.url }/dailyrecord/today`)
   return this.http.get(`${ this.url }/dailyrecord/date/${fecha}`)
       .pipe(
         map( (resp:any) => {
