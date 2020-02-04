@@ -25,6 +25,27 @@
             <div class="col">
                 <form (ngSubmit)="guardar( f )" #f="ngForm">
                     <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" [(ngModel)]="user.firstName" name="firstName" class="form-control" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido Paterno</label>
+                                <input type="text" [(ngModel)]="user.lastName" name="lastName" class="form-control" placeholder="Apellido Paterno">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Apellido Materno</label>
+                                <input type="text" [(ngModel)]="user.lastNameSecond" name="lastNameSecond" class="form-control" placeholder="Apellido Materno">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
                                 <label>Nombre de Usuario</label>
@@ -36,7 +57,7 @@
                         <div class="col-sm-8">
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Contraseña de usuario" required>
+                                <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Contraseña de usuario">
                             </div>
                         </div>
                     </div>

@@ -2,8 +2,11 @@
 
 export class UsuarioModel{
     _id: string;
+    firstName: string;
+    lastName: string;
+    lastNameSecond: string;
     name: string;
-    password: string;
+    password?: string;
     role: string;
     
 }

@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -17,8 +20,7 @@ import { DailyrecordsComponent } from './pages/dailyrecords/dailyrecords.compone
 import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component';
 import { CatalogsComponent } from './pages/catalogs/catalogs.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
-import localeEs from '@angular/common/locales/es';
-import { registerLocaleData } from '@angular/common';
+import { FilterPipe } from './pipes/filter.pipe';
 
 registerLocaleData(localeEs, 'es');
 
@@ -35,14 +37,16 @@ registerLocaleData(localeEs, 'es');
     DailyrecordsComponent,
     DailyrecordComponent,
     CatalogsComponent,
-    CatalogComponent
+    CatalogComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]

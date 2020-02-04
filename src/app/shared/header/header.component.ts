@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
-import { UsuarioModel, User } from '../../models/user.model';
+import { User, UsuarioModel } from '../../models/user.model';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -11,15 +11,18 @@ import { UsersService } from '../../services/users.service';
 })
 export class HeaderComponent implements OnInit {
 
-  username: String = '';
-  User: UsuarioModel = new UsuarioModel();
+  username: string = '';
+  user: UsuarioModel = new UsuarioModel();
 
   constructor( private auth: AuthService, private router: Router, private userService: UsersService) { }
 
   ngOnInit() {
     this.username = localStorage.getItem('username');
-    
-  }
+    this.userService.getUserName(this.username)
+      .subscribe( (resp: User) => {
+        this.user = resp.user;
+  })
+}
 
   
   salir(){

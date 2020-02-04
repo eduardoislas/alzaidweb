@@ -12,6 +12,7 @@ export class DailyrecordsComponent implements OnInit {
   drs: DailyRecordModel[] = [];
   cargando = false;
   fecha = new Date();
+  p: number = 1;
 
   constructor(private dailyrecordsService: DailyrecordsService) { }
 

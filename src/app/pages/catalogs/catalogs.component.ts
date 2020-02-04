@@ -13,13 +13,15 @@ export class CatalogsComponent implements OnInit {
   catalogs: CatalogModel[] = [];
   cargando = false;
   tipos = [];
-
+  filterSearch= '';
+  p: number = 1;
 
   constructor(private catalogsService: CatalogsService) { }
 
 
   ngOnInit() {
-    this.tipos = ['rol', 'fase', 'apoyo', 'actividad', 'diagnostico', 'medicamento', 'alergias'];
+    this.tipos = ['Todos','Actividad', 'Alergia', 'Apoyo técnico', 'Comportamiento', 'Conducta', 'Crisis', 'Diagnostico',
+          'Fase', 'Medicina', 'Rol', 'TipoNotificacion'];
     this.cargando = true;
     this.catalogsService.getCatalogs()
     .subscribe((resp: any) => {
@@ -28,7 +30,21 @@ export class CatalogsComponent implements OnInit {
     } )
   }
 
-
+  onChange(value: string){
+    if (value === 'Todos'){
+      this.catalogsService.getCatalogs()
+    .subscribe((resp: any) => {
+      this.catalogs = resp;
+      this.cargando = false;
+    })
+  }else{
+    this.catalogsService.getCatalogsType(value)
+    .subscribe((resp: any) => {
+      this.catalogs = resp;
+      this.cargando = false;
+    })
+  }
+}
 
   bajaCatalog( catalog: CatalogModel, i: number){
 

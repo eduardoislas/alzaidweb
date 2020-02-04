@@ -12,6 +12,7 @@ export class PatientsComponent implements OnInit {
 
   patients: PatientModel[] = [];
   cargando = false;
+  p: number = 1;
 
   constructor(private patientsService: PatientsService) { }
 

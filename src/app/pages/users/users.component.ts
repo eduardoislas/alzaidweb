@@ -12,7 +12,8 @@ export class UsersComponent implements OnInit {
 
   users: UsuarioModel[] = [];
   cargando = false;
-
+  p: number = 1;
+  
   constructor( private usersService: UsersService) { }
 
   ngOnInit() {

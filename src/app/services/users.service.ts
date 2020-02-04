@@ -8,6 +8,7 @@ import { UsuarioModel, RootUser, User } from '../models/user.model';
 })
 export class UsersService {
 
+  // private url = 'http://localhost:3000';
   private url = 'https://alzaid.herokuapp.com';
 
   constructor( private http: HttpClient) { }
@@ -42,6 +43,10 @@ export class UsersService {
       return this.http.get<User>(`${ this.url }/user/${ id }`)
     }
 
+    getUserName( name: string ){
+      return this.http.get<User>(`${ this.url }/user/name/${ name }`)
+    }
+
 
     crearUser( user: UsuarioModel){ 
       return this.http.post(`${ this.url }/user`, user)
@@ -57,7 +62,7 @@ export class UsersService {
       const userTemp = {
         ...user
       };
-      delete user._id;
+      delete userTemp._id;
       return this.http.put(`${ this.url }/user/${user._id}`, userTemp);
     }
 
