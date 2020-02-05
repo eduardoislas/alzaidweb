@@ -25,9 +25,9 @@
             </div>
         </div>
 
-        <div class="row animated fadeIn faster" *ngIf="dr.vitalSigns.length > 0">
+        <div class="row animated fadeIn faster">
 
-            <div class="col-sm-6">
+            <div class="col-sm-6" *ngIf="dr.vitalSigns.length > 0">
                 <h3 class="card-header">Signos Vitales</h3>
                 <table class="table table-striped">
                     <thead>
@@ -65,9 +65,9 @@
             </div>
         </div>
 
-        <div class="row animated fadeIn faster" *ngIf="dr.attitude.length > 0">
+        <div class="row animated fadeIn faster">
 
-            <div class="col-sm-6">
+            <div class="col-sm-6" *ngIf="dr.attitude.length > 0">
                 <h3 class="card-header">Conductas</h3>
                 <table class="table table-striped">
                     <thead>
@@ -109,9 +109,9 @@
         </div>
 
 
-        <div class="row animated fadeIn faster" *ngIf="dr.crisis.length > 0">
+        <div class="row animated fadeIn faster">
 
-            <div class="col-sm-6">
+            <div class="col-sm-6" *ngIf="dr.crisis.length > 0">
                 <h3 class="card-header">Crisis</h3>
                 <table class="table table-striped">
                     <thead>
