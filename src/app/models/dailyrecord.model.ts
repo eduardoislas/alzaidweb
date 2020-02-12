@@ -23,6 +23,8 @@ export class DailyRecordModel {
     enterHour?: Date;
     phaseBinnacle?: PhaseBinnacle;
     physioBinnacle?: PhysioBinnacle;
+    collation?:number;
+    physicalActivation?: number;
   }
 
 export class DailyRecord {

@@ -66,6 +66,32 @@
         </div>
 
         <div class="row animated fadeIn faster">
+            <div class="col-sm-6" *ngIf="dr.collation">
+                <h3 class="card-header">Colación</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Desempeño</th>
+                            <td>{{dr.collation}}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="col-sm-6" *ngIf="dr.physicalActivation">
+                <h3 class="card-header">Activación Física</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Desempeño</th>
+                            <td>{{dr.physicalActivation}}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
 
             <div class="col-sm-6" *ngIf="dr.attitude.length > 0">
                 <h3 class="card-header">Conductas</h3>
