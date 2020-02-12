@@ -1,13 +1,25 @@
 <div class="limiter animated fadeInDown">
+
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
             <div class="login-panel panel panel-default">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6">
+                        <br>
+                        <img src="../../../assets/images/logo.png" class="img-responsive">
+                        <br>
+                    </div>
+                    <div class="col-sm-3"></div>
+
+                </div>
                 <div class="panel-body">
+
                     <form (ngSubmit)="login( f )" #f="ngForm" class="login100-form validate-form flex-sb flex-w">
 
-                        <span class="login100-form-title p-b-51">
+                        <!-- <span class="login100-form-title p-b-51">
                             Iniciar sesión
-                        </span>
+                        </span> -->
 
                         <span *ngIf="f.submitted && f.controls['username'].errors" class="text-danger animated fadeIn">El nombre de usuario es obligatorio</span>
                         <div class="wrap-input100 m-b-16">
@@ -33,7 +45,7 @@
                         </div>
 
                         <div class="container-login100-form-btn m-t-17">
-                            <button class="login100-form-btn btn-info" type="submit">
+                            <button class="login100-form-btn" type="submit">
                                 Ingresar
                             </button>
                         </div>

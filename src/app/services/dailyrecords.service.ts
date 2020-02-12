@@ -16,7 +16,8 @@ export class DailyrecordsService {
 
 getDailyRecords(fecha: Date) {
   // return this.http.get(`${ this.url }/dailyrecord/today`)
-  return this.http.get(`${ this.url }/dailyrecord/date/${fecha}`)
+  // return this.http.get(`${ this.url }/dailyrecord/date/${fecha}`)
+  return this.http.get(`${ this.url }/dailyrecord`)
       .pipe(
         map( (resp:any) => {
           return this.crearArreglo(resp);
