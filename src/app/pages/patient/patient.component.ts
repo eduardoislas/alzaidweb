@@ -113,20 +113,20 @@ export class PatientComponent implements OnInit{
     peticion = this.patientsService.crearPaciente( this.cambiarFormaModel(this.forma));
     console.log(this.patient);
 
-    // peticion.subscribe(resp => {
-    //   Swal.fire({
-    //     icon: 'success',
-    //     title: this.patient.name + ' '+ this.patient.lastName,
-    //     text: 'Se actualizó correctamente'
-    //   });
-    //   this.router.navigateByUrl('/patients'); 
-    // }, (err) => {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'No se pudo guardar el paciente',
-    //     text: err.error.err.message
-    //   });
-    // });
+    peticion.subscribe(resp => {
+      Swal.fire({
+        icon: 'success',
+        title: this.patient.name + ' '+ this.patient.lastName,
+        text: 'Se actualizó correctamente'
+      });
+      this.router.navigateByUrl('/patients'); 
+    }, (err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo guardar el paciente',
+        text: err.error.err.message
+      });
+    });
   }
 
   cambiarFormaModel(form:FormGroup) {
