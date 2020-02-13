@@ -21,7 +21,6 @@
         <table *ngIf="!cargando && users.length > 0" class="table mt-3 table-hover animated fadeIn">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Nombre de Usuario</th>
                     <th scope="col">Rol</th>
@@ -30,7 +29,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let user of users| paginate: {itemsPerPage: 10, currentPage: p, totalItems: users.lenght}; let i = index">
-                    <th scope="row">{{(i+1)}} </th>
+
                     <td>{{ user.firstName }} {{ user.lastName }}</td>
                     <td>{{ user.name }} </td>
                     <td>{{ user.role }}</td>

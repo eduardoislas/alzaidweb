@@ -26,7 +26,7 @@ export class CatalogComponent implements OnInit {
     
   ngOnInit() {
     this.tipos = ['Actividad', 'Alergia', 'Apoyo técnico', 'Comportamiento', 'Conducta', 'Crisis', 'Diagnostico',
-          'Fase', 'Medicina', 'Rol', 'TipoNotificacion'];
+          'Fase', 'Medicina'];
     this.clasesAct = ['Atención', 'Cálculo', 'Estimulación Sensorial', 'Fisioterapia', 'Lenguaje',
           'Memoria', 'Reminiscencia'];
 

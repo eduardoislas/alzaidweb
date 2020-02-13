@@ -22,7 +22,7 @@
         <table *ngIf="!cargando && drs.length > 0" class="table mt-3 table-hover animated fadeIn">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
+
                     <th scope="col">Fecha</th>
                     <th scope="col">Paciente</th>
                     <th scope="col">Hora entrada</th>
@@ -32,7 +32,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let dr of drs| paginate: {itemsPerPage: 10, currentPage: p, totalItems: drs.lenght}; let i = index">
-                    <th scope="row">{{ i+1}} </th>
+
                     <td>{{ dr.date |date:"dd-MM-yyyy" }}</td>
                     <td>{{ dr.patient.name }} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</td>
                     <td>{{ dr.enterHour |date:"h:mm a"}}</td>

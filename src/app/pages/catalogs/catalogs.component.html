@@ -43,7 +43,6 @@
         <table *ngIf="!cargando && catalogs.length > 0" class="table mt-3 table-hover animated fadeIn">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Tipo</th>
                     <th scope="col">Opciones</th>
@@ -51,7 +50,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let cat of catalogs | paginate: {itemsPerPage: 10, currentPage: p, totalItems: catalogs.lenght} | filter: filterSearch; let i = index">
-                    <th scope="row">{{(i+1)}} </th>
+
                     <td>{{ cat.name }} </td>
                     <td>{{ cat.type }}</td>
                     <td>

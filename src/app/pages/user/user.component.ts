@@ -16,7 +16,7 @@ import { CatalogModel } from '../../models/catalog.model';
 export class UserComponent implements OnInit {
 
   user = new UsuarioModel();
-  roles: CatalogModel[] = [];
+  roles = [];
 
   constructor(private usersService: UsersService,
               private router: Router,
@@ -27,11 +27,11 @@ export class UserComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
 
     //Llenar lista de roles
-    this.catalogsService.getCatalogsType('rol')
-      .subscribe((resp: any) =>{
-        this.roles = resp;
-      });
-
+    // this.catalogsService.getCatalogsType('rol')
+    //   .subscribe((resp: any) =>{
+    //     this.roles = resp;
+    //   });
+      this.roles = ['ADMIN', 'COORDINADOR', 'ENFERMERIA', 'FAMILIAR', 'FASE_INICIAL', 'FASE_INTERMEDIA', 'FASE_AVANZADA','FISIOTERAPIA', 'HIGIENE', 'NUTRICION', 'PSICOLOGO']
     if ( id !== 'nuevo' ){
       this.usersService.getUser(id)
       .subscribe( (resp: User) => {
