@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class DailyrecordsService {
 
-  private url = 'https://alzaid.herokuapp.com';
-  // private url = 'http://localhost:3000';
+  // private url = 'https://alzaid.herokuapp.com';
+  private url = 'http://74.208.247.106:3000';
 
   constructor(private http: HttpClient) { }
 
