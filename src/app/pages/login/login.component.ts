@@ -39,10 +39,9 @@ export class LoginComponent implements OnInit {
     .subscribe( resp => {
       Swal.close();
 
-      if ( this.recordarme ){
-        localStorage.setItem('username', this.usuario.name);
-      }
-
+      localStorage.setItem('username', this.usuario.name);
+      localStorage.setItem('recordarme', this.recordarme.toString());
+     
       this.router.navigateByUrl('/home');
     }, (err) => {
       Swal.fire({

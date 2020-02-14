@@ -23,6 +23,9 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('expira');
+    if (localStorage.getItem('recordarme')==="false"){
+      localStorage.removeItem('username');
+    }
   }
 
   login( usuario: UsuarioModel) {

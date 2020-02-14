@@ -254,15 +254,13 @@
             </div>
         </div>
 
-        <!-- <div class="row animated fadeIn faster" *ngIf="dr.meal.length > 0">
+        <div class="row animated fadeIn faster">
 
-            <div class=" col-sm-12 ">
+            <div class=" col-sm-12 " *ngIf="dr.meal">
                 <h3 class="card-header ">Comida</h3>
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Tipo</th>
-                            <th>Desempeño</th>
                             <th>Cantidad</th>
                             <th>Tipo de Comida</th>
                             <th>Independencia</th>
@@ -272,8 +270,6 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let m of dr.meal ">
-                            <td>{{m.type}}</td>
-                            <td>{{m.performance}}</td>
                             <td>{{m.quantity}}</td>
                             <td>{{m.foodType}}</td>
                             <td>{{m.independence}}</td>
@@ -283,7 +279,7 @@
                     </tbody>
                 </table>
             </div>
-        </div> -->
+        </div>
 
     </div>
 </div>
