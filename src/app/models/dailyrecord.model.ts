@@ -18,7 +18,7 @@ export class DailyRecordModel {
     behavior?: Behavior[];
     crisis?: Crisis[];
     hygiene?: Hygiene[];
-    meal?: Meal[];
+    meal?: Meal;
     exitHour?: Date;
     enterHour?: Date;
     phaseBinnacle?: PhaseBinnacle;
@@ -74,8 +74,6 @@ export class VitalSignModel {
 
   export class Meal {
     _id: string;
-    type: string;
-    performance: number;
     quantity?: string;
     foodType?: string;
     independence?: number;
