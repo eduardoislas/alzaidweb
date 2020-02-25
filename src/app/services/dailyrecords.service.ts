@@ -45,6 +45,9 @@ private crearArreglo(drsObj: RootDailyRecord){
     return this.http.get<DailyRecord>(`${ this.url }/dailyrecord/id/${ id }`)
   }
 
+  putDailyRecordSalida( id: string ){
+    return this.http.put(`${ this.url }/dailyrecord/exit/${ id }`, {})
+  }
 
 
 

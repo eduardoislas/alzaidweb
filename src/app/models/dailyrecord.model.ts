@@ -14,9 +14,7 @@ export class DailyRecordModel {
     patient: PatientModel;
     vitalSigns?: VitalSignModel[];
     technicalSupport?: TechnicalSupport[];
-    attitude?: Attitude[];
     behavior?: Behavior[];
-    crisis?: Crisis[];
     hygiene?: Hygiene[];
     meal?: Meal;
     exitHour?: Date;

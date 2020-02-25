@@ -9,13 +9,14 @@
             <h4><strong>Fecha: </strong>{{dr.enterHour |date:"dd-MM-yyyy" }}</h4>
             <h4><strong>Hora entrada: </strong>{{dr.enterHour |date:"h:mm a" }}</h4>
             <h4 *ngIf="dr.exit"><strong>Hora salida: </strong>{{dr.exitHour |date:"h:mm a" }}</h4>
+            <h4 *ngIf="!dr.exit"><strong>Hora salida: </strong><button (click)="darSalida()" type="button" class="btn btn-primary">Dar salida</button></h4>
         </div>
     </div>
     <!--/.row-->
 
 
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row text-right">
             <div class="col">
                 <button class="btn btn-danger" routerLink="/dailyrecords">
@@ -48,115 +49,6 @@
                 </table>
             </div>
 
-            <div class="col-sm-6" *ngIf="dr.technicalSupport.length > 0">
-                <h3 class="card-header">Apoyo Técnico</h3>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Apoyo del día</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let ts of dr.technicalSupport">
-                            <td>{{ts.name}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="row animated fadeIn faster">
-            <div class="col-sm-6" *ngIf="dr.collation">
-                <h3 class="card-header">Colación</h3>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Desempeño</th>
-                            <td>{{dr.collation}}</td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-
-            <div class="col-sm-6" *ngIf="dr.physicalActivation">
-                <h3 class="card-header">Activación Física</h3>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Desempeño</th>
-                            <td>{{dr.physicalActivation}}</td>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
-        </div>
-
-        <div class="row animated fadeIn faster">
-
-            <div class="col-sm-6" *ngIf="dr.attitude.length > 0">
-                <h3 class="card-header">Conductas</h3>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Puntuación</th>
-                            <th scope="col">Momento del día</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let a of dr.attitude">
-                            <td>{{a.name}}</td>
-                            <td>{{a.score}}</td>
-                            <td>{{a.time}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="col-sm-6" *ngIf="dr.behavior.length > 0">
-                <h3 class="card-header">Comportamientos</h3>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Puntuación</th>
-                            <th scope="col">Momento del día</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let b of dr.behavior">
-                            <td>{{b.name}}</td>
-                            <td>{{b.score}}</td>
-                            <td>{{b.time}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-        <div class="row animated fadeIn faster">
-
-            <div class="col-sm-6" *ngIf="dr.crisis.length > 0">
-                <h3 class="card-header">Crisis</h3>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Observación</th>
-                            <th scope="col">Momento del día</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let c of dr.crisis">
-                            <td>{{c.name}}</td>
-                            <td>{{c.observation}}</td>
-                            <td>{{c.time}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
             <div class="col-sm-6" *ngIf="dr.hygiene.length > 0">
                 <h3 class="card-header">Higiene</h3>
                 <table class="table table-striped">
@@ -176,6 +68,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
 
         <div class="row animated fadeIn faster ">
@@ -255,6 +148,52 @@
         </div>
 
         <div class="row animated fadeIn faster">
+            <div class="col-sm-6" *ngIf="dr.collation">
+                <h3 class="card-header">Colación</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Desempeño</th>
+                            <td>{{dr.collation}}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+            <div class="col-sm-6" *ngIf="dr.physicalActivation">
+                <h3 class="card-header">Activación Física</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Desempeño</th>
+                            <td>{{dr.physicalActivation}}</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+
+            <div class="col-sm-6" *ngIf="dr.behavior.length > 0">
+                <h3 class="card-header">Comportamientos</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Puntuación</th>
+                            <th scope="col">Momento del día</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let b of dr.behavior">
+                            <td>{{b.name}}</td>
+                            <td>{{b.score}}</td>
+                            <td>{{b.time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
             <div class=" col-sm-12 " *ngIf="dr.meal">
                 <h3 class="card-header ">Comida</h3>
@@ -279,7 +218,9 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
+
 
     </div>
 </div>
