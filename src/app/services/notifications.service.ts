@@ -9,7 +9,7 @@ import { RootNotification, NotificationModel } from '../models/notification.mode
 export class NotificationsService {
 
   // private url = 'https://alzaid.herokuapp.com';
-  private url = 'http://localhost:3000';
+  private url = 'http://74.208.247.106:3000';
 
   constructor(private http: HttpClient) { }
 

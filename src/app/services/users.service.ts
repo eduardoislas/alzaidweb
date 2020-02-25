@@ -8,7 +8,7 @@ import { UsuarioModel, RootUser, User } from '../models/user.model';
 })
 export class UsersService {
 
-  private url = 'http://localhost:3000';
+  private url = 'http://74.208.247.106:3000';
   // private url = 'https://alzaid.herokuapp.com';
 
   constructor( private http: HttpClient) { }
