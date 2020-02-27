@@ -74,5 +74,11 @@ export class PatientsService {
 
     }
 
+    putPatientAssistance(id: string, assistance: boolean) {
+      return this.http.put(`${this.url}/patient/assistance/${id}`, {
+        assistance
+      });
+    }
+
   }
 

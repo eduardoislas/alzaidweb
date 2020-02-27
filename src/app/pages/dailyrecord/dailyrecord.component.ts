@@ -3,6 +3,7 @@ import { DailyRecordModel, DailyRecord } from 'src/app/models/dailyrecord.model'
 import { Router, ActivatedRoute } from '@angular/router';
 import { DailyrecordsService } from '../../services/dailyrecords.service';
 import Swal from 'sweetalert2';
+import { PatientsService } from '../../services/patients.service';
 
 @Component({
   selector: 'app-dailyrecord',
@@ -15,8 +16,8 @@ export class DailyrecordComponent implements OnInit {
   idDR = '';
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private drsService: DailyrecordsService) { }
+              private route: ActivatedRoute,
+              private drsService: DailyrecordsService, private patientsService: PatientsService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -43,6 +44,7 @@ export class DailyrecordComponent implements OnInit {
       if (result.value) {
         this.drsService.putDailyRecordSalida(this.idDR)
           .subscribe( (resp: any) => {
+        this.patientsService.putPatientAssistance(this.dr.patient._id, false).subscribe();
         Swal.fire(
           'Salida registrada!',
           'Se ha registrado salida correctamente.',
@@ -50,7 +52,6 @@ export class DailyrecordComponent implements OnInit {
         )
         this.router.navigateByUrl('/dailyrecords');
       });
-      
       }
     })
   }
