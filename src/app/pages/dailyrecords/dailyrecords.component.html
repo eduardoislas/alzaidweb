@@ -25,6 +25,7 @@
 
                     <th scope="col">Fecha</th>
                     <th scope="col">Paciente</th>
+                    <th scope="col">Fase</th>
                     <th scope="col">Hora entrada</th>
                     <th scope="col">Hora salida</th>
                     <th scope="col">Opciones</th>
@@ -35,6 +36,7 @@
 
                     <td>{{ dr.enterHour |date:"dd-MM-yyyy" }}</td>
                     <td>{{ dr.patient.name }} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</td>
+                    <td>{{ dr.patient.phase}}</td>
                     <td>{{ dr.enterHour |date:"h:mm a"}}</td>
                     <td>{{ dr.exitHour |date:"h:mm a"}}</td>
                     <td>
