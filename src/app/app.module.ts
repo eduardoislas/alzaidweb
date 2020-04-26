@@ -21,6 +21,8 @@ import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component'
 import { CatalogsComponent } from './pages/catalogs/catalogs.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CaregiversComponent } from './pages/caregivers/caregivers.component';
+import { CaregiverComponent } from './pages/caregiver/caregiver.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -38,7 +40,9 @@ registerLocaleData(localeEs, 'es');
     DailyrecordComponent,
     CatalogsComponent,
     CatalogComponent,
-    FilterPipe
+    FilterPipe,
+    CaregiversComponent,
+    CaregiverComponent
   ],
   imports: [
     BrowserModule,

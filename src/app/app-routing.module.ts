@@ -12,6 +12,8 @@ import { DailyrecordsComponent } from './pages/dailyrecords/dailyrecords.compone
 import { DailyrecordComponent } from './pages/dailyrecord/dailyrecord.component';
 import { CatalogsComponent } from './pages/catalogs/catalogs.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { CaregiverComponent } from './pages/caregiver/caregiver.component';
+import { CaregiversComponent } from './pages/caregivers/caregivers.component';
 
 const routes: Routes = [
   { path: 'home'    , component: HomeComponent, canActivate:[ AuthGuard ] },
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'dailyrecord/:id'   , component: DailyrecordComponent },
   { path: 'catalogs'   , component: CatalogsComponent },
   { path: 'catalog/:id'   , component: CatalogComponent },
+  { path: 'caregivers' , component: CaregiversComponent },
+  { path: 'caregiver/:id' , component: CaregiverComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
