@@ -8,8 +8,8 @@ import { RootCatalog, CatalogModel, Catalog } from '../models/catalog.model';
 })
 export class CatalogsService {
 
-  private url = 'https://alzaid.herokuapp.com';
-  // private url = 'http://74.208.247.106:3000';
+  // private url = 'https://alzaid.herokuapp.com';
+  private url = 'http://74.208.247.106:3000';
 
   constructor(private http: HttpClient) { }
 
