@@ -37,5 +37,10 @@
         <li routerLinkActive="active"><a routerLink="/dailyrecords"><em class="fa fa-clipboard">&nbsp;</em> Registros diarios </a></li>
         <li routerLinkActive="active"><a routerLink="/login" (click)="salir()"><em class="fa fa-power-off">&nbsp;</em> Cerrar sesión</a></li>
     </ul>
+    <ul *ngIf="user.role=='FAMILIAR'" class="nav menu">
+        <!-- <li routerLinkActive="active"><a routerLink="/home"><em class="fa fa-home">&nbsp;</em> Inicio</a></li>
+        <li routerLinkActive="active"><a routerLink="/dailyrecords"><em class="fa fa-clipboard">&nbsp;</em> Registros diarios </a></li> -->
+        <li routerLinkActive="active"><a routerLink="/login" (click)="salir()"><em class="fa fa-power-off">&nbsp;</em> Cerrar sesión</a></li>
+    </ul>
 </div>
 <!--/.sidebar-->
