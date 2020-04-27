@@ -20,3 +20,16 @@ export class CaregiverModel{
     password: string;
     registerdate?: Date;
 }
+
+
+export class RootCaregiver {
+    success: boolean;
+    caregivers: CaregiverModel[];
+    count: number;
+}
+
+export class Caregiver {
+    success: boolean;
+    respuestas: any[];
+}
+

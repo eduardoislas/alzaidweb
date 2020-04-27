@@ -22,52 +22,61 @@
 
         <div class="row">
 
-        <hr>
-        <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
-        <table *ngIf="!cargando && caregivers.length > 0" class="table mt-3 table-hover animated fadeIn">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Parentesco</th>
-                    <th scope="col">Paciente</th>
-                    <th scope="col">Opciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let car of caregivers | paginate: {itemsPerPage: 10, currentPage: p, totalItems: caregivers.lenght} | filter: filterSearch; let i = index">
+            <hr>
+            <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+            <table *ngIf="!cargando && caregivers.length > 0" class="table mt-3 table-hover animated fadeIn">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Parentesco</th>
+                        <th scope="col">Paciente</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let car of caregivers | paginate: {itemsPerPage: 10, currentPage: p, totalItems: caregivers.length}; let i = index">
 
-                    <td>{{ car.name }}{{ car.lastName }}{{ car.lastNameSecond }} </td>
-                    <td>{{ car.relation }}</td>
-                    <td>{{ car.patient.name }}{{ car.patient.lastName }}{{ car.patient.lastNameSecond }}</td>
-                    <td>
-                        <button class="btn btn-danger mr-1" (click)="bajaCatalog( cat, i )">
+                        <td>{{ car.name }} {{ car.lastName }} {{ car.lastNameSecond }} </td>
+                        <td>{{ car.relation }}</td>
+                        <td>{{ car.patient.name }} {{ car.patient.lastName }}</td>
+                        <td>{{ car.phone }}</td>
+                        <td>{{ car.email }}</td>
+                        <td>{{ car.user.name }}</td>
+                        <td>
+                            <!-- <button class="btn btn-info mr-1" [routerLink]="['/caregiver', caregiver._id ]">
+                            <i class="fa fa-pencil"></i>
+                        </button> -->
+                            <button class="btn btn-danger mr-1" (click)="bajaCaregiver( car, i )">
                           <i class="fa fa-arrow-down"></i>
                       </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
 
 
-        <div *ngIf="!cargando && caregivers.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
-            <h4 class="alert-heading">No existe información</h4>
-            <p>
-                <i class="fa fa-exclamation fa-2x"></i>
-            </p>
-            <p class="mb-0">
-            </p>
+            <div *ngIf="!cargando && caregivers.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn">
+                <h4 class="alert-heading">No existe información</h4>
+                <p>
+                    <i class="fa fa-exclamation fa-2x"></i>
+                </p>
+                <p class="mb-0">
+                </p>
+            </div>
+
+            <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn">
+                <h4 class="alert-heading">Cargando</h4>
+                <p>
+                    <i class="fa fa-refresh fa-spin fa-2x"></i>
+                </p>
+                <p class="mb-0">
+                    Espere por favor
+                </p>
+            </div>
+
         </div>
-
-        <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn">
-            <h4 class="alert-heading">Cargando</h4>
-            <p>
-                <i class="fa fa-refresh fa-spin fa-2x"></i>
-            </p>
-            <p class="mb-0">
-                Espere por favor
-            </p>
-        </div>
-
     </div>
-</div>

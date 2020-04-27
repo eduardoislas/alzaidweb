@@ -111,7 +111,6 @@ export class PatientComponent implements OnInit{
     // }
 
     peticion = this.patientsService.crearPaciente( this.cambiarFormaModel(this.forma));
-    console.log(this.patient);
 
     peticion.subscribe(resp => {
       Swal.fire({

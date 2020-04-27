@@ -3,6 +3,10 @@ import { PatientsService } from 'src/app/services/patients.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Patient } from '../../models/patient.model';
+import Swal from 'sweetalert2';
+import { Observable } from 'rxjs';
+import { CaregiversService } from 'src/app/services/caregivers.service';
+import { CaregiverModel } from 'src/app/models/caregiver.model';
 
 @Component({
   selector: 'app-caregiver',
@@ -17,10 +21,12 @@ export class CaregiverComponent implements OnInit {
   genders: string[] = ['Femenino', 'Masculino'];
   patients: Patient[] = [];
   forma:FormGroup;
+  caregiver: CaregiverModel = new CaregiverModel();
 
   constructor(private patientsService: PatientsService, 
     private router: Router,
-    private route: ActivatedRoute) { 
+    private route: ActivatedRoute,
+    private caregiversService: CaregiversService) { 
 
       this.forma = new FormGroup({
         '_id': new FormControl({value:'', disabled:true}),
@@ -45,11 +51,77 @@ export class CaregiverComponent implements OnInit {
 
   ngOnInit() {
 
+    const id = this.route.snapshot.paramMap.get('id');
+
     this.patientsService.getPatients()
       .subscribe((resp: any) =>{
         this.patients = resp;
       });
 
+    // if ( id !== 'nuevo' ){
+    //     this.caregiversService.getCaregiver(id)
+    //     .subscribe((resp: any) => {
+    //       this.forma.setValue(resp.caregiver);
+    //       //this.forma.controls['_id'].controls = id;
+    //       console.log(this.forma);
+    //     });
+
   }
+
+  guardar(){
+    if ( this.forma.invalid ){
+      return;
+    }
+
+    Swal.fire(
+    'Guardando',
+    'Espere por favor...',
+    'info', 
+    );
+    Swal.showLoading();
+
+    let peticion: Observable<any>;
+    peticion = this.caregiversService.crearCaregiver( this.cambiarFormaModel(this.forma));
+
+    peticion.subscribe(resp => {
+      console.log('entró bien');
+      Swal.fire({
+        icon: 'success',
+        title: this.caregiver.name + ' '+ this.caregiver.lastName,
+        text: 'Se actualizó correctamente'
+      });
+      this.router.navigateByUrl('/caregivers'); 
+    }, (err) => {
+      console.log('entró error');
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo guardar el cuidador',
+        text: err
+      });
+    });
+  }
+
+
+  cambiarFormaModel(form:FormGroup) {
+
+    this.caregiver.name = form.controls.name.value;
+    this.caregiver.lastName = form.controls.lastName.value;
+    this.caregiver.lastNameSecond = form.controls.lastNameSecond.value;
+    this.caregiver.birthdate = form.controls.birthdate.value;
+    this.caregiver.age = form.controls.age.value;
+    this.caregiver.gender = form.controls.gender.value;
+    this.caregiver.civilStatus = form.controls.civilStatus.value;
+    this.caregiver.school = form.controls.school.value;
+    this.caregiver.occupation = form.controls.occupation.value;
+    this.caregiver.phone = form.controls.phone.value;
+    this.caregiver.email = form.controls.email.value;
+    this.caregiver.patient = form.controls.patient.value;
+    this.caregiver.relation = form.controls.relation.value;
+    this.caregiver.username = form.controls.username.value;
+    this.caregiver.password = form.controls.password.value;
+
+    return this.caregiver;
+  }
+
 
 }
