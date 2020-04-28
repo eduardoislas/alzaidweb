@@ -18,8 +18,14 @@
 
     <div class="container-fluid">
         <div class="row text-right">
-            <div class="col">
+            <div *ngIf="user.role!='FAMILIAR'" class="col">
                 <button class="btn btn-danger" routerLink="/dailyrecords">
+                    <i class="fa fa-arrow-left"></i>
+                    Regresar
+                </button>
+            </div>
+            <div *ngIf="user.role=='FAMILIAR'" class="col">
+                <button class="btn btn-danger" routerLink="/dailyrecordspatient">
                     <i class="fa fa-arrow-left"></i>
                     Regresar
                 </button>

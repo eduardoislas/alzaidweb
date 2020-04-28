@@ -6,7 +6,6 @@
             <h1 class="page-header">Listado de Pacientes</h1>
         </div>
     </div>
-    <!--/.row-->
 
 
     <div class="container-fluid">
@@ -30,7 +29,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let patient of patients| paginate: {itemsPerPage: 10, currentPage: p, totalItems: patients.lenght}; let i = index">
+                <tr *ngFor="let patient of patients| paginate: {itemsPerPage: 10, currentPage: p, totalItems: patients.length}; let i = index">
                     <th scope="row">{{patient.expedient}} </th>
                     <td>{{ patient.name }} {{patient.lastName}} {{patient.lastNameSecond}}</td>
                     <td>{{ patient.birthdate |date:"dd-MM-yyyy" }}</td>

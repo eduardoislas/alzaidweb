@@ -25,6 +25,17 @@ getDailyRecords(fecha: Date) {
       );
 }
 
+getDailyRecordsPatient(id: string) {
+  // return this.http.get(`${ this.url }/dailyrecord/today`)
+  // return this.http.get(`${ this.url }/dailyrecord/date/${fecha}`)
+  return this.http.get(`${ this.url }/dailyrecord/patient/${ id }`)
+      .pipe(
+        map( (resp:any) => {
+          return this.crearArreglo(resp);
+        })
+      );
+}
+
 private crearArreglo(drsObj: RootDailyRecord){
 
   const drs: DailyRecordModel[] = [];

@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
     this.userService.getUserName(this.username)
       .subscribe( (resp: User) => {
         this.user = resp.user;
+        localStorage.setItem('userid', this.user._id);
   })
 }
 

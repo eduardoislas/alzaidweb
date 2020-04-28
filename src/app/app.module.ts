@@ -23,6 +23,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { CaregiversComponent } from './pages/caregivers/caregivers.component';
 import { CaregiverComponent } from './pages/caregiver/caregiver.component';
+import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -42,7 +43,8 @@ registerLocaleData(localeEs, 'es');
     CatalogComponent,
     FilterPipe,
     CaregiversComponent,
-    CaregiverComponent
+    CaregiverComponent,
+    DailyrecordspatientComponent
   ],
   imports: [
     BrowserModule,

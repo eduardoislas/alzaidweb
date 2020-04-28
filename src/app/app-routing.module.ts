@@ -14,6 +14,7 @@ import { CatalogsComponent } from './pages/catalogs/catalogs.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CaregiverComponent } from './pages/caregiver/caregiver.component';
 import { CaregiversComponent } from './pages/caregivers/caregivers.component';
+import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
 
 const routes: Routes = [
   { path: 'home'    , component: HomeComponent, canActivate:[ AuthGuard ] },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'user/:id'   , component: UserComponent },
   { path: 'dailyrecords'   , component: DailyrecordsComponent },
   { path: 'dailyrecord/:id'   , component: DailyrecordComponent },
+  { path: 'dailyrecordspatient'   , component: DailyrecordspatientComponent },
   { path: 'catalogs'   , component: CatalogsComponent },
   { path: 'catalog/:id'   , component: CatalogComponent },
   { path: 'caregivers' , component: CaregiversComponent },

@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DailyrecordsService } from '../../services/dailyrecords.service';
 import Swal from 'sweetalert2';
 import { PatientsService } from '../../services/patients.service';
+import { UsuarioModel, User } from '../../models/user.model';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-dailyrecord',
@@ -14,10 +16,12 @@ export class DailyrecordComponent implements OnInit {
 
   dr = new DailyRecordModel();
   idDR = '';
+  user: UsuarioModel = new UsuarioModel();
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private drsService: DailyrecordsService, private patientsService: PatientsService) { }
+              private drsService: DailyrecordsService, private patientsService: PatientsService,
+              private userService: UsersService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -28,6 +32,11 @@ export class DailyrecordComponent implements OnInit {
         this.dr._id = id;
       });
     this.idDR = id;
+
+    this.userService.getUserName(localStorage.getItem('username'))
+      .subscribe( (resp: User) => {
+        this.user = resp.user;
+      });
   }
 
   darSalida(){

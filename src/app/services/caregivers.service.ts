@@ -27,6 +27,10 @@ export class CaregiversService {
   return this.http.get<Caregiver>(`${ this.url }/caregiver/${ id }`)
 }
 
+getCaregiverByUser( userid: string ){
+  return this.http.get<Caregiver>(`${ this.url }/caregiver/user/${ userid }`)
+}
+
 
 getCaregivers() {
   return this.http.get(`${ this.url }/caregiver`)
