@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
-import { UsuarioModel } from '../../models/user.model';
+import { UsuarioModel, LoginModel } from '../../models/user.model';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -38,10 +38,9 @@ export class LoginComponent implements OnInit {
     this.auth.login( this.usuario)
     .subscribe( resp => {
       Swal.close();
-
       localStorage.setItem('username', this.usuario.name);
       localStorage.setItem('recordarme', this.recordarme.toString());
-     
+
       this.router.navigateByUrl('/home');
     }, (err) => {
       Swal.fire({

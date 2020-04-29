@@ -23,3 +23,10 @@ export class User {
     success: boolean;
     user: UsuarioModel;
 }
+
+export class LoginModel{
+    success: boolean;
+    user: UsuarioModel;
+    token: string;
+    expiresIn: number;
+}

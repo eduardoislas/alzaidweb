@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+    <div class="jumbotron">
+        <h1>Auto Diagnóstico</h1>
+        <h3><strong>Nombre: </strong>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <p>Conteste las siguientes preguntas, teniendo en cuenta que el puntaje es de 0 ("No soy capaz de hacerlo") a 100 ("Soy capaz de hacerlo").</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+
+                    <div class="row" *ngFor="let item of items; let i = index">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>{{i+1}}. {{item}}</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-11">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=0 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">0</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=10 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">10</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=20 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">20</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=30 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">30</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=40 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">40</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=50 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">50</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=60 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">60</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=70 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">70</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=80 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">80</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=90 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">90</label></th>
+                                    <th><label class="radio-inline"><input type="radio" id="respuesta{{i+1}}" [value]=100 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">100</label></th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>0 - No soy capaz de hacerlo en absoluto</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>> Soy capaz de hacerlo moderadamente
+                                    <</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <p>Estoy seguro de que soy capaz de hacerlo - 100</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fa fa-save"></i>
+                  Guardar
+                </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>

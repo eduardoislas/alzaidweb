@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UsuarioModel } from '../models/user.model';
+import { UsuarioModel, LoginModel } from '../models/user.model';
 
 import { map } from 'rxjs/operators';
 
@@ -31,7 +31,7 @@ export class AuthService {
   login( usuario: UsuarioModel) {
       return this.http.post(`${ this.url }login`, usuario)
       .pipe(
-        map(resp => {
+        map((resp: LoginModel) => {
           this.guardarToken( resp['token']);
           return resp;
         })

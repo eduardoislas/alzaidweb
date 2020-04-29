@@ -24,6 +24,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { CaregiversComponent } from './pages/caregivers/caregivers.component';
 import { CaregiverComponent } from './pages/caregiver/caregiver.component';
 import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
+import { SelfDiagnosisComponent } from './pages/self-diagnosis/self-diagnosis.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -44,7 +45,8 @@ registerLocaleData(localeEs, 'es');
     FilterPipe,
     CaregiversComponent,
     CaregiverComponent,
-    DailyrecordspatientComponent
+    DailyrecordspatientComponent,
+    SelfDiagnosisComponent
   ],
   imports: [
     BrowserModule,

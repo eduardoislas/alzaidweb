@@ -18,7 +18,6 @@ export class DailyrecordspatientComponent implements OnInit {
   caregiver: CaregiverModel = new CaregiverModel();
   idPatient: string;
   p: number = 1;
-  promesas = [];
   patient: PatientModel = new PatientModel();
 
   constructor(private dailyrecordsService: DailyrecordsService,
