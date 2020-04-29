@@ -4,6 +4,7 @@ import { CaregiversService } from 'src/app/services/caregivers.service';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { SelfEfficacyModel } from '../../models/scale.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-self-diagnosis',
@@ -18,7 +19,8 @@ export class SelfDiagnosisComponent implements OnInit {
   respuestas: number[] = [];
   semodel: SelfEfficacyModel = new SelfEfficacyModel();
 
-  constructor(private caregiversService: CaregiversService) {
+  constructor(private caregiversService: CaregiversService,
+    private router: Router) {
 
     this.forma = new FormGroup({
       'respuesta1': new FormControl('', Validators.required),
@@ -101,7 +103,22 @@ export class SelfDiagnosisComponent implements OnInit {
       );
     Swal.showLoading();
     this.cambiarFormaModel(this.forma);
-    console.log(this.semodel);
+    
+    this.caregiversService.enviarSelfEfficacy(this.semodel).subscribe(resp => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Autodiagnóstico registrado',
+        text: 'Registro guardado correctamente'
+      });
+      this.router.navigateByUrl('/dailyrecordspatient'); 
+    }, (err) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'No se pudo guardar el registro',
+        text: err
+      });
+    });
+
   }
 
  cambiarFormaModel(form:FormGroup){

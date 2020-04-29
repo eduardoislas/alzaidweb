@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CaregiverModel, Caregiver, RootCaregiver } from '../models/caregiver.model';
 import { map } from 'rxjs/operators';
+import { SelfEfficacyModel } from '../models/scale.model';
 
 @Injectable({
   providedIn: 'root'
@@ -66,4 +67,14 @@ private crearArreglo(caregiversObj: RootCaregiver){
   }
 
 
+
+  enviarSelfEfficacy( semodel: SelfEfficacyModel){ 
+    return this.http.post(`${ this.url }/caregiver/se`, semodel)
+    .pipe(
+      map( (resp: any) => {
+        semodel._id = resp.selfEfficacy._id;
+        return semodel;
+      })
+    );
+ }
 }

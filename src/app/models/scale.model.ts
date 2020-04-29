@@ -2,6 +2,7 @@ import { CaregiverModel } from './caregiver.model';
 
 
 export class SelfEfficacyModel{
+    _id?: string;
     date: Date;
     answers: number[];
     scale: string;
