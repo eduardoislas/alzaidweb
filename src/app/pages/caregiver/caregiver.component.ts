@@ -19,6 +19,7 @@ export class CaregiverComponent implements OnInit {
   relations: string[] = ['Esposo(a)', 'Pareja', 'Hijo(a)','Padre/Madre', 'Nieto(a)', 'Sobrino(a)', 'Amigo(a)', 'Otro'];
   civils: any[] = [{value: 'soltero', text: 'Soltero/Divorciado/Viudo'}, {value: 'casado', text: 'Casado/Unido'}];
   genders: string[] = ['Femenino', 'Masculino'];
+  occupations: string[] = ['Estudiante', 'Hogar', 'Empleado', 'Empresario', 'Pensionado', 'Desempleado'];
   patients: Patient[] = [];
   forma:FormGroup;
   caregiver: CaregiverModel = new CaregiverModel();
