@@ -17,8 +17,9 @@ export class CaregiverComponent implements OnInit {
 
   schools: string[] = ['Primaria', 'Secundaria', 'Bachillerato', 'Licenciatura', 'Posgrado'];
   relations: string[] = ['Esposo(a)', 'Pareja', 'Hijo(a)','Padre/Madre', 'Nieto(a)', 'Sobrino(a)', 'Amigo(a)', 'Otro'];
-  civils: any[] = [{value: 'soltero', text: 'Soltero/Divorciado/Viudo'}, {value: 'casado', text: 'Casado/Unido'}];
+  civils: any[] = [{value: 'sinPareja', text: 'Sin Pareja'}, {value: 'conPareja', text: 'Con Pareja'}];
   genders: string[] = ['Femenino', 'Masculino'];
+  religions: string[] = ['Religioso', 'No religioso'];
   occupations: string[] = ['Estudiante', 'Hogar', 'Empleado', 'Empresario', 'Pensionado', 'Desempleado'];
   patients: Patient[] = [];
   forma:FormGroup;
@@ -38,6 +39,7 @@ export class CaregiverComponent implements OnInit {
         'age': new FormControl(),
         'gender': new FormControl(),
         'civilStatus': new FormControl(),
+        'religion': new FormControl(),
         'school': new FormControl(),
         'occupation': new FormControl(),
         'phone': new FormControl(),
@@ -112,6 +114,7 @@ export class CaregiverComponent implements OnInit {
     this.caregiver.age = form.controls.age.value;
     this.caregiver.gender = form.controls.gender.value;
     this.caregiver.civilStatus = form.controls.civilStatus.value;
+    this.caregiver.religion = form.controls.religion.value;
     this.caregiver.school = form.controls.school.value;
     this.caregiver.occupation = form.controls.occupation.value;
     this.caregiver.phone = form.controls.phone.value;

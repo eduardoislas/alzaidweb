@@ -27,33 +27,33 @@
                 <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
 
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label>*Nombre</label>
                                 <input type="text" formControlName="name" class="form-control" placeholder="Nombre">
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label>*Apellido Paterno</label>
                                 <input type="text" formControlName="lastName" class="form-control" placeholder="Apellido Paterno">
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <label>Apellido Materno</label>
                                 <input type="text" formControlName="lastNameSecond" class="form-control" placeholder="Apellido Materno">
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label>Fecha de Nacimiento</label>
                                 <input type="date" formControlName="birthdate" class="form-control" placeholder="Fecha de nacimiento">
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <label>Edad</label>
@@ -75,6 +75,15 @@
                                 <select class="form-control" formControlName="civilStatus" id="civilStatus">
                                 <option *ngFor="let cs of civils" 
                                 [value]="cs.value">{{cs.text}}</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <label for="religion">Religión:</label>
+                                <select class="form-control" formControlName="religion" id="religion">
+                                <option *ngFor="let r of religions" 
+                                [value]="r">{{r}}</option>
                               </select>
                             </div>
                         </div>

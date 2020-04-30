@@ -10,6 +10,7 @@ export class CaregiverModel{
     age?: number;
     gender?: string;
     civilStatus?: string;
+    religion?: string;
     school?: string;
     occupation?: string;
     phone?: string;
