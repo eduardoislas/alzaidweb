@@ -8,3 +8,10 @@ export class SelfEfficacyModel{
     scale: string;
     caregiver: CaregiverModel;
 }
+
+
+export class RootSelfEfficacy{
+    success: boolean;
+    count: number;
+    sesDB: SelfEfficacyModel[];
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CaregiverModel, Caregiver, RootCaregiver } from '../models/caregiver.model';
 import { map } from 'rxjs/operators';
-import { SelfEfficacyModel } from '../models/scale.model';
+import { SelfEfficacyModel, RootSelfEfficacy } from '../models/scale.model';
 
 @Injectable({
   providedIn: 'root'
@@ -77,4 +77,26 @@ private crearArreglo(caregiversObj: RootCaregiver){
       })
     );
  }
+
+ obtenerSelfEfficacyByID(id: string){
+  return this.http.get(`${ this.url }/caregiver/se/${id}`)
+  .pipe(
+    map( (resp:any) => {
+      return this.crearArregloSEs(resp);
+    })
+  );
+ }
+ private crearArregloSEs(sesObj: RootSelfEfficacy){
+  const ses: SelfEfficacyModel[] = [];
+  if ( sesObj.sesDB === null) {
+     return [];
+    }else{
+      Object.keys( sesObj.sesDB).forEach( key => {
+        const se: SelfEfficacyModel = sesObj.sesDB[key];
+       // pat._id = key;
+        ses.push(se);
+      }) ;
+      return ses;
+    }
+  }
 }

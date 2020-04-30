@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaregiverModel } from 'src/app/models/caregiver.model';
 import { CaregiversService } from 'src/app/services/caregivers.service';
-import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { SelfEfficacyModel } from '../../models/scale.model';
 import { Router } from '@angular/router';
@@ -110,7 +110,7 @@ export class SelfDiagnosisComponent implements OnInit {
         title: 'Autodiagnóstico registrado',
         text: 'Registro guardado correctamente'
       });
-      this.router.navigateByUrl('/dailyrecordspatient'); 
+      this.router.navigateByUrl('/autodiagnosis'); 
     }, (err) => {
       Swal.fire({
         icon: 'error',

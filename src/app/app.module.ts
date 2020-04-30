@@ -25,6 +25,7 @@ import { CaregiversComponent } from './pages/caregivers/caregivers.component';
 import { CaregiverComponent } from './pages/caregiver/caregiver.component';
 import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
 import { SelfDiagnosisComponent } from './pages/self-diagnosis/self-diagnosis.component';
+import { AutodiagnosisComponent } from './pages/autodiagnosis/autodiagnosis.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -46,7 +47,8 @@ registerLocaleData(localeEs, 'es');
     CaregiversComponent,
     CaregiverComponent,
     DailyrecordspatientComponent,
-    SelfDiagnosisComponent
+    SelfDiagnosisComponent,
+    AutodiagnosisComponent
   ],
   imports: [
     BrowserModule,

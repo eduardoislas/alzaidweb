@@ -4,7 +4,7 @@ import { TechnicalSupport } from './dailyrecord.model';
 
 export class PatientModel{
 
-    _id: string;
+    _id?: string;
     expedient: number;
     name: string;
     lastName: string;

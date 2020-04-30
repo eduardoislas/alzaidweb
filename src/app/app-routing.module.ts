@@ -16,6 +16,7 @@ import { CaregiverComponent } from './pages/caregiver/caregiver.component';
 import { CaregiversComponent } from './pages/caregivers/caregivers.component';
 import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
 import { SelfDiagnosisComponent } from './pages/self-diagnosis/self-diagnosis.component';
+import { AutodiagnosisComponent } from './pages/autodiagnosis/autodiagnosis.component';
 
 const routes: Routes = [
   { path: 'home'    , component: HomeComponent, canActivate:[ AuthGuard ] },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'caregivers' , component: CaregiversComponent },
   { path: 'caregiver/:id' , component: CaregiverComponent },
   { path: 'selfdiagnosis' , component: SelfDiagnosisComponent },
+  { path: 'autodiagnosis' , component: AutodiagnosisComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
