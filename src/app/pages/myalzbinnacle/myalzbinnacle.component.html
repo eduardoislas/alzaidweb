@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Bitácora del Adulto - {{fechaHoy |date:"dd/MM/yyyy"}}</h1>
+            <h2>{{caregiver.patient.name}} {{caregiver.patient.lastName}} {{caregiver.patient.lastNameSecond}}</h2>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-info" routerLink="/#">
+        <i class="fa fa-sticky-note-o"></i>
+        Historial
+      </button>
+            </div>
+        </div>
+        <hr>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+            </div>
+        </div>
+
+    </div>
+</div>
