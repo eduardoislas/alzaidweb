@@ -41,7 +41,12 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('username', this.usuario.name);
       localStorage.setItem('recordarme', this.recordarme.toString());
 
-      this.router.navigateByUrl('/home');
+      if(resp.user.role=='FAMILIAR'){
+        this.router.navigateByUrl('/mybinnacle')
+      }else{
+        this.router.navigateByUrl('/home');
+      }
+      
     }, (err) => {
       Swal.fire({
         icon: 'error',

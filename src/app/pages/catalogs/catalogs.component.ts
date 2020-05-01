@@ -13,6 +13,7 @@ export class CatalogsComponent implements OnInit {
   catalogs: CatalogModel[] = [];
   cargando = false;
   tipos = [];
+  act = false;
   filterSearch= '';
   p: number = 1;
 
@@ -36,12 +37,17 @@ export class CatalogsComponent implements OnInit {
     .subscribe((resp: any) => {
       this.catalogs = resp;
       this.cargando = false;
+      this.act = false;
     })
   }else{
+    this.act = false;
     this.catalogsService.getCatalogsType(value)
     .subscribe((resp: any) => {
       this.catalogs = resp;
       this.cargando = false;
+      if(value=='Actividad'){
+        this.act = true;
+      }else{ this.act = false}
     })
   }
 }

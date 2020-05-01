@@ -45,6 +45,7 @@
                 <tr>
                     <th scope="col">Nombre</th>
                     <th scope="col">Tipo</th>
+                    <th *ngIf="act" scope="col">Tipo Actividad</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -53,6 +54,7 @@
 
                     <td>{{ cat.name }} </td>
                     <td>{{ cat.type }}</td>
+                    <td *ngIf="act">{{ cat.classification}}</td>
                     <td>
                         <button class="btn btn-danger mr-1" (click)="bajaCatalog( cat, i )">
                           <i class="fa fa-arrow-down"></i>

@@ -26,6 +26,10 @@ import { CaregiverComponent } from './pages/caregiver/caregiver.component';
 import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
 import { SelfDiagnosisComponent } from './pages/self-diagnosis/self-diagnosis.component';
 import { AutodiagnosisComponent } from './pages/autodiagnosis/autodiagnosis.component';
+import { MybinnacleComponent } from './pages/mybinnacle/mybinnacle.component';
+import { MyalzbinnacleComponent } from './pages/myalzbinnacle/myalzbinnacle.component';
+import { ActivityprogramComponent } from './pages/activityprogram/activityprogram.component';
+import { HomeactivitiesComponent } from './pages/homeactivities/homeactivities.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -48,7 +52,11 @@ registerLocaleData(localeEs, 'es');
     CaregiverComponent,
     DailyrecordspatientComponent,
     SelfDiagnosisComponent,
-    AutodiagnosisComponent
+    AutodiagnosisComponent,
+    MybinnacleComponent,
+    MyalzbinnacleComponent,
+    ActivityprogramComponent,
+    HomeactivitiesComponent
   ],
   imports: [
     BrowserModule,

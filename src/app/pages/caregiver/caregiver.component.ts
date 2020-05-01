@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientsService } from 'src/app/services/patients.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Patient } from '../../models/patient.model';
+import { Patient, PatientModel } from '../../models/patient.model';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
 import { CaregiversService } from 'src/app/services/caregivers.service';
@@ -21,7 +21,7 @@ export class CaregiverComponent implements OnInit {
   genders: string[] = ['Femenino', 'Masculino'];
   religions: string[] = ['Religioso', 'No religioso'];
   occupations: string[] = ['Estudiante', 'Hogar', 'Empleado', 'Empresario', 'Pensionado', 'Desempleado'];
-  patients: Patient[] = [];
+  patients: PatientModel[] = [];
   forma:FormGroup;
   caregiver: CaregiverModel = new CaregiverModel();
 
@@ -87,7 +87,6 @@ export class CaregiverComponent implements OnInit {
     peticion = this.caregiversService.crearCaregiver( this.cambiarFormaModel(this.forma));
 
     peticion.subscribe(resp => {
-      console.log('entró bien');
       Swal.fire({
         icon: 'success',
         title: this.caregiver.name + ' '+ this.caregiver.lastName,
@@ -95,7 +94,6 @@ export class CaregiverComponent implements OnInit {
       });
       this.router.navigateByUrl('/caregivers'); 
     }, (err) => {
-      console.log('entró error');
       Swal.fire({
         icon: 'error',
         title: 'No se pudo guardar el cuidador',
