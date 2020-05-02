@@ -20,6 +20,7 @@ export class MybinnacleComponent implements OnInit {
     this.caregiversService.getCaregiverByUser(localStorage.getItem('userid'))
     .subscribe((resp:any) => {
       this.caregiver = resp.caregiver[0];
+      console.log(this.caregiver);
   });
 
 
