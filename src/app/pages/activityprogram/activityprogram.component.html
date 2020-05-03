@@ -54,6 +54,22 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Instrucciones de Actividad</label>
+                                <input type="text" formControlName="instructions" class="form-control" placeholder="Instrucciones de actividad">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>Recursos de Apoyo (URL)</label>
+                                <input type="url" formControlName="resources" class="form-control" placeholder="Recursos de apoyo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary w-25">
                         <i class="fa fa-save"></i>
@@ -68,14 +84,14 @@
 
         <hr>
 
-        <div class="row animated fadeIn faster">
+        <div class="row animated fadeIn faster col-sm-12">
             <h3 class="card-header">Actividades programadas para este día</h3>
             <div class="row text-right">
                 <div class="col">
                     <button class="btn btn-info" routerLink="/homeactivities">
-                    <i class="fa fa-sticky-note-o"></i>
-                    Ver todas...
-                  </button>
+                        <i class="fa fa-sticky-note-o"></i>
+                        Ver todas...
+                    </button>
                 </div>
             </div>
             <table class="table table-striped">
@@ -85,6 +101,8 @@
                         <th scope="col">Tipo de Actividad</th>
                         <th scope="col">Actividad</th>
                         <th scope="col">Fase</th>
+                        <th scope="col">Instrucciones</th>
+                        <th scope="col">Recursos</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -94,15 +112,40 @@
                         <td>{{p.type}}</td>
                         <td>{{p.activity}}</td>
                         <td>{{p.phase}}</td>
+                        <td>{{p.instructions}}</td>
+                        <td>{{p.resources}}</td>
                         <td>
-                            <button class="btn btn-danger mr-1" (click)="bajaActividad( p, i )">
-                          <i class="fa fa-arrow-down"></i>
-                          </button>
+
+                            <button class="btn btn-danger mr-1 " (click)="bajaActividad( p, i ) ">
+                                <i class="fa fa-arrow-down "></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
         </div>
+
+        <form [formGroup]="forma" novalidate="novalidate">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Detalle de Actividad</h4>
+                        </div>
+                        <div>
+                            <label>Instrucciones de Actividad</label>
+                            <p></p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal">Aceptar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>

@@ -31,8 +31,9 @@ export class ActivityprogramComponent implements OnInit {
       'date': new FormControl('', Validators.required),
       'type': new FormControl('', Validators.required),
       'activity': new FormControl('', Validators.required),
-      'phase': new FormControl('', Validators.required)
-      
+      'phase': new FormControl('', Validators.required),
+      'instructions': new FormControl('', Validators.required),
+      'resources': new FormControl('', Validators.required)
     });
 
   }
@@ -91,7 +92,9 @@ export class ActivityprogramComponent implements OnInit {
       date: form.controls.date.value,
       type: form.controls.type.value,
       activity: form.controls.activity.value,
-      phase: form.controls.phase.value
+      phase: form.controls.phase.value,
+      instructions: form.controls.instructions.value,
+      resources: form.controls.resources.value
     }
     return act;
   }

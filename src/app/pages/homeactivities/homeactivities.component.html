@@ -9,16 +9,18 @@
     </div>
 
 
-    <div class="row text-right">
-        <div class="col">
-            <button class="btn btn-danger" routerLink="/activityprogram">
-            <i class="fa fa-arrow-left"></i>
-            Regresar
-          </button>
-        </div>
-    </div>
+
 
     <div class="container-fluid">
+
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-info" routerLink="/activityprogram">
+                <i class="fa fa-arrow-left"></i>
+                Regresar
+              </button>
+            </div>
+        </div>
 
         <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
         <table *ngIf="!cargando && programadas.length > 0" class="table mt-3 table-hover animated fadeIn">
@@ -28,6 +30,8 @@
                     <th scope="col">Tipo de Actividad</th>
                     <th scope="col">Actividad</th>
                     <th scope="col">Fase</th>
+                    <th scope="col">Instrucciones</th>
+                    <th scope="col">Recursos</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -37,6 +41,8 @@
                     <td>{{p.type}}</td>
                     <td>{{p.activity}}</td>
                     <td>{{p.phase}}</td>
+                    <td>{{p.instructions}}</td>
+                    <td>{{p.resources}}</td>
                     <td>
                         <button class="btn btn-danger mr-1" (click)="bajaActividad( p, i )">
                       <i class="fa fa-arrow-down"></i>

@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('recordarme', this.recordarme.toString());
 
       if(resp.user.role=='FAMILIAR'){
-        this.router.navigateByUrl('/mybinnacle')
+        this.router.navigateByUrl('/binnaclecaregiver')
       }else{
         this.router.navigateByUrl('/home');
       }

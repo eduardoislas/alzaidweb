@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CaregiverModel, Caregiver, RootCaregiver } from '../models/caregiver.model';
-import { map } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
 import { SelfEfficacyModel, RootSelfEfficacy } from '../models/scale.model';
 
 @Injectable({
@@ -26,6 +26,9 @@ export class CaregiversService {
 
  getCaregiver( id: string ){
   return this.http.get<Caregiver>(`${ this.url }/caregiver/${ id }`)
+  .pipe(
+    retry()
+  )
 }
 
 getCaregiverByUser( userid: string ){

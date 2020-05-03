@@ -1,0 +1,113 @@
+<app-header></app-header>
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header text-center">Bitácora del Cuidador</h1>
+            <h2>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h2>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <p>Conteste las siguientes afirmaciones, según se haya sentido el día de hoy.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label>1. El día de hoy mi Estado de ánimo fue:</label>
+                            <div><input type="radio" [value]=1 name="respuesta1" formControlName="respuesta1"> Negativo</div>
+                            <div><input type="radio" [value]=2 name="respuesta1" formControlName="respuesta1"> Neutral</div>
+                            <div><input type="radio" [value]=3 name="respuesta1" formControlName="respuesta1"> Positivo</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>2. Me sentí tenso o molesto:</label>
+                            <div><input type="radio" [value]=1 name="respuesta2" formControlName="respuesta2"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta2" formControlName="respuesta2"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta2" formControlName="respuesta2"> Si</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <label>3. Tengo la cabeza llena de preocupaciones:</label>
+                            <div><input type="radio" [value]=1 name="respuesta3" formControlName="respuesta3"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta3" formControlName="respuesta3"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta3" formControlName="respuesta3"> Si</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>4. Hoy tuve apoyo en el cuidado:</label>
+                            <div><input type="radio" [value]=1 name="respuesta4" formControlName="respuesta4"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta4" formControlName="respuesta4"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta4" formControlName="respuesta4"> Si</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>5. Tuve tiempo para hacer mis actividades:</label>
+                            <div><input type="radio" [value]=1 name="respuesta5" formControlName="respuesta5"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta5" formControlName="respuesta5"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta5" formControlName="respuesta5"> Si</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>6. Tuve tiempo para dormir:</label>
+                            <div><input type="radio" [value]=1 name="respuesta6" formControlName="respuesta6"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta6" formControlName="respuesta6"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta6" formControlName="respuesta6"> Si</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>7. Tuve tiempo para mi pareja y familia:</label>
+                            <div><input type="radio" [value]=1 name="respuesta7" formControlName="respuesta7"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta7" formControlName="respuesta7"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta7" formControlName="respuesta7"> Si</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>8. Hoy recibí visitas:</label>
+                            <div><input type="radio" [value]=1 name="respuesta8" formControlName="respuesta8"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta8" formControlName="respuesta8"> Las de costumbre</div>
+                            <div><input type="radio" [value]=3 name="respuesta8" formControlName="respuesta8"> Si</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>9. Recibí llamadas de familiares:</label>
+                            <div><input type="radio" [value]=1 name="respuesta9" formControlName="respuesta9"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta9" formControlName="respuesta9"> Las de costumbre</div>
+                            <div><input type="radio" [value]=3 name="respuesta9" formControlName="respuesta9"> Si</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>10. Tuve interacción con mis hermanos:</label>
+                            <div><input type="radio" [value]=1 name="respuesta10" formControlName="respuesta10"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta10" formControlName="respuesta10"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta10" formControlName="respuesta10"> Si</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>11. Tengo suficiente apoyo económico:</label>
+                            <div><input type="radio" [value]=1 name="respuesta11" formControlName="respuesta11"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta11" formControlName="respuesta11"> Poco</div>
+                            <div><input type="radio" [value]=3 name="respuesta11" formControlName="respuesta11"> Si</div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i>
+                        Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

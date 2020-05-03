@@ -17,10 +17,10 @@ import { CaregiversComponent } from './pages/caregivers/caregivers.component';
 import { DailyrecordspatientComponent } from './pages/dailyrecordspatient/dailyrecordspatient.component';
 import { SelfDiagnosisComponent } from './pages/self-diagnosis/self-diagnosis.component';
 import { AutodiagnosisComponent } from './pages/autodiagnosis/autodiagnosis.component';
-import { MybinnacleComponent } from './pages/mybinnacle/mybinnacle.component';
-import { MyalzbinnacleComponent } from './pages/myalzbinnacle/myalzbinnacle.component';
 import { ActivityprogramComponent } from './pages/activityprogram/activityprogram.component';
 import { HomeactivitiesComponent } from './pages/homeactivities/homeactivities.component';
+import { BinnaclecaregiverComponent } from './pages/binnaclecaregiver/binnaclecaregiver.component';
+import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatient.component';
 
 
 const routes: Routes = [
@@ -39,8 +39,8 @@ const routes: Routes = [
   { path: 'caregiver/:id' , component: CaregiverComponent },
   { path: 'selfdiagnosis' , component: SelfDiagnosisComponent },
   { path: 'autodiagnosis' , component: AutodiagnosisComponent },
-  { path: 'mybinnacle' , component: MybinnacleComponent },
-  { path: 'myalzbinnacle' , component: MyalzbinnacleComponent },
+  { path: 'binnaclecaregiver' , component: BinnaclecaregiverComponent },
+  { path: 'binnaclepatient' , component: BinnaclepatientComponent },
   { path: 'activityprogram' , component: ActivityprogramComponent },
   { path: 'homeactivities' , component: HomeactivitiesComponent },
   { path: '**', redirectTo: 'login' }
