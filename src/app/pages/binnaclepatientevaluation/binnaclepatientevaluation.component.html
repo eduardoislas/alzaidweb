@@ -1,0 +1,131 @@
+<app-header></app-header>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Familiar (Cuidador Principal)</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/binnaclepatient">
+        <i class="fa fa-arrow-left"></i>
+        Regresar
+      </button>
+            </div>
+
+        </div>
+        <hr>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Fecha de Actividad</label>
+                            <p>{{activity.date |date:'dd/MM/yyyy'}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Tipo:</label>
+                            <p>{{activity.type}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Actividad:</label>
+                            <p>{{activity.activity}}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label>Fase:</label>
+                            <p>{{activity.phase}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Instrucciones de Actividad</label>
+                            <p>{{activity.instructions}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Recursos de Apoyo (URL)</label>
+                            <p>{{activity.resources}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+
+                    <h3>Evaluación de desempeño</h3>
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label>1. Su Estado de ánimo antes de la actividad era:</label>
+                            <div><input type="radio" [value]=1 name="respuesta1" formControlName="respuesta1"> Negativo</div>
+                            <div><input type="radio" [value]=2 name="respuesta1" formControlName="respuesta1"> Neutral</div>
+                            <div><input type="radio" [value]=3 name="respuesta1" formControlName="respuesta1"> Positivo</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>2. Su desempeño durante la actividad fue:</label>
+                            <div><input type="radio" [value]=0 name="respuesta2" formControlName="respuesta2"> No participó</div>
+                            <div><input type="radio" [value]=1 name="respuesta2" formControlName="respuesta2"> Participó poco</div>
+                            <div><input type="radio" [value]=2 name="respuesta2" formControlName="respuesta2"> Buen desempeño</div>
+                            <div><input type="radio" [value]=3 name="respuesta2" formControlName="respuesta2"> Excelente desempeño</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>3. Su Estado de ánimo antes de la actividad era:</label>
+                            <div><input type="radio" [value]=1 name="respuesta3" formControlName="respuesta3"> Negativo</div>
+                            <div><input type="radio" [value]=2 name="respuesta3" formControlName="respuesta3"> Neutral</div>
+                            <div><input type="radio" [value]=3 name="respuesta3" formControlName="respuesta3"> Positivo</div>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>4. Presentó dificultades en la realización de la tarea:</label>
+                            <div><input type="radio" [value]=3 name="respuesta4" formControlName="respuesta4"> No</div>
+                            <div><input type="radio" [value]=2 name="respuesta4" formControlName="respuesta4"> Algunas</div>
+                            <div><input type="radio" [value]=1 name="respuesta4" formControlName="respuesta4"> Si</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>5. En caso de haber tenido dificultad, ¿Podría describirla?</label>
+                                <input type="text" formControlName="respuesta5" class="form-control" placeholder="Dificultades">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label>6. Alguna otra observación que quisiera compartir:</label>
+                                <input type="text" formControlName="respuesta6" class="form-control" placeholder="Otras observaciones">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fa fa-save"></i>
+                      Guardar
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

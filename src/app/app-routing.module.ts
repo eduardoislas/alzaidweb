@@ -21,6 +21,7 @@ import { ActivityprogramComponent } from './pages/activityprogram/activityprogra
 import { HomeactivitiesComponent } from './pages/homeactivities/homeactivities.component';
 import { BinnaclecaregiverComponent } from './pages/binnaclecaregiver/binnaclecaregiver.component';
 import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatient.component';
+import { BinnaclepatientevaluationComponent } from './pages/binnaclepatientevaluation/binnaclepatientevaluation.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'autodiagnosis' , component: AutodiagnosisComponent },
   { path: 'binnaclecaregiver' , component: BinnaclecaregiverComponent },
   { path: 'binnaclepatient' , component: BinnaclepatientComponent },
+  { path: 'binnaclepatientevaluation' , component: BinnaclepatientevaluationComponent },
   { path: 'activityprogram' , component: ActivityprogramComponent },
   { path: 'homeactivities' , component: HomeactivitiesComponent },
   { path: '**', redirectTo: 'login' }

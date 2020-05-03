@@ -25,6 +25,9 @@ export class PatientActivityBinnacle{
     date?: Date;
     patient?: PatientModel;
     activity: HomeActivityModel;
+    answers: number[];
+    difficulty: string;
+    observation: string;
 }
 
 

@@ -30,6 +30,7 @@ import { ActivityprogramComponent } from './pages/activityprogram/activityprogra
 import { HomeactivitiesComponent } from './pages/homeactivities/homeactivities.component';
 import { BinnaclecaregiverComponent } from './pages/binnaclecaregiver/binnaclecaregiver.component';
 import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatient.component';
+import { BinnaclepatientevaluationComponent } from './pages/binnaclepatientevaluation/binnaclepatientevaluation.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -56,7 +57,8 @@ registerLocaleData(localeEs, 'es');
     ActivityprogramComponent,
     HomeactivitiesComponent,
     BinnaclecaregiverComponent,
-    BinnaclepatientComponent
+    BinnaclepatientComponent,
+    BinnaclepatientevaluationComponent
   ],
   imports: [
     BrowserModule,

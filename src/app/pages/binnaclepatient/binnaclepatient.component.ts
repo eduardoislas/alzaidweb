@@ -51,8 +51,8 @@ export class BinnaclepatientComponent implements OnInit {
         text: 'Esta actividad ya está evaluada y registrada'
       });
     }else{
-      this.router.navigateByUrl('/binnaclecaregiver'); 
-    }  
+      this.router.navigate(['/binnaclepatientevaluation', {idp: this.caregiver.patient._id, ida: homeActivity._id}]);
+    }
 
 
   }

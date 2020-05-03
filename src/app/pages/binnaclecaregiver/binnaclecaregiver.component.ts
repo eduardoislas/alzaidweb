@@ -66,7 +66,6 @@ export class BinnaclecaregiverComponent implements OnInit {
       );
     Swal.showLoading();
     this.cambiarFormaModel(this.forma);
-    console.log(this.cbmodel);
     this.binnaclesService.saveCaregiverBinnacle(this.cbmodel).subscribe(resp => {
       Swal.fire({
         icon: 'success',
