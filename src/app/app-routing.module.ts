@@ -22,10 +22,12 @@ import { HomeactivitiesComponent } from './pages/homeactivities/homeactivities.c
 import { BinnaclecaregiverComponent } from './pages/binnaclecaregiver/binnaclecaregiver.component';
 import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatient.component';
 import { BinnaclepatientevaluationComponent } from './pages/binnaclepatientevaluation/binnaclepatientevaluation.component';
+import { HomecaregiverComponent } from './pages/homecaregiver/homecaregiver.component';
 
 
 const routes: Routes = [
   { path: 'home'    , component: HomeComponent, canActivate:[ AuthGuard ] },
+  { path: 'homecaregiver' , component: HomecaregiverComponent },
   { path: 'login'   , component: LoginComponent },
   { path: 'patients'   , component: PatientsComponent },
   { path: 'patient/:id'   , component: PatientComponent },

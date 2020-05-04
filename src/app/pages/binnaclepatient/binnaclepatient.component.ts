@@ -40,20 +40,19 @@ export class BinnaclepatientComponent implements OnInit {
   evaluarBitacora( homeActivity: HomeActivityModel, i: number){
     let done: boolean;
     this.binnaclesService.getPatientActivitiesDone(this.caregiver.patient._id, homeActivity._id)
+    // this.binnaclesService.getPatientActivitiesDone('5e46ee3660c91869838ed4c8', '5eaf81c590d5e8001736106f')
               .subscribe((resp: any) => {
               done = resp.success;
+              if(done){
+                Swal.fire({
+                  icon: 'info',
+                  title: 'Actividad ya evaluada',
+                  text: 'Esta actividad ya está evaluada y registrada'
+                });
+              }else{
+                this.router.navigate(['/binnaclepatientevaluation', {idp: this.caregiver.patient._id, ida: homeActivity._id}]);
+              }
             });
-
-    if(done){
-      Swal.fire({
-        icon: 'info',
-        title: 'Actividad ya evaluada',
-        text: 'Esta actividad ya está evaluada y registrada'
-      });
-    }else{
-      this.router.navigate(['/binnaclepatientevaluation', {idp: this.caregiver.patient._id, ida: homeActivity._id}]);
-    }
-
-
   }
+
 }
