@@ -9,8 +9,9 @@ import { map } from 'rxjs/operators';
 })
 export class AuthService {
 
+  private url = 'https://alzaidapi.acislab.com/';
   // private url = 'https://alzaid.herokuapp.com/';
-  private url = 'http://74.208.247.106:3000/';
+  // private url = 'http://74.208.247.106:3000/';
 
   userToken: string;
 
