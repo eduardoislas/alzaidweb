@@ -8,8 +8,8 @@ import { RootNotification, NotificationModel } from '../models/notification.mode
 })
 export class NotificationsService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
+  // private url = 'https://alzaidapi.acislab.com';
+  private url = 'https://alzaid.herokuapp.com';
   // private url = 'http://74.208.247.106:3000';
 
   constructor(private http: HttpClient) { }

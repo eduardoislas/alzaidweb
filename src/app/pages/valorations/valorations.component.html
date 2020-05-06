@@ -1,0 +1,91 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Valoraciones cuidadores</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <hr>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <div class="row animated fadeIn faster">
+                    <div class="col">
+                        <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+
+                            <div class="row text-center">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="period">Periodo:</label>
+                                        <select class="form-control" formControlName="period" id="period">
+                              <option value="1">1er. Semestre</option>
+                              <option value="2">2do. Semestre</option>
+                            </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Año:</label>
+                                        <h4>{{anio}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group text-center">
+                                    <button type="submit" class="btn btn-primary w-25">
+                            <i class="fa fa-save"></i>
+                          Guardar
+                        </button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row animated fadeIn faster col-sm-12">
+                    <h3 class="card-header">Valoraciones programadas</h3>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Año</th>
+                                <th scope="col">Periodo</th>
+                                <th scope="col">Estatus</th>
+                                <th scope="col">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let v of valorations">
+                                <td>{{v.year }}</td>
+                                <td *ngIf="v.period=='1'">1er. Semestre</td>
+                                <td *ngIf="v.period=='2'">2do. Semestre</td>
+                                <td *ngIf="v.status">Activo</td>
+                                <td *ngIf="!v.status">Inactivo</td>
+                                <td>
+                                    <button class="btn btn-info mr-1" [routerLink]="['/homecaregiver', v._id ]">
+                                      <i class="fa fa-search"></i>
+                                  </button>
+                                    <button *ngIf="v.status" class="btn btn-danger mr-1 " (click)="cambiaStatus( v ) ">
+                                      <i class="fa fa-arrow-down "></i>
+                                  </button>
+                                    <button *ngIf="!v.status" class="btn btn-info mr-1 " (click)="cambiaStatus( v ) ">
+                                    <i class="fa fa-arrow-up "></i>
+                                </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

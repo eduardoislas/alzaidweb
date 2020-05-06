@@ -23,6 +23,7 @@ import { BinnaclecaregiverComponent } from './pages/binnaclecaregiver/binnacleca
 import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatient.component';
 import { BinnaclepatientevaluationComponent } from './pages/binnaclepatientevaluation/binnaclepatientevaluation.component';
 import { HomecaregiverComponent } from './pages/homecaregiver/homecaregiver.component';
+import { ValorationsComponent } from './pages/valorations/valorations.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'binnaclepatientevaluation' , component: BinnaclepatientevaluationComponent },
   { path: 'activityprogram' , component: ActivityprogramComponent },
   { path: 'homeactivities' , component: HomeactivitiesComponent },
+  { path: 'valorations' , component: ValorationsComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
