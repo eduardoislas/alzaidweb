@@ -4,13 +4,13 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header text-center">Auto Diagnóstico</h1>
+            <h1 class="page-header">RSCSE</h1>
             <h3><strong>Nombre: </strong>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
         </div>
     </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
                 <div class="form-group">
                     <p>Conteste las siguientes preguntas, teniendo en cuenta que el puntaje es de 0 ("No soy capaz de hacerlo") a 100 ("Soy capaz de hacerlo").</p>
                 </div>
@@ -23,12 +23,12 @@
                 <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
 
                     <div class="row" *ngFor="let item of items; let i = index">
-                        <div class="col-sm-12">
+                        <div class="col-sm-10">
                             <div class="form-group">
                                 <label>{{i+1}}. {{item}}</label>
                             </div>
                         </div>
-                        <div class="col-sm-11">
+                        <div class="col-sm-10">
                             <table class="table table-bordered">
                                 <tr>
                                     <th><label class="radio-inline"><input type="radio" [value]=0 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}">0</label></th>
@@ -46,14 +46,14 @@
                             </table>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <p>0 - No soy capaz de hacerlo en absoluto</p>
                             </div>
                             <div class="col-sm-4">
                                 <p>> Soy capaz de hacerlo moderadamente
                                     <</p>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <p>Estoy seguro de que soy capaz de hacerlo - 100</p>
                             </div>
                         </div>

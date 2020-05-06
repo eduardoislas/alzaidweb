@@ -1,9 +1,10 @@
-import { CaregiverModel } from './caregiver.model';
+import { CaregiverAPIModel } from './caregiver.model';
 
 export class ValorationsModel{
     _id?: string;
     year: number;
-    period: string;
+    numPeriod: number;
+    period?: string;
     status?: boolean;
 }
 
@@ -14,17 +15,19 @@ export class RootValorations{
 }
 
 
-export class SelfEfficacyModel{
+export class ScaleModel{
     _id?: string;
     date: Date;
     answers: number[];
+    scaleType: number;
     scale: string;
-    caregiver: CaregiverModel;
+    caregiver: CaregiverAPIModel;
+    valoration?: ValorationsModel;
 }
 
 
-export class RootSelfEfficacy{
+export class RootScale{
     success: boolean;
     count: number;
-    sesDB: SelfEfficacyModel[];
+    scales: ScaleModel[];
 }

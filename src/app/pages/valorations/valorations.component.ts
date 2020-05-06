@@ -19,7 +19,7 @@ export class ValorationsComponent implements OnInit {
   constructor(private scalesService: ScalesService, private router: Router) {
 
     this.forma = new FormGroup({
-      'period': new FormControl('', Validators.required)
+      'numPeriod': new FormControl('', Validators.required)
     });
 
    }
@@ -69,8 +69,13 @@ export class ValorationsComponent implements OnInit {
   cambiarFormaModel(form:FormGroup){
     let val: ValorationsModel = {
       year: this.anio,
-      period: form.controls.period.value
+      numPeriod: form.controls.numPeriod.value
     };
+    if(val.numPeriod==1){
+      val.period = "1er. Semestre";
+    }else if(val.numPeriod==2){
+      val.period = "2do. Semestre";
+    }
     return val;
   }
 

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CaregiverModel } from 'src/app/models/caregiver.model';
+import { CaregiverAPIModel } from 'src/app/models/caregiver.model';
 import { CaregiversService } from 'src/app/services/caregivers.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { SelfEfficacyModel } from '../../models/scale.model';
-import { Router } from '@angular/router';
+import { ScaleModel, ValorationsModel } from '../../models/scale.model';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ScalesService } from '../../services/scales.service';
 
 @Component({
   selector: 'app-self-diagnosis',
@@ -13,14 +14,15 @@ import { Router } from '@angular/router';
 })
 export class SelfDiagnosisComponent implements OnInit {
 
-  caregiver: CaregiverModel = new CaregiverModel();
+  caregiver: CaregiverAPIModel = new CaregiverAPIModel();
   forma:FormGroup;
   items: string[] = [];
   respuestas: number[] = [];
-  semodel: SelfEfficacyModel = new SelfEfficacyModel();
+  scale: ScaleModel = new ScaleModel();
+  valoration: ValorationsModel = new ValorationsModel();
 
-  constructor(private caregiversService: CaregiversService,
-    private router: Router) {
+  constructor(private caregiversService: CaregiversService, private scalesService: ScalesService,
+    private router: Router, private route: ActivatedRoute) {
 
     this.forma = new FormGroup({
       'respuesta1': new FormControl('', Validators.required),
@@ -42,11 +44,12 @@ export class SelfDiagnosisComponent implements OnInit {
    }
 
   ngOnInit() {
-        //Obtener Familiar
-        this.caregiversService.getCaregiverByUser(localStorage.getItem('userid'))
-        .subscribe((resp:any) => {
-          this.convertirCaregiver(resp.caregiver[0]);
-      });
+    const idv = this.route.snapshot.paramMap.get('idv');
+    console.log(idv);
+      this.caregiversService.getCaregiverByUser(localStorage.getItem('userid'))
+      .subscribe((resp:any) => {
+        this.caregiver = resp.caregiver[0];
+    });
 
       this.items.push('¿Hasta qué punto cree que usted es capaz de pedirle a un familiar o amigo que se quede un día con su familiar cuando necesita ir usted al médico?');
       this.items.push('¿Hasta qué punto cree que usted es capaz de pedirle a un familiar o amigo que se quede con su familiar durante un día cuando usted tiene trámites que hacer?');
@@ -64,26 +67,31 @@ export class SelfDiagnosisComponent implements OnInit {
       this.items.push('¿Hasta qué punto cree que usted es capaz de controlar el pensar sobre lo que se está perdiendo o a lo que está renunciando por cuidar de su familiar?');
       this.items.push('¿Hasta qué punto cree que usted es capaz de controlar el preocuparse sobre problemas futuros que pueden surgir debido al cuidado?');
       
+      this.scalesService.getValorationById(idv)
+      .subscribe((resp:any) => {
+        this.valoration = resp.valoration;
+    });
+
   }
 
 
-  convertirCaregiver(resp: any){
-    this.caregiver._id = resp._id;
-    this.caregiver.name = resp.name;
-    this.caregiver.lastName = resp.lastName;
-    this.caregiver.lastNameSecond = resp.lastNameSecond;
-    this.caregiver.birthdate = resp.birthdate;
-    this.caregiver.age = resp.age;
-    this.caregiver.gender = resp.gender;
-    this.caregiver.civilStatus = resp.civilStatus;
-    this.caregiver.school = resp.school;
-    this.caregiver.occupation = resp.occupation;
-    this.caregiver.phone = resp.phone;
-    this.caregiver.email = resp.email;
-    this.caregiver.relation = resp.relation;
-    this.caregiver.username = resp.user.name;
-    this.caregiver.patient = resp.patient._id;
-  } 
+  // convertirCaregiver(resp: any){
+  //   this.caregiver._id = resp._id;
+  //   this.caregiver.name = resp.name;
+  //   this.caregiver.lastName = resp.lastName;
+  //   this.caregiver.lastNameSecond = resp.lastNameSecond;
+  //   this.caregiver.birthdate = resp.birthdate;
+  //   this.caregiver.age = resp.age;
+  //   this.caregiver.gender = resp.gender;
+  //   this.caregiver.civilStatus = resp.civilStatus;
+  //   this.caregiver.school = resp.school;
+  //   this.caregiver.occupation = resp.occupation;
+  //   this.caregiver.phone = resp.phone;
+  //   this.caregiver.email = resp.email;
+  //   this.caregiver.relation = resp.relation;
+  //   this.caregiver.username = resp.user.name;
+  //   this.caregiver.patient = resp.patient._id;
+  // } 
 
 
   guardar(){
@@ -104,10 +112,11 @@ export class SelfDiagnosisComponent implements OnInit {
     Swal.showLoading();
     this.cambiarFormaModel(this.forma);
     
-    this.caregiversService.enviarSelfEfficacy(this.semodel).subscribe(resp => {
+    this.scalesService.saveScaleAnswers(this.scale).subscribe(resp => {
+      console.log(this.scale);
       Swal.fire({
         icon: 'success',
-        title: 'Autodiagnóstico registrado',
+        title: 'Instrumento registrado',
         text: 'Registro guardado correctamente'
       });
       this.router.navigateByUrl('/autodiagnosis'); 
@@ -138,11 +147,13 @@ export class SelfDiagnosisComponent implements OnInit {
    this.respuestas.push(form.controls.respuesta14.value);
    this.respuestas.push(form.controls.respuesta15.value);
   
-   this.semodel = {
+   this.scale = {
      date: new Date(),
      answers: this.respuestas,
-     scale: "Autoeficacia para el cuidado",
-     caregiver: this.caregiver
+     scaleType: 1,
+     scale: "Autoeficacia",
+     caregiver: this.caregiver,
+     valoration: this.valoration
    }
  }
 

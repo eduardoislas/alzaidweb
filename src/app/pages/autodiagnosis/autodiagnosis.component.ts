@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { SelfEfficacyModel } from '../../models/scale.model';
-import { CaregiverModel } from 'src/app/models/caregiver.model';
+import { ValorationsModel } from '../../models/scale.model';
+import { CaregiverAPIModel } from 'src/app/models/caregiver.model';
 import { CaregiversService } from 'src/app/services/caregivers.service';
+import { ScalesService } from '../../services/scales.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-autodiagnosis',
@@ -11,42 +15,61 @@ import { CaregiversService } from 'src/app/services/caregivers.service';
 export class AutodiagnosisComponent implements OnInit {
 
   cargando = false;
-  semodels: SelfEfficacyModel[] = [];
-  caregiver: CaregiverModel = new CaregiverModel();
+  caregiver: CaregiverAPIModel = new CaregiverAPIModel();
+  valorations: ValorationsModel[] = [];
+  idVal: string;
+  forma:FormGroup;
+  mostrar = false;
+  escalas = [
+    {scaleType: 1, scale: 'Autoeficacia', alias: 'RSCSE'},
+    {scaleType: 2, scale: 'Ansiedad', alias: 'HAD-A'},
+    {scaleType: 3, scale: 'Depresión', alias: 'CES-D'},
+    {scaleType: 4, scale: 'Sobrecarga', alias: 'ZARIT'},
+    {scaleType: 5, scale: 'Apoyo social', alias: 'DUKE'}
+  ]
 
-  constructor(private caregiversService: CaregiversService) { }
+  constructor(private caregiversService: CaregiversService, private scalesService: ScalesService,
+    private router: Router) {
+
+    this.forma = new FormGroup({
+      'valoration': new FormControl('', Validators.required)
+    });
+
+   }
 
   ngOnInit() {
     //Obtener Familiar
     this.caregiversService.getCaregiverByUser(localStorage.getItem('userid'))
-    .subscribe((resp:any) => {
-      this.convertirCaregiver(resp.caregiver[0]);
-      this.caregiversService.obtenerSelfEfficacyByID(resp.caregiver[0]._id)
-    .subscribe((resp:any) => {
-      this.semodels = resp;
-    })
-  });
+        .subscribe((resp:any) => {
+          this.caregiver = resp.caregiver[0];
+      });
 
-    
+    this.scalesService.getValorations()
+      .subscribe((resp:any) => {
+        this.valorations = resp.valorations;
+      });
+  }
+
+  guardar(){
+
   }
 
 
-  convertirCaregiver(resp: any){
-    this.caregiver._id = resp._id;
-    this.caregiver.name = resp.name;
-    this.caregiver.lastName = resp.lastName;
-    this.caregiver.lastNameSecond = resp.lastNameSecond;
-    this.caregiver.birthdate = resp.birthdate;
-    this.caregiver.age = resp.age;
-    this.caregiver.gender = resp.gender;
-    this.caregiver.civilStatus = resp.civilStatus;
-    this.caregiver.school = resp.school;
-    this.caregiver.occupation = resp.occupation;
-    this.caregiver.phone = resp.phone;
-    this.caregiver.email = resp.email;
-    this.caregiver.relation = resp.relation;
-    this.caregiver.username = resp.user.name;
-    this.caregiver.patient = resp.patient._id;
-  } 
+  onChange(value: string){
+    this.mostrar = true;
+    this.idVal = value;
+}
+
+  contestarEscala( escala: any){
+    if(escala.scaleType > 1){
+      Swal.fire({
+        icon: 'info',
+        title: 'En desarrollo',
+        text: 'Este instrumento está en desarrollo'
+      });
+    }else{
+      this.router.navigate(['/selfdiagnosis', {idv: this.idVal}]);
+    }
+  }
 
 }

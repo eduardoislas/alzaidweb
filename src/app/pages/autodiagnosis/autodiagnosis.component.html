@@ -3,46 +3,65 @@
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 
-    <div class="jumbotron">
-        <h1>Auto Diagnóstico</h1>
-        <h3><strong>Nombre: </strong>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Valoración Psicológica </h1>
+            <h3><strong>Nombre: </strong> {{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
+            <br>
+        </div>
     </div>
 
 
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="row animated fadeIn faster">
             <div class="col-sm-6">
-                <label>Historial de autodiagnósticos</label>
-                <table *ngIf="!cargando" class="table mt-3 table-hover animated fadeIn">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngIf="semodels.length < 1">
-                            <td class="text-center" colspan="2"><label>Sin registros</label></td>
-                        </tr>
-                        <tr *ngFor="let se of semodels">
-                            <td>{{ se.date |date:"dd-MM-yyyy" }}</td>
-                            <td>{{ se.date |date:"h:mm a"}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-sm-6">
-                <button class="btn btn-info mr-1" [routerLink]="['/selfdiagnosis']">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+
+
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-group">
+                                <label for="type">Periodo Activo:</label>
+                                <select class="form-control" formControlName="valoration" id="valoration" (change)="onChange($event.target.value)">
+                                <option *ngFor="let v of valorations" 
+                                [value]="v._id">{{v.period}} - {{v.year}}</option>
+                            </select>
+                            </div>
+                        </div>
+
+
+                        <table *ngIf="!cargando && mostrar" class="table mt-3 table-hover animated fadeIn">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Instrumento</th>
+                                    <th scope="col">Opciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let e of escalas">
+                                    <td>{{ e.scaleType }}</td>
+                                    <td>{{ e.alias}}</td>
+                                    <td>
+                                        <button class="btn btn-info mr-1" (click)="contestarEscala( e )">
+                                            <i class="fa fa-edit">Contestar</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-sm-6">
+                        <!-- <button class="btn btn-info mr-1" [routerLink]="['/selfdiagnosis']">
                 <i class="fa fa-plus"> Nuevo</i>
-            </button>
+            </button> -->
+                    </div>
+
+
+                </form>
+
+
             </div>
         </div>
-
-
-
-
-
-
-    </div>
-</div>
