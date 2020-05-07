@@ -61,14 +61,27 @@ export class AutodiagnosisComponent implements OnInit {
 }
 
   contestarEscala( escala: any){
+    let done: boolean;
+    this.scalesService.getScaleDone(this.caregiver._id, escala.scaleType, this.idVal)
+    .subscribe((resp: any) => {
+      done = resp.success;
+      if(done){
+        Swal.fire({
+          icon: 'info',
+          title: 'Instrumento Realizado',
+          text: 'Este instrumento ya fue realizado en esta valoración'
+        });
+      }else if(escala.scaleType == 1){
+        this.router.navigate(['/selfdiagnosis', {idv: this.idVal}]);
+      }
+    });
+
     if(escala.scaleType > 1){
       Swal.fire({
         icon: 'info',
         title: 'En desarrollo',
         text: 'Este instrumento está en desarrollo'
       });
-    }else{
-      this.router.navigate(['/selfdiagnosis', {idv: this.idVal}]);
     }
   }
 

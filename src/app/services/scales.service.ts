@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators';
 })
 export class ScalesService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
+  // private url = 'https://alzaidapi.acislab.com';
+  private url = 'https://alzaid.herokuapp.com';
   // private url = 'http://74.208.247.106:3000';
 
   constructor(private http: HttpClient, private scalesService: ScalesService) { }
@@ -60,6 +60,7 @@ return this.http.get(`${ this.url }/scale/${id}`)
   })
 );
 }
+
 private crearArregloSEs(esObj: RootScale){
 const es: ScaleModel[] = [];
 if ( esObj.scales === null) {
@@ -72,6 +73,12 @@ if ( esObj.scales === null) {
     }) ;
     return es;
   }
+}
+
+
+// Buscar una escala contestada por el cuidador, de un tipo en cierta valoración
+getScaleDone( idc: string, type: number, idv: string ){
+  return this.http.get(`${ this.url }/scale/done/${idc}&${type}&${idv}`)
 }
 
 ////////////////////////////////////////////

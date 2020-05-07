@@ -8,8 +8,8 @@ import { UsuarioModel, RootUser, User } from '../models/user.model';
 })
 export class UsersService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
+  // private url = 'https://alzaidapi.acislab.com';
+  private url = 'https://alzaid.herokuapp.com';
   // private url = 'http://74.208.247.106:3000';
 
   constructor( private http: HttpClient) { }
