@@ -45,7 +45,6 @@ export class SelfDiagnosisComponent implements OnInit {
 
   ngOnInit() {
     const idv = this.route.snapshot.paramMap.get('idv');
-    console.log(idv);
       this.caregiversService.getCaregiverByUser(localStorage.getItem('userid'))
       .subscribe((resp:any) => {
         this.caregiver = resp.caregiver[0];
@@ -147,9 +146,14 @@ export class SelfDiagnosisComponent implements OnInit {
    this.respuestas.push(form.controls.respuesta14.value);
    this.respuestas.push(form.controls.respuesta15.value);
   
+   let score = 0;
+    for(let r of this.respuestas){
+      score += r;
+    }
    this.scale = {
      date: new Date(),
      answers: this.respuestas,
+     score: score,
      scaleType: 1,
      scale: "Autoeficacia",
      caregiver: this.caregiver,

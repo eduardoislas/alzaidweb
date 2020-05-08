@@ -24,6 +24,8 @@ import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatien
 import { BinnaclepatientevaluationComponent } from './pages/binnaclepatientevaluation/binnaclepatientevaluation.component';
 import { HomecaregiverComponent } from './pages/homecaregiver/homecaregiver.component';
 import { ValorationsComponent } from './pages/valorations/valorations.component';
+import { DukeComponent } from './pages/duke/duke.component';
+import { CesdComponent } from './pages/cesd/cesd.component';
 
 
 const routes: Routes = [
@@ -49,6 +51,8 @@ const routes: Routes = [
   { path: 'activityprogram' , component: ActivityprogramComponent },
   { path: 'homeactivities' , component: HomeactivitiesComponent },
   { path: 'valorations' , component: ValorationsComponent },
+  { path: 'duke' , component: DukeComponent },
+  { path: 'cesd' , component: CesdComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

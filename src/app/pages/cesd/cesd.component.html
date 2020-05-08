@@ -1,0 +1,79 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">CES-D</h1>
+            <h3><strong>Nombre: </strong>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/autodiagnosis">
+                    <i class="fa fa-arrow-left"></i>
+                    Regresar
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <p>Este cuestionario contiene 20 afirmaciones. Por favor, lea con atención cada una y a continuación señale con qué frecuencia se ha sentido así en la <strong>ÚLTIMA SEMANA.</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Afirmaciones</th>
+                                    <th>Raramente o ninguna vez (menos de un día).</th>
+                                    <th>Algunas o pocas veces (de 1 a 2 días).</th>
+                                    <th>Ocasionalmente (de 3 a 4 días).</th>
+                                    <th>La mayor parte del tiempo (de 5 a 7 días).</th>
+                                </tr>
+                                <tr *ngFor="let item of items; let i = index">
+                                    <td>{{i+1}}. {{item}}</td>
+                                    <div *ngIf="i==3 || i==7 || i==11 || i==15; then thenBlock else elseBlock"></div>
+                                    <ng-template #thenBlock>
+                                        <td><input type="radio" [value]=3 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                        <td><input type="radio" [value]=2 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                        <td><input type="radio" [value]=1 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                        <td><input type="radio" [value]=0 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                    </ng-template>
+                                    <ng-template #elseBlock>
+                                        <td><input type="radio" [value]=0 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                        <td><input type="radio" [value]=1 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                        <td><input type="radio" [value]=2 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                        <td><input type="radio" [value]=3 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                    </ng-template>
+
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i>
+                        Guardar
+                        </button>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+        </div>

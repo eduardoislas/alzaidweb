@@ -33,6 +33,8 @@ import { BinnaclepatientComponent } from './pages/binnaclepatient/binnaclepatien
 import { BinnaclepatientevaluationComponent } from './pages/binnaclepatientevaluation/binnaclepatientevaluation.component';
 import { HomecaregiverComponent } from './pages/homecaregiver/homecaregiver.component';
 import { ValorationsComponent } from './pages/valorations/valorations.component';
+import { DukeComponent } from './pages/duke/duke.component';
+import { CesdComponent } from './pages/cesd/cesd.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -62,7 +64,9 @@ registerLocaleData(localeEs, 'es');
     BinnaclepatientComponent,
     BinnaclepatientevaluationComponent,
     HomecaregiverComponent,
-    ValorationsComponent
+    ValorationsComponent,
+    DukeComponent,
+    CesdComponent
   ],
   imports: [
     BrowserModule,

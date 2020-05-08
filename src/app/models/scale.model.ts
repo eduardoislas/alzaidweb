@@ -19,6 +19,7 @@ export class ScaleModel{
     _id?: string;
     date: Date;
     answers: number[];
+    score: number;
     scaleType: number;
     scale: string;
     caregiver: CaregiverAPIModel;

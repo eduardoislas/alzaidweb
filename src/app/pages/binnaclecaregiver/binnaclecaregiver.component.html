@@ -25,10 +25,11 @@
                 <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
                     <div class="row">
                         <div class="col-sm-4">
-                            <label>1. El día de hoy mi Estado de ánimo fue:</label>
-                            <div><input type="radio" [value]=1 name="respuesta1" formControlName="respuesta1"> Negativo</div>
-                            <div><input type="radio" [value]=2 name="respuesta1" formControlName="respuesta1"> Neutral</div>
-                            <div><input type="radio" [value]=3 name="respuesta1" formControlName="respuesta1"> Positivo</div>
+                            <label>1. El día de hoy, mayormente me sentí:</label>
+                            <div><input type="radio" [value]=1 name="respuesta1" formControlName="respuesta1"> Triste</div>
+                            <div><input type="radio" [value]=2 name="respuesta1" formControlName="respuesta1"> Temeroso</div>
+                            <div><input type="radio" [value]=3 name="respuesta1" formControlName="respuesta1"> Enojado/Frustrado</div>
+                            <div><input type="radio" [value]=4 name="respuesta1" formControlName="respuesta1"> Alegre/Feliz</div>
                         </div>
                         <div class="col-sm-4">
                             <label>2. Me sentí tenso o molesto:</label>

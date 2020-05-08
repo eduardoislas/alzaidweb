@@ -73,6 +73,11 @@ export class CaregiverComponent implements OnInit {
 
   guardar(){
     if ( this.forma.invalid ){
+      Swal.fire({
+        icon: 'warning',
+        title: 'Formulario incompleto',
+        text: 'Asegúrese de haber llenado al menos los campos marcados con *'
+      });
       return;
     }
 

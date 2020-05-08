@@ -71,18 +71,19 @@ export class AutodiagnosisComponent implements OnInit {
           title: 'Instrumento Realizado',
           text: 'Este instrumento ya fue realizado en esta valoración'
         });
-      }else if(escala.scaleType == 1){
+      }else if(escala.scaleType === 1){
         this.router.navigate(['/selfdiagnosis', {idv: this.idVal}]);
+      }else if(escala.scaleType === 3){
+        this.router.navigate(['/cesd', {idv: this.idVal}]);
+      }else if(escala.scaleType === 5){
+        this.router.navigate(['/duke', {idv: this.idVal}]);
+      }else{
+        Swal.fire({
+          icon: 'info',
+          title: 'En desarrollo',
+          text: 'Este instrumento está en desarrollo'
+        });
       }
     });
-
-    if(escala.scaleType > 1){
-      Swal.fire({
-        icon: 'info',
-        title: 'En desarrollo',
-        text: 'Este instrumento está en desarrollo'
-      });
-    }
   }
-
 }
