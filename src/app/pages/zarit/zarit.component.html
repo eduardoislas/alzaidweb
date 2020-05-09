@@ -1,0 +1,73 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">ZARIT</h1>
+            <h3><strong>Nombre: </strong>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/autodiagnosis">
+                    <i class="fa fa-arrow-left"></i>
+                    Regresar
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <p>Responder las siguientes preguntas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Ítem</th>
+                                    <th>Pregunta</th>
+                                    <th>Nunca.</th>
+                                    <th>Casi nunca.</th>
+                                    <th>A veces.</th>
+                                    <th>Bastante veces.</th>
+                                    <th>Casi siempre</th>
+                                </tr>
+                                <tr *ngFor="let item of items; let i = index">
+                                    <td>{{i+1}}</td>
+                                    <td>{{item}}</td>
+                                    <td><input type="radio" [value]=1 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                    <td><input type="radio" [value]=2 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                    <td><input type="radio" [value]=3 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                    <td><input type="radio" [value]=4 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                    <td><input type="radio" [value]=5 name="respuesta{{i+1}}" formControlName="respuesta{{i+1}}"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i>
+                        Guardar
+                        </button>
+                    </div>
+                </form>
+
+
+            </div>
+
+
+        </div>

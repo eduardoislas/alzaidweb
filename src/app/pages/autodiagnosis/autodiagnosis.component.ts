@@ -73,15 +73,19 @@ export class AutodiagnosisComponent implements OnInit {
         });
       }else if(escala.scaleType === 1){
         this.router.navigate(['/selfdiagnosis', {idv: this.idVal}]);
+      }else if(escala.scaleType === 2){
+        this.router.navigate(['/hada', {idv: this.idVal}]);
       }else if(escala.scaleType === 3){
         this.router.navigate(['/cesd', {idv: this.idVal}]);
+      }else if(escala.scaleType === 4){
+        this.router.navigate(['/zarit', {idv: this.idVal}]);
       }else if(escala.scaleType === 5){
         this.router.navigate(['/duke', {idv: this.idVal}]);
       }else{
         Swal.fire({
-          icon: 'info',
-          title: 'En desarrollo',
-          text: 'Este instrumento está en desarrollo'
+          icon: 'warning',
+          title: 'Opción incorrecta',
+          text: 'Seleccionar otra opción'
         });
       }
     });

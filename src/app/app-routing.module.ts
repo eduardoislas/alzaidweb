@@ -26,6 +26,8 @@ import { HomecaregiverComponent } from './pages/homecaregiver/homecaregiver.comp
 import { ValorationsComponent } from './pages/valorations/valorations.component';
 import { DukeComponent } from './pages/duke/duke.component';
 import { CesdComponent } from './pages/cesd/cesd.component';
+import { HadaComponent } from './pages/hada/hada.component';
+import { ZaritComponent } from './pages/zarit/zarit.component';
 
 
 const routes: Routes = [
@@ -53,6 +55,8 @@ const routes: Routes = [
   { path: 'valorations' , component: ValorationsComponent },
   { path: 'duke' , component: DukeComponent },
   { path: 'cesd' , component: CesdComponent },
+  { path: 'hada' , component: HadaComponent },
+  { path: 'zarit' , component: ZaritComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

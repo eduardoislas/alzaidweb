@@ -1,0 +1,107 @@
+<app-header></app-header>
+
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header text-center">HAD-A</h1>
+            <h3><strong>Nombre: </strong>{{caregiver.name}} {{caregiver.lastName}} {{caregiver.lastNameSecond}}</h3>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" routerLink="/autodiagnosis">
+                <i class="fa fa-arrow-left"></i>
+                Regresar
+            </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="form-group">
+                    <p>Este cuestionario ha sido diseñado para ayudarnos a saber cómo se siente usted. Lea cada frase y marque la respuesta que más se ajusta a como se sintió durante la ULTIMA SEMANA. No piense mucho las respuestas. Lo más seguro es que
+                        si responde deprisa sus respuestas podrán reflejar mejor como se encontraba usted durante la semana pasada.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>1. Me siento tenso o molesto:</label>
+                            <div><input type="radio" [value]=3 name="respuesta1" formControlName="respuesta1"> Todos los días</div>
+                            <div><input type="radio" [value]=2 name="respuesta1" formControlName="respuesta1"> Muchas veces</div>
+                            <div><input type="radio" [value]=1 name="respuesta1" formControlName="respuesta1"> A veces</div>
+                            <div><input type="radio" [value]=0 name="respuesta1" formControlName="respuesta1"> Nunca</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>2. Tengo una gran sensación de miedo, como si algo horrible me fuera a suceder:</label>
+                            <div><input type="radio" [value]=3 name="respuesta2" formControlName="respuesta2"> Totalmente y es muy fuerte</div>
+                            <div><input type="radio" [value]=2 name="respuesta2" formControlName="respuesta2"> Si, pero no es muy fuerte</div>
+                            <div><input type="radio" [value]=1 name="respuesta2" formControlName="respuesta2"> Un poco, pero no me preocupa</div>
+                            <div><input type="radio" [value]=0 name="respuesta2" formControlName="respuesta2"> Nada</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>3. Tengo la cabeza llena de preocupaciones:</label>
+                            <div><input type="radio" [value]=3 name="respuesta3" formControlName="respuesta3"> La mayoría de las veces</div>
+                            <div><input type="radio" [value]=2 name="respuesta3" formControlName="respuesta3"> Con bastante frecuencia</div>
+                            <div><input type="radio" [value]=1 name="respuesta3" formControlName="respuesta3"> A veces, aunque no muy a menudo</div>
+                            <div><input type="radio" [value]=0 name="respuesta3" formControlName="respuesta3"> Solo en ocasiones</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>4. Puedo estar sentado tranquilamente y sentirme relajado:</label>
+                            <div><input type="radio" [value]=0 name="respuesta4" formControlName="respuesta4"> Siempre</div>
+                            <div><input type="radio" [value]=1 name="respuesta4" formControlName="respuesta4"> Por lo general</div>
+                            <div><input type="radio" [value]=2 name="respuesta4" formControlName="respuesta4"> No muy a menudo</div>
+                            <div><input type="radio" [value]=3 name="respuesta4" formControlName="respuesta4"> Nunca</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>5. Tengo una sensación de miedo, como de “aleteo” en el estomago:</label>
+                            <div><input type="radio" [value]=0 name="respuesta5" formControlName="respuesta5"> Nunca</div>
+                            <div><input type="radio" [value]=1 name="respuesta5" formControlName="respuesta5"> En ciertas ocasiones</div>
+                            <div><input type="radio" [value]=2 name="respuesta5" formControlName="respuesta5"> Con bastante frecuencia</div>
+                            <div><input type="radio" [value]=3 name="respuesta5" formControlName="respuesta5"> Muy a menudo</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <label>6. Me siento inquieto, como si estuviera continuamente en movimiento:</label>
+                            <div><input type="radio" [value]=3 name="respuesta6" formControlName="respuesta6"> Mucho</div>
+                            <div><input type="radio" [value]=2 name="respuesta6" formControlName="respuesta6"> Bastante</div>
+                            <div><input type="radio" [value]=1 name="respuesta6" formControlName="respuesta6"> No mucho</div>
+                            <div><input type="radio" [value]=0 name="respuesta6" formControlName="respuesta6"> Nada</div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label>7. Me asaltan sentimientos repentinos de pánico:</label>
+                            <div><input type="radio" [value]=3 name="respuesta7" formControlName="respuesta7"> Muy frecuentemente</div>
+                            <div><input type="radio" [value]=2 name="respuesta7" formControlName="respuesta7"> Bastante a menudo</div>
+                            <div><input type="radio" [value]=1 name="respuesta7" formControlName="respuesta7"> No muy a menudo</div>
+                            <div><input type="radio" [value]=0 name="respuesta7" formControlName="respuesta7"> Nada</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fa fa-save"></i>
+                        Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

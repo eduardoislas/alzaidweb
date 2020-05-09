@@ -35,6 +35,8 @@ import { HomecaregiverComponent } from './pages/homecaregiver/homecaregiver.comp
 import { ValorationsComponent } from './pages/valorations/valorations.component';
 import { DukeComponent } from './pages/duke/duke.component';
 import { CesdComponent } from './pages/cesd/cesd.component';
+import { HadaComponent } from './pages/hada/hada.component';
+import { ZaritComponent } from './pages/zarit/zarit.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -66,7 +68,9 @@ registerLocaleData(localeEs, 'es');
     HomecaregiverComponent,
     ValorationsComponent,
     DukeComponent,
-    CesdComponent
+    CesdComponent,
+    HadaComponent,
+    ZaritComponent
   ],
   imports: [
     BrowserModule,
