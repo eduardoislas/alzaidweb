@@ -28,6 +28,7 @@ import { DukeComponent } from './pages/duke/duke.component';
 import { CesdComponent } from './pages/cesd/cesd.component';
 import { HadaComponent } from './pages/hada/hada.component';
 import { ZaritComponent } from './pages/zarit/zarit.component';
+import { ChangepassComponent } from './pages/changepass/changepass.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: 'cesd' , component: CesdComponent },
   { path: 'hada' , component: HadaComponent },
   { path: 'zarit' , component: ZaritComponent },
+  { path: 'changepass' , component: ChangepassComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

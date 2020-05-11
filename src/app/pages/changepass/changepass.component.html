@@ -1,0 +1,50 @@
+<app-header></app-header>
+
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Cambiar contraseña de usuario</h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row animated fadeIn faster">
+            <div class="col">
+
+                <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+                    <div class="row">
+
+                    </div>
+                    <hr>
+                    <small>*La contraseña debe tener al menos 6 caractéres sin espacios.</small>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Nueva contraseña</label>
+                                <input type="password" formControlName="pass1" class="form-control" placeholder="Nueva contraseña">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Repetir contraseña</label>
+                                <input type="password" formControlName="pass2" class="form-control" placeholder="Repetir contraseña">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                      <i class="fa fa-save"></i>
+                  Guardar
+                  </button>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>

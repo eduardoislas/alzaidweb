@@ -74,4 +74,8 @@ export class UsersService {
 
     }
 
+    actualizaPassUser( id: string, user: UsuarioModel ){
+      return this.http.put(`${ this.url }/user/pass/${ id }`, user)
+    }
+
 }

@@ -37,6 +37,7 @@ import { DukeComponent } from './pages/duke/duke.component';
 import { CesdComponent } from './pages/cesd/cesd.component';
 import { HadaComponent } from './pages/hada/hada.component';
 import { ZaritComponent } from './pages/zarit/zarit.component';
+import { ChangepassComponent } from './pages/changepass/changepass.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -70,7 +71,8 @@ registerLocaleData(localeEs, 'es');
     DukeComponent,
     CesdComponent,
     HadaComponent,
-    ZaritComponent
+    ZaritComponent,
+    ChangepassComponent
   ],
   imports: [
     BrowserModule,
