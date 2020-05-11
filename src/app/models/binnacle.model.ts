@@ -30,6 +30,19 @@ export class PatientActivityBinnacle{
     observation: string;
 }
 
+export class PatientBinnacleModel{
+    _id?: string;
+    date: Date;
+    evacuation: number;
+    urination: number;
+    constipation: boolean;
+    incontinence: boolean;
+    medicine: string;
+    incidence: string;
+    observation: string;
+    behaviors: boolean[];
+    patient: PatientModel;
+}
 
 //Bitácora Cuidador
 export class CaregiverBinnacleModel{

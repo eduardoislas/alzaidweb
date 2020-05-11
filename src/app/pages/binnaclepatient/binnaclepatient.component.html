@@ -43,6 +43,150 @@
             </table>
 
         </div>
+        <hr>
+
+        <div class="row animated fadeIn faster col-sm-12">
+            <h3 class="card-header">Bitácora diaria </h3>
+
+            <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+
+                <div class="row text-center">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="evacuation">Evacuación:</label>
+                            <select class="form-control" formControlName="evacuation" id="evacuation">
+                                    <option value=1>Anormal</option>
+                                    <option value=2>Asistido</option>
+                                    <option value=3>Normal</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="urination">Micción:</label>
+                            <select class="form-control" formControlName="urination" id="urination">
+                                    <option value=1>Anormal</option>
+                                    <option value=2>Asistido</option>
+                                    <option value=3>Normal</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="constipation">Estreñimiento:</label>
+                            <select class="form-control" formControlName="constipation" id="constipation">
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label for="incontinence">Incontinencia:</label>
+                            <select class="form-control" formControlName="incontinence" id="incontinence">
+                                    <option value=true>Si</option>
+                                    <option value=false>No</option>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label>¿Presentó alguno de estos comportamientos? </label>
+                    <small> Puede seleccionar más de 1.</small>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-sm-12" *ngFor="let b of behaviorsCatalog; let i = index">
+                        <div class="checkbox p-l-50" name="behaviors" id="behaviors">
+                            <label><input type="checkbox" [value]=1 name="behavior{{i+1}}" formControlName="behavior{{i+1}}">{{b}}</label>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior1" value=1>{{behaviorsCatalog[0]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior2" value=1>{{behaviorsCatalog[1]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior3" value=1>{{behaviorsCatalog[2]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior4" value=1>{{behaviorsCatalog[3]}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior5" value=1>{{behaviorsCatalog[4]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior6" value=1>{{behaviorsCatalog[5]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior7" value=1>{{behaviorsCatalog[6]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior8" value=1>{{behaviorsCatalog[7]}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior9" value=1>{{behaviorsCatalog[8]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior10" value=1>{{behaviorsCatalog[9]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior11" value=1>{{behaviorsCatalog[10]}}</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" formControlName="behavior12" value=1>{{behaviorsCatalog[11]}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>¿Cambios en el medicamento?</label>
+                            <input type="text" formControlName="medicine" class="form-control" placeholder="Describir en caso de cambio de medicamento.">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>¿Se presentó alguna incidencia, algo fuera de lo normal?</label>
+                            <input type="text" formControlName="incidence" class="form-control" placeholder="Describir alguna situación anormal.">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>¿Hay alguna otra observación que gustes hacer?</label>
+                            <input type="text" formControlName="observation" class="form-control" placeholder="Describir cualquier otra observación..">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary w-25">
+                <i class="fa fa-save"></i>
+              Guardar
+            </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
 </div>

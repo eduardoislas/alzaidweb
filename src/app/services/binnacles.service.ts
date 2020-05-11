@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { HomeActivityModel, RootHomeActivity, CaregiverBinnacleModel, RootCaregiverBinnacle, PatientActivityBinnacle } from '../models/binnacle.model';
+import { HomeActivityModel, RootHomeActivity, CaregiverBinnacleModel, RootCaregiverBinnacle, PatientActivityBinnacle, PatientBinnacleModel } from '../models/binnacle.model';
 import { map, retry } from 'rxjs/operators';
 
 @Injectable({
@@ -85,7 +85,18 @@ export class BinnaclesService {
     return this.http.get(`${ this.url }/binnacle/patient/activitydone/${idp}&${ida}`)
   }
 
-  // Guardar bitácora paciente
+    // Guardar bitácora paciente
+    saveBinnaclePatient(bitacora: PatientBinnacleModel){
+      return this.http.post(`${ this.url }/binnacle/patient`, bitacora)
+      .pipe(
+        map( (resp: any) => {
+          bitacora._id = resp.pbDB._id;
+          return bitacora;
+        })
+      );
+    }
+
+  // Guardar bitácora de actividades paciente
   savePatientBinnacle(bitacora: PatientActivityBinnacle){
     return this.http.post(`${ this.url }/binnacle/patient/activity`, bitacora)
     .pipe(
