@@ -38,6 +38,7 @@ import { CesdComponent } from './pages/cesd/cesd.component';
 import { HadaComponent } from './pages/hada/hada.component';
 import { ZaritComponent } from './pages/zarit/zarit.component';
 import { ChangepassComponent } from './pages/changepass/changepass.component';
+import { ValorationsdetailComponent } from './pages/valorationsdetail/valorationsdetail.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -72,7 +73,8 @@ registerLocaleData(localeEs, 'es');
     CesdComponent,
     HadaComponent,
     ZaritComponent,
-    ChangepassComponent
+    ChangepassComponent,
+    ValorationsdetailComponent
   ],
   imports: [
     BrowserModule,

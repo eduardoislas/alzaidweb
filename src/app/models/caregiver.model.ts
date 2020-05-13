@@ -3,7 +3,7 @@ import { UsuarioModel } from './user.model';
 
 export class CaregiverModel{
 
-    _id: string;
+    _id?: string;
     name: string;
     lastName: string;
     lastNameSecond?: string;

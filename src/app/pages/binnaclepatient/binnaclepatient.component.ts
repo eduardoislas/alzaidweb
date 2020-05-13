@@ -50,6 +50,7 @@ export class BinnaclepatientComponent implements OnInit {
                   this.forma = new FormGroup({
                     'evacuation': new FormControl(),
                     'urination': new FormControl(),
+                    'sleep': new FormControl(),
                     'constipation': new FormControl(),
                     'incontinence': new FormControl(),
                     'medicine': new FormControl(),
@@ -161,6 +162,7 @@ export class BinnaclepatientComponent implements OnInit {
       date: new Date(),
       evacuation: form.controls.evacuation.value,
       urination: form.controls.urination.value,
+      sleep: form.controls.sleep.value,
       constipation: form.controls.constipation.value,
       incontinence: form.controls.incontinence.value,
       medicine: form.controls.medicine.value,

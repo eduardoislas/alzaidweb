@@ -40,7 +40,7 @@ changeStatus(id: string){
   return this.http.delete(`${ this.url }/valoration/${ id }`);
 }
 
-//////////////////// Autoeficacia /////////////////////////
+//////////////////// Escalas /////////////////////////
 saveScaleAnswers( scale: ScaleModel){ 
   return this.http.post(`${ this.url }/scale`, scale)
   .pipe(
@@ -81,6 +81,10 @@ getScaleDone( idc: string, type: number, idv: string ){
   return this.http.get(`${ this.url }/scale/done/${idc}&${type}&${idv}`)
 }
 
+
+getScaleValCare( idc: string, idv: string ){
+  return this.http.get(`${ this.url }/scale/val/${idc}&${idv}`)
+}
 ////////////////////////////////////////////
 
 }

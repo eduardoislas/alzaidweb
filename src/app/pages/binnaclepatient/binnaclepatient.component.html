@@ -51,7 +51,7 @@
             <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
 
                 <div class="row text-center">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label for="evacuation">Evacuación:</label>
                             <select class="form-control" formControlName="evacuation" id="evacuation">
@@ -61,7 +61,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label for="urination">Micción:</label>
                             <select class="form-control" formControlName="urination" id="urination">
@@ -73,6 +73,16 @@
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
+                            <label for="sleep">Horas de sueño:</label>
+                            <select class="form-control" formControlName="sleep" id="sleep">
+                                    <option value=1>Menos de 5</option>
+                                    <option value=2>5 o 6</option>
+                                    <option value=3>7 o más</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="form-group">
                             <label for="constipation">Estreñimiento:</label>
                             <select class="form-control" formControlName="constipation" id="constipation">
                                     <option value=true>Si</option>
@@ -80,7 +90,7 @@
                                 </select>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <div class="form-group">
                             <label for="incontinence">Incontinencia:</label>
                             <select class="form-control" formControlName="incontinence" id="incontinence">
