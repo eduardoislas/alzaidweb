@@ -16,8 +16,6 @@ export class ValorationsdetailComponent implements OnInit {
   caregivers: CaregiverModel[] = [];
   idCaregiver: string;
   idv: string;
-  cargando = false;
-  mostrar = false;
 
   constructor(private scalesService: ScalesService, private route: ActivatedRoute,
               private caregiversService: CaregiversService) {}
@@ -37,12 +35,10 @@ export class ValorationsdetailComponent implements OnInit {
 
 
   onChange(value: string){
-    this.mostrar = true;
     this.idCaregiver = value;
     this.scalesService.getScaleValCare(this.idCaregiver, this.idv)
     .subscribe((resp: any) => {
       this.scales = resp.scales;
-      console.log(this.scales);
     });
 }
 
