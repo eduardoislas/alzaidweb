@@ -30,6 +30,8 @@ import { HadaComponent } from './pages/hada/hada.component';
 import { ZaritComponent } from './pages/zarit/zarit.component';
 import { ChangepassComponent } from './pages/changepass/changepass.component';
 import { ValorationsdetailComponent } from './pages/valorationsdetail/valorationsdetail.component';
+import { BinnaclespatientComponent } from './pages/binnaclespatient/binnaclespatient.component';
+import { BinnaclepatientdetailComponent } from './pages/binnaclepatientdetail/binnaclepatientdetail.component';
 
 
 const routes: Routes = [
@@ -61,6 +63,8 @@ const routes: Routes = [
   { path: 'zarit' , component: ZaritComponent },
   { path: 'changepass' , component: ChangepassComponent },
   { path: 'valorationsdetail/:id' , component: ValorationsdetailComponent },
+  { path: 'binnaclespatient/:id' , component: BinnaclespatientComponent },
+  { path: 'binnaclepatientdetail/:id' , component: BinnaclepatientdetailComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

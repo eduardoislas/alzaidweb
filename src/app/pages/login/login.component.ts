@@ -26,7 +26,13 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm ) {
-    if ( form.invalid ) { return;}
+    if ( form.invalid ) { 
+      Swal.fire({
+        icon: 'warning',
+        title: 'Datos incompletos',
+        text: 'Favor de completar los datos'
+      });  
+    }
 
     Swal.fire(
       'Verificando',
@@ -51,7 +57,7 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Error al autenticar',
-        text: err.error.err.message
+        text: 'Ocurrió un error, intentar de nuevo'
       });
     });
     

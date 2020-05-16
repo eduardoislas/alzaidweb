@@ -1,0 +1,90 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <h1 class="page-header">Bitácora del Paciente</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" [routerLink]="['/binnaclespatient', binnacle.patient._id ]">
+                  <i class="fa fa-arrow-left"></i>
+                  Regresar
+              </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row animated fadeIn faster ">
+        <div class="col-sm-12">
+            <h3 class="card-header ">{{binnacle.patient.name}} {{binnacle.patient.lastName}} {{binnacle.patient.lastNameSecond}}</h3>
+            <h4><strong>Fecha: </strong>{{binnacle.date |date:"dd-MM-yyyy" }}</h4>
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <td><strong>Evacuación:</strong></td>
+                        <td *ngIf="binnacle.evacuation == 1 ">Anormal</td>
+                        <td *ngIf="binnacle.evacuation == 2 ">Asistido</td>
+                        <td *ngIf="binnacle.evacuation == 3 ">Normal</td>
+                        <td *ngIf="binnacle.evacuation == null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Micción:</strong></td>
+                        <td *ngIf="binnacle.urination == 1 ">Anormal</td>
+                        <td *ngIf="binnacle.urination == 2 ">Asistido</td>
+                        <td *ngIf="binnacle.urination == 3 ">Normal</td>
+                        <td *ngIf="binnacle.urination== null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Estreñimiento:</strong></td>
+                        <td *ngIf="binnacle.constipation== true">Si</td>
+                        <td *ngIf="binnacle.constipation == false">No</td>
+                        <td *ngIf="binnacle.constipation == null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <th><strong>Incontinencia:</strong></th>
+                        <td *ngIf="binnacle.incontinence== true">Si</td>
+                        <td *ngIf="binnacle.incontinence== false">No</td>
+                        <td *ngIf="binnacle.incontinence == null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Horas de sueño:</strong></td>
+                        <td *ngIf="binnacle.sleep == 1 ">Menos de 5</td>
+                        <td *ngIf="binnacle.sleep == 2 ">5 o 6</td>
+                        <td *ngIf="binnacle.sleep == 3 ">7 o más</td>
+                        <td *ngIf="binnacle.sleep == null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cambios con medicamento:</strong></td>
+                        <td *ngIf="binnacle.medicine">{{binnacle.medicine}}</td>
+                        <td *ngIf="binnacle.medicine == null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Incidencia:</strong></td>
+                        <td *ngIf="binnacle.incidence">{{binnacle.incidence}}</td>
+                        <td *ngIf="binnacle.incidence == null">Sin registro</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Observaciones:</strong></td>
+                        <td *ngIf="binnacle.observation">{{binnacle.observation}}</td>
+                        <td *ngIf="binnacle.observation== null">Sin registro</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th colspan="2">Comportamientos presentados:</th>
+                    </tr>
+
+                    <tr *ngFor="let b of binnacle.behaviors; let i = index">
+                        <td *ngIf="b"></td>
+                        <td *ngIf="b">{{behaviorsCatalog[i]}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+    </div>

@@ -45,6 +45,12 @@ export class PatientBinnacleModel{
     patient: PatientModel;
 }
 
+export class RootPatientBinnacle{
+    success: boolean;
+    count: number;
+    pbDB: PatientBinnacleModel[];
+}
+
 //Bitácora Cuidador
 export class CaregiverBinnacleModel{
     _id?: string;

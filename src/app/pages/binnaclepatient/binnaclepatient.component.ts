@@ -48,6 +48,7 @@ export class BinnaclepatientComponent implements OnInit {
                 private catalogsService: CatalogsService, private router: Router) {
 
                   this.forma = new FormGroup({
+                    'date': new FormControl(),
                     'evacuation': new FormControl(),
                     'urination': new FormControl(),
                     'sleep': new FormControl(),
@@ -159,7 +160,7 @@ export class BinnaclepatientComponent implements OnInit {
     }
 
     this.patientBinnacle = {
-      date: new Date(),
+      date: form.controls.date.value,
       evacuation: form.controls.evacuation.value,
       urination: form.controls.urination.value,
       sleep: form.controls.sleep.value,

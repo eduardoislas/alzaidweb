@@ -39,6 +39,8 @@ import { HadaComponent } from './pages/hada/hada.component';
 import { ZaritComponent } from './pages/zarit/zarit.component';
 import { ChangepassComponent } from './pages/changepass/changepass.component';
 import { ValorationsdetailComponent } from './pages/valorationsdetail/valorationsdetail.component';
+import { BinnaclespatientComponent } from './pages/binnaclespatient/binnaclespatient.component';
+import { BinnaclepatientdetailComponent } from './pages/binnaclepatientdetail/binnaclepatientdetail.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -74,7 +76,9 @@ registerLocaleData(localeEs, 'es');
     HadaComponent,
     ZaritComponent,
     ChangepassComponent,
-    ValorationsdetailComponent
+    ValorationsdetailComponent,
+    BinnaclespatientComponent,
+    BinnaclepatientdetailComponent
   ],
   imports: [
     BrowserModule,
