@@ -35,10 +35,13 @@
                     <td>{{ patient.birthdate |date:"dd-MM-yyyy" }}</td>
                     <td>{{ patient.phase }}</td>
                     <td>
-                        <button class="btn btn-info mr-1" ngbTooltip="Bitácora" [routerLink]="['/binnaclespatient', patient._id ]">
-                            <i class="fa fa-book"> Bitácora</i>
+                        <button class="btn btn-info mr-1" data-toggle="tooltip" data-placement="top" title="Bitácora" [routerLink]="['/binnaclespatient', patient._id ]">
+                            <i class="fa fa-address-card"></i>
                         </button>
-                        <button class="btn btn-danger mr-1" (click)="bajaPatient( patient, i )">
+                        <button class="btn btn-primary mr-1" data-toggle="tooltip" data-placement="top" title="Actividades" [routerLink]="['/binnaclesactivitypatient', patient._id ]">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                        <button class="btn btn-danger mr-1" data-toggle="tooltip" data-placement="top" title="Baja Paciente" (click)="bajaPatient( patient, i )">
                             <i class="fa fa-arrow-down"></i>
                         </button>
                     </td>

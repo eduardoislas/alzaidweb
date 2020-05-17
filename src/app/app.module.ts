@@ -41,6 +41,8 @@ import { ChangepassComponent } from './pages/changepass/changepass.component';
 import { ValorationsdetailComponent } from './pages/valorationsdetail/valorationsdetail.component';
 import { BinnaclespatientComponent } from './pages/binnaclespatient/binnaclespatient.component';
 import { BinnaclepatientdetailComponent } from './pages/binnaclepatientdetail/binnaclepatientdetail.component';
+import { BinnaclesactivitypatientComponent } from './pages/binnaclesactivitypatient/binnaclesactivitypatient.component';
+import { BinnacleactivitypatientdetailComponent } from './pages/binnacleactivitypatientdetail/binnacleactivitypatientdetail.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -78,7 +80,9 @@ registerLocaleData(localeEs, 'es');
     ChangepassComponent,
     ValorationsdetailComponent,
     BinnaclespatientComponent,
-    BinnaclepatientdetailComponent
+    BinnaclepatientdetailComponent,
+    BinnaclesactivitypatientComponent,
+    BinnacleactivitypatientdetailComponent
   ],
   imports: [
     BrowserModule,

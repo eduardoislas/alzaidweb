@@ -96,6 +96,16 @@ export class BinnaclesService {
     );
   }
 
+    //Obtiene bitácora de actividades por ID de bitácora
+  getPatientActivityBinnacleByIdb( id: string){
+    return this.http.get(`${ this.url }/binnacle/patient/activitybinnacle/${id}`)
+  }
+
+    // Obtiene bitácoras de actividades por ID de paciente
+  getPatientActivityBinnaclesByIdp( id: string){
+    return this.http.get(`${ this.url }/binnacle/patient/activity/${id}`)
+  }
+
 
   //// Bitácora Paciente//////////////////////////
   // Guardar bitácora paciente

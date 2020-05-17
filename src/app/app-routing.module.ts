@@ -32,6 +32,8 @@ import { ChangepassComponent } from './pages/changepass/changepass.component';
 import { ValorationsdetailComponent } from './pages/valorationsdetail/valorationsdetail.component';
 import { BinnaclespatientComponent } from './pages/binnaclespatient/binnaclespatient.component';
 import { BinnaclepatientdetailComponent } from './pages/binnaclepatientdetail/binnaclepatientdetail.component';
+import { BinnaclesactivitypatientComponent } from './pages/binnaclesactivitypatient/binnaclesactivitypatient.component';
+import { BinnacleactivitypatientdetailComponent } from './pages/binnacleactivitypatientdetail/binnacleactivitypatientdetail.component';
 
 
 const routes: Routes = [
@@ -65,6 +67,8 @@ const routes: Routes = [
   { path: 'valorationsdetail/:id' , component: ValorationsdetailComponent },
   { path: 'binnaclespatient/:id' , component: BinnaclespatientComponent },
   { path: 'binnaclepatientdetail/:id' , component: BinnaclepatientdetailComponent },
+  { path: 'binnaclesactivitypatient/:id' , component: BinnaclesactivitypatientComponent },
+  { path: 'binnacleactivitypatientdetail/:id' , component: BinnacleactivitypatientdetailComponent },
   { path: '**', redirectTo: 'login' }
 ];
 
