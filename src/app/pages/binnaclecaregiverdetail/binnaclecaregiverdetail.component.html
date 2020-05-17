@@ -1,0 +1,99 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <h1 class="page-header">Bitácora del Cuidador Familiar</h1>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row text-right">
+            <div class="col">
+                <button class="btn btn-danger" [routerLink]="['/binnaclescaregiver', binnacle.caregiver._id ]">
+                  <i class="fa fa-arrow-left"></i>
+                  Regresar
+              </button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row animated fadeIn faster ">
+        <div class="col-sm-12">
+            <h3 class="card-header ">{{binnacle.caregiver.name}} {{binnacle.caregiver.lastName}} {{binnacle.caregiver.lastNameSecond}}</h3>
+            <h4><strong>Fecha: </strong> {{binnacle.date |date:"dd-MM-yyyy" }}</h4>
+            <h4><strong>Score: </strong> {{score}} / 34</h4>
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <td><strong>1. El día de hoy, mayormente me sentí:</strong></td>
+                        <td *ngIf="binnacle.answers[0] == 1 ">Triste</td>
+                        <td *ngIf="binnacle.answers[0] == 2 ">Temeroso</td>
+                        <td *ngIf="binnacle.answers[0] == 3 ">Enojado/Frustrado</td>
+                        <td *ngIf="binnacle.answers[0] == 4 ">Alegre/Feliz</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Me sentí tenso o molesto:</strong></td>
+                        <td *ngIf="binnacle.answers[1] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[1] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[1] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Tuve la cabeza llena de preocupaciones:</strong></td>
+                        <td *ngIf="binnacle.answers[2] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[2] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[2] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Hoy tuve apoyo en el cuidado:</strong></td>
+                        <td *ngIf="binnacle.answers[3] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[3] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[3] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. Tuve tiempo para hacer mis actividades:</strong></td>
+                        <td *ngIf="binnacle.answers[4] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[4] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[4] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Mis horas de sueño fueron:</strong></td>
+                        <td *ngIf="binnacle.answers[5] == 1 ">Menos de 6</td>
+                        <td *ngIf="binnacle.answers[5] == 2 ">6 o 7</td>
+                        <td *ngIf="binnacle.answers[5] == 3 ">8 o más</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Tuve tiempo para mi pareja y familia:</strong></td>
+                        <td *ngIf="binnacle.answers[6] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[6] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[6] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8. Hoy recibí visitas:</strong></td>
+                        <td *ngIf="binnacle.answers[7] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[7] == 2 ">Las de costumbre</td>
+                        <td *ngIf="binnacle.answers[7] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>9. Recibí llamadas de familiares:</strong></td>
+                        <td *ngIf="binnacle.answers[8] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[8] == 2 ">Las de costumbre</td>
+                        <td *ngIf="binnacle.answers[8] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>10. Tuve comunicación con mis hermanos:</strong></td>
+                        <td *ngIf="binnacle.answers[9] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[9] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[9] == 3 ">Si</td>
+                    </tr>
+                    <tr>
+                        <td><strong>11. Tuve el soporte económico:</strong></td>
+                        <td *ngIf="binnacle.answers[10] == 1 ">No</td>
+                        <td *ngIf="binnacle.answers[10] == 2 ">Poco</td>
+                        <td *ngIf="binnacle.answers[10] == 3 ">Si</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+
+    </div>

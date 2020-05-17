@@ -46,10 +46,10 @@
                         <td>{{ car.email }}</td>
                         <td>{{ car.user.name }}</td>
                         <td>
-                            <!-- <button class="btn btn-info mr-1" [routerLink]="['/caregiver', caregiver._id ]">
-                            <i class="fa fa-pencil"></i>
-                        </button> -->
-                            <button class="btn btn-danger mr-1" (click)="bajaCaregiver( car, i )">
+                            <button class="btn btn-info mr-1" data-toggle="tooltip" data-placement="top" title="Bitácora" [routerLink]="['/binnaclescaregiver', car._id ]">
+                            <i class="fa fa-vcard-o"></i>
+                        </button>
+                            <button class="btn btn-danger mr-1" data-toggle="tooltip" data-placement="top" title="Baja cuidador" (click)="bajaCaregiver( car, i )">
                           <i class="fa fa-arrow-down"></i>
                       </button>
                         </td>

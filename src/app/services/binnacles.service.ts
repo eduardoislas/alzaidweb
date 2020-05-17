@@ -56,7 +56,7 @@ export class BinnaclesService {
     );
   }
 
-  obtenerBinnacleCaregiverByID(id: string){
+  getBinnacleCaregiverByID(id: string){
     return this.http.get(`${ this.url }/binnacle/caregiver/${id}`)
     .pipe(
       map( (resp:any) => {
@@ -77,6 +77,11 @@ export class BinnaclesService {
         return cbs;
       }
     }
+
+        //Obtiene bitácora de cuidadores por ID de bitácora
+  getCaregiverBinnacleByIdb( id: string){
+    return this.http.get(`${ this.url }/binnacle/caregiver/binnacle/${id}`)
+  }
 ////////////////////////////////////////////////////
 
 // Bitácora Actividades Paciente/////////////////////////////

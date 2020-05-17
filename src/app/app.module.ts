@@ -43,6 +43,8 @@ import { BinnaclespatientComponent } from './pages/binnaclespatient/binnaclespat
 import { BinnaclepatientdetailComponent } from './pages/binnaclepatientdetail/binnaclepatientdetail.component';
 import { BinnaclesactivitypatientComponent } from './pages/binnaclesactivitypatient/binnaclesactivitypatient.component';
 import { BinnacleactivitypatientdetailComponent } from './pages/binnacleactivitypatientdetail/binnacleactivitypatientdetail.component';
+import { BinnaclescaregiverComponent } from './pages/binnaclescaregiver/binnaclescaregiver.component';
+import { BinnaclecaregiverdetailComponent } from './pages/binnaclecaregiverdetail/binnaclecaregiverdetail.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -82,7 +84,9 @@ registerLocaleData(localeEs, 'es');
     BinnaclespatientComponent,
     BinnaclepatientdetailComponent,
     BinnaclesactivitypatientComponent,
-    BinnacleactivitypatientdetailComponent
+    BinnacleactivitypatientdetailComponent,
+    BinnaclescaregiverComponent,
+    BinnaclecaregiverdetailComponent
   ],
   imports: [
     BrowserModule,
