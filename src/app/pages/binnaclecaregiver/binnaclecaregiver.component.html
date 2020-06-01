@@ -19,10 +19,19 @@
                 </div>
             </div>
         </div>
+
         <div class="row animated fadeIn faster">
             <div class="col">
 
                 <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Fecha:</label>
+                                <input type="date" formControlName="date" class="form-control" placeholder="Fecha">
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-4">
                             <label>1. El día de hoy, mayormente me sentí:</label>

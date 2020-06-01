@@ -22,6 +22,7 @@ export class BinnaclecaregiverComponent implements OnInit {
               private binnaclesService: BinnaclesService) {
 
       this.forma = new FormGroup({
+        'date': new FormControl('', Validators.required),
       'respuesta1': new FormControl('', Validators.required),
       'respuesta2': new FormControl('', Validators.required),
       'respuesta3': new FormControl('', Validators.required),
@@ -96,7 +97,7 @@ export class BinnaclecaregiverComponent implements OnInit {
     this.respuestas.push(form.controls.respuesta11.value);
    
     this.cbmodel = {
-      date: new Date(),
+      date: form.controls.date.value,
       answers: this.respuestas,
       caregiver: this.caregiver
     }
