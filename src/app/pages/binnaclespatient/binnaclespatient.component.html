@@ -9,21 +9,21 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row text-right">
+        <!-- <div class="row text-right">
             <div class="col">
                 <button class="btn btn-danger" routerLink="/patients">
                   <i class="fa fa-arrow-left"></i>
                   Regresar
               </button>
             </div>
-        </div>
+        </div> -->
 
         <div class="row animated fadeIn faster">
             <div class="col">
 
                 <div class="row animated fadeIn faster col-sm-12">
                     <h3 class="card-header">Bitácoras registradas</h3>
-
+                    <pagination-controls (pageChange)="p = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -33,7 +33,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let b of binnacles">
+                            <tr *ngFor="let b of binnacles | paginate: {itemsPerPage: 10, currentPage: p, totalItems: binnacles.length};">
                                 <td>{{b.date | date:"dd-MM-yyyy" }}</td>
                                 <td>{{b.patient.name}} {{b.patient.lastName}} {{b.patient.lastNameSecond}}</td>
                                 <td>

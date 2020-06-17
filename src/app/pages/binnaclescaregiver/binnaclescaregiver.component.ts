@@ -15,6 +15,7 @@ export class BinnaclescaregiverComponent implements OnInit {
   caregiver: CaregiverAPIModel = new CaregiverAPIModel();
   binnacles: CaregiverBinnacleModel[] = [];
   idc: string;
+  p: number = 1;
 
   constructor(private binnaclesService: BinnaclesService, private route: ActivatedRoute,
     private caregiversService: CaregiversService) { }

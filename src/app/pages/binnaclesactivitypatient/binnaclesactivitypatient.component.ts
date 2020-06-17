@@ -15,6 +15,7 @@ export class BinnaclesactivitypatientComponent implements OnInit {
   patient: PatientModel = new PatientModel();
   binnacles: PatientActivityBinnacle[] = [];
   idp: string;
+  p: number = 1;
 
   constructor(private binnaclesService: BinnaclesService, private route: ActivatedRoute,
     private patientsService: PatientsService) { }

@@ -13,6 +13,12 @@
     <div class="container-fluid">
 
         <div class="row animated fadeIn faster">
+            <div class="col">
+                <button class="btn btn-info" routerLink="/binnaclesactivitypatient/{{patient._id}}">
+                    <i class="fa fa-list"></i>
+                    Ver Historial actividades evaluadas
+                  </button>
+            </div>
             <h3 class="card-header">Actividades programadas </h3>
             <div class="col">
                 <table class="table mt-3 table-hover animated fadeIn">
@@ -44,6 +50,12 @@
         <br>
 
         <div class="row animated fadeIn faster">
+            <div class="col">
+                <button class="btn btn-info" routerLink="/binnaclespatient/{{patient._id}}">
+                    <i class="fa fa-list"></i>
+                    Ver Historial Bitácora diaria
+                  </button>
+            </div>
             <h3 class="card-header">Bitácora diaria </h3>
 
             <form [formGroup]="forma" (ngSubmit)="guardar()" novalidate="novalidate">

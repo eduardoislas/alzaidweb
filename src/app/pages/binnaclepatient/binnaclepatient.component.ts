@@ -7,9 +7,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PatientModel } from 'src/app/models/patient.model';
-import { CatalogModel } from '../../models/catalog.model';
 import { CatalogsService } from '../../services/catalogs.service';
-import { Patient } from '../../models/patient.model';
 
 @Component({
   selector: 'app-binnaclepatient',
