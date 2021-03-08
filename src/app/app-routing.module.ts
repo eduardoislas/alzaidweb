@@ -36,6 +36,7 @@ import { BinnaclesactivitypatientComponent } from './pages/binnaclesactivitypati
 import { BinnacleactivitypatientdetailComponent } from './pages/binnacleactivitypatientdetail/binnacleactivitypatientdetail.component';
 import { BinnaclescaregiverComponent } from './pages/binnaclescaregiver/binnaclescaregiver.component';
 import { BinnaclecaregiverdetailComponent } from './pages/binnaclecaregiverdetail/binnaclecaregiverdetail.component';
+import { ActivitiespatientComponent } from './pages/activitiespatient/activitiespatient.component';
 
 
 const routes: Routes = [
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'binnacleactivitypatientdetail/:id' , component: BinnacleactivitypatientdetailComponent },
   { path: 'binnaclescaregiver/:id' , component: BinnaclescaregiverComponent },
   { path: 'binnaclecaregiverdetail/:id' , component: BinnaclecaregiverdetailComponent },
+  { path: 'activitiespatient' , component: ActivitiespatientComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

@@ -17,8 +17,10 @@ import { CatalogsService } from '../../services/catalogs.service';
 export class BinnaclepatientComponent implements OnInit {
   caregiver: CaregiverAPIModel = new CaregiverAPIModel();
   fase: string;
+  ///copiado
   programadas: HomeActivityModel[] = [];
   actividadesBitacora: PatientActivityBinnacle[] = [];
+  ///
   forma:FormGroup;
   patient: PatientModel = new PatientModel();
   behaviorsCatalog = ['Actitudes repetitivas', 'Agresividad', 'Ansiedad', 'Apatía', 'Cambio de Humor', 'Deambulación',
@@ -80,31 +82,31 @@ export class BinnaclepatientComponent implements OnInit {
               this.patient = this.caregiver.patient;
           });
 
-          this.binnaclesService.getHomeActivitiesPhase(localStorage.getItem('fase'))
-              .subscribe((resp: any) => {
-              this.programadas = resp.has;
-            });
+          // this.binnaclesService.getHomeActivitiesPhase(localStorage.getItem('fase'))
+          //     .subscribe((resp: any) => {
+          //     this.programadas = resp.has;
+          //   });
 
   }
 
 
-  evaluarBitacora( homeActivity: HomeActivityModel, i: number){
-    let done: boolean;
-    this.binnaclesService.getPatientActivitiesDone(this.caregiver.patient._id, homeActivity._id)
-    // this.binnaclesService.getPatientActivitiesDone('5e46ee3660c91869838ed4c8', '5eaf81c590d5e8001736106f')
-              .subscribe((resp: any) => {
-              done = resp.success;
-              if(done){
-                Swal.fire({
-                  icon: 'info',
-                  title: 'Actividad ya evaluada',
-                  text: 'Esta actividad ya está evaluada y registrada'
-                });
-              }else{
-                this.router.navigate(['/binnaclepatientevaluation', {idp: this.caregiver.patient._id, ida: homeActivity._id}]);
-              }
-            });
-  }
+  // evaluarBitacora( homeActivity: HomeActivityModel, i: number){
+  //   let done: boolean;
+  //   this.binnaclesService.getPatientActivitiesDone(this.caregiver.patient._id, homeActivity._id)
+  //   // this.binnaclesService.getPatientActivitiesDone('5e46ee3660c91869838ed4c8', '5eaf81c590d5e8001736106f')
+  //             .subscribe((resp: any) => {
+  //             done = resp.success;
+  //             if(done){
+  //               Swal.fire({
+  //                 icon: 'info',
+  //                 title: 'Actividad ya evaluada',
+  //                 text: 'Esta actividad ya está evaluada y registrada'
+  //               });
+  //             }else{
+  //               this.router.navigate(['/binnaclepatientevaluation', {idp: this.caregiver.patient._id, ida: homeActivity._id}]);
+  //             }
+  //           });
+  // }
 
 
 
