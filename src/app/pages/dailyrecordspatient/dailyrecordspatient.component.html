@@ -12,7 +12,7 @@
     <!--/.row-->
 
 
-    <div class="container-fluid">
+    <div class="container">
 
         <div class="row animated fadeIn faster">
             <div class="col">
@@ -22,7 +22,7 @@
                         <tr>
 
                             <th scope="col">Fecha</th>
-                            <th scope="col">Paciente</th>
+                            <!-- <th scope="col">Paciente</th> -->
                             <th scope="col">Fase</th>
                             <th scope="col">Hora entrada</th>
                             <th scope="col">Hora salida</th>
@@ -33,7 +33,7 @@
                         <tr *ngFor="let dr of drs| paginate: {itemsPerPage: 10, currentPage: p, totalItems: drs.length}; let i = index">
 
                             <td>{{ dr.enterHour |date:"dd-MM-yyyy" }}</td>
-                            <td>{{ dr.patient.name }} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</td>
+                            <!-- <td>{{ dr.patient.name }} {{dr.patient.lastName}} {{dr.patient.lastNameSecond}}</td> -->
                             <td>{{ dr.patient.phase}}</td>
                             <td>{{ dr.enterHour |date:"h:mm a"}}</td>
                             <td>{{ dr.exitHour |date:"h:mm a"}}</td>
