@@ -7,7 +7,7 @@ import {NgxPaginationModule} from 'ngx-pagination'
 import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -50,6 +50,7 @@ import { ActivitiespatientComponent } from './pages/activitiespatient/activities
 import { ChartsComponent } from './pages/charts/charts.component';
 import { ChartHygieneComponent } from './shared/chart-hygiene/chart-hygiene.component';
 import { ChartBehaviorsComponent } from './shared/chart-behaviors/chart-behaviors.component';
+import { TokenInterceptor } from './services/token-interceptor';
 
 registerLocaleData(localeEs, 'es');
 
@@ -106,7 +107,12 @@ registerLocaleData(localeEs, 'es');
     NgxPaginationModule,
     ChartsModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'es'}],
+  providers: [{provide: LOCALE_ID, useValue: 'es'},
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
