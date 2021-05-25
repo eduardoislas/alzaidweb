@@ -46,6 +46,7 @@ export class LoginComponent implements OnInit {
       Swal.close();
       localStorage.setItem('username', this.usuario.name);
       localStorage.setItem('recordarme', this.recordarme.toString());
+      localStorage.setItem('token', resp.token);
 
       if(resp.user.role=='FAMILIAR'){
         this.router.navigateByUrl('/homecaregiver')

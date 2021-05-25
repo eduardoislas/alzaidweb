@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeEs from '@angular/common/locales/es';
 import { registerLocaleData } from '@angular/common';
 import {NgxPaginationModule} from 'ngx-pagination'
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -46,6 +47,9 @@ import { BinnacleactivitypatientdetailComponent } from './pages/binnacleactivity
 import { BinnaclescaregiverComponent } from './pages/binnaclescaregiver/binnaclescaregiver.component';
 import { BinnaclecaregiverdetailComponent } from './pages/binnaclecaregiverdetail/binnaclecaregiverdetail.component';
 import { ActivitiespatientComponent } from './pages/activitiespatient/activitiespatient.component';
+import { ChartsComponent } from './pages/charts/charts.component';
+import { ChartHygieneComponent } from './shared/chart-hygiene/chart-hygiene.component';
+import { ChartBehaviorsComponent } from './shared/chart-behaviors/chart-behaviors.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -88,7 +92,10 @@ registerLocaleData(localeEs, 'es');
     BinnacleactivitypatientdetailComponent,
     BinnaclescaregiverComponent,
     BinnaclecaregiverdetailComponent,
-    ActivitiespatientComponent
+    ActivitiespatientComponent,
+    ChartsComponent,
+    ChartHygieneComponent,
+    ChartBehaviorsComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +103,8 @@ registerLocaleData(localeEs, 'es');
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ChartsModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]

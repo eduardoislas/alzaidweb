@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     this.cargando = true;
     this.notificationsService.getNotifications()
       .subscribe((resp: any) => {
+        console.log(resp);
         this.notifications = resp;
         this.cargando = false;
       })
