@@ -20,6 +20,7 @@ export class PatientComponent implements OnInit{
   technicalSupport: CatalogModel[] = [];
   allergies: CatalogModel[] = [];
   diagnosis: CatalogModel[] = [];
+  genders: string[] = ['Femenino', 'Masculino'];
   forma:FormGroup;
   patient: PatientModel = new PatientModel();
 
@@ -37,6 +38,7 @@ export class PatientComponent implements OnInit{
       'birthdate': new FormControl('', Validators.required),
       'registerdate': new FormControl('', Validators.required),
       'phase': new FormControl('', Validators.required),
+      'gender': new FormControl('', Validators.required),
       'img': new FormControl(),
       'physicalLimitations': new FormArray([
         new FormControl()
@@ -71,8 +73,10 @@ export class PatientComponent implements OnInit{
       if ( id !== 'nuevo' ){
       this.patientsService.getPatient(id)
       .subscribe( (resp: Patient) => {
-        this.forma.setValue(resp.patient);
+        // this.forma.setValue(resp.patient);
         //this.forma.controls['_id'].controls = id;
+        this.patient = resp.patient;
+        this.patient._id=id;
       });
 
 
@@ -135,6 +139,7 @@ export class PatientComponent implements OnInit{
     this.patient.lastNameSecond = form.controls.lastNameSecond.value;
     this.patient.birthdate = form.controls.birthdate.value;
     this.patient.registerdate = form.controls.registerdate.value;
+    this.patient.gender = form.controls.gender.value;
     this.patient.phase = form.controls.phase.value;
     this.patient.img = "https://img.icons8.com/color/48/000000/matrix-architect.png";
 

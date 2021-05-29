@@ -70,34 +70,43 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <label for="phase">Fase:</label>
-                                <select class="form-control" formControlName="phase" id="phase">
-                                <option *ngFor="let phase of phases" 
-                                [value]="phase.name">{{phase.name}}</option>
+                                <label for="gender">Género:</label>
+                                <select class="form-control" formControlName="gender" id="gender">
+                                    <option *ngFor="let g of genders"
+                                    [value]="g">{{g}}</option>
                               </select>
                             </div>
                         </div>
+
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
                                 <label for="cargaFoto">Cargar fotografía</label>
                                 <input type="file" formControlName="img" class="form-control-file" id="img">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <hr>
                     <div class="row">
-
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="phase">Fase:</label>
+                                <select class="form-control" formControlName="phase" id="phase">
+                                <option *ngFor="let phase of phases"
+                                [value]="phase.name">{{phase.name}}</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-center">
                             <div class="form-group">
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3">Diagnósticos</button>
                             </div>
                         </div>
-
-                        <div class="col-sm-4 text-center">
+                    </div>
+                    <!-- <div class="col-sm-4 text-center">
                             <div class="form-group">
                                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Apoyo Técnico</button>
                             </div>
@@ -118,9 +127,9 @@
                                 <input *ngFor="let ps of forma.controls.physicalLimitations.value; let i = index" type="text" [formControlName]="i" class="form-control" id="physicalLimitations">
                             </div>
                             <button (click)="agregarPl()" type="button" class="btn btn-primary">Otra...</button>
-                        </div>
+                        </div> -->
 
-                        <!-- <div class="col-sm-6">
+                    <!-- <div class="col-sm-6">
                             <div class="form-group" formArrayName="medicines">
                                 <label for="medicines">Medicamentos</label>
                                 <input *ngFor="let ps of forma.controls['physicalLimitations'].controls; let i = index" type="text" [formControlName]="i" class="form-control" id="physicalLimitations">
@@ -128,7 +137,7 @@
                             <button (click)="agregarPl()" type="button" class="btn btn-primary">Otra...</button>
                         </div> -->
 
-                    </div>
+                    <!-- </div> -->
 
                     <hr>
                     <div class="form-group text-center">

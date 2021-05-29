@@ -11,6 +11,7 @@ export class PatientModel{
     lastNameSecond: string;
     birthdate: Date;
     registerdate: Date;
+    gender: string;
     phase: string;
     technicalSupport?: TechnicalSupport[];
     diagnosis?: any[];

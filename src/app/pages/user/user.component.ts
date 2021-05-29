@@ -36,7 +36,6 @@ export class UserComponent implements OnInit {
       this.usersService.getUser(id)
       .subscribe( (resp: User) => {
         this.user = resp.user;
-        console.log(this.user);
         this.user._id = id;
       });
     }
