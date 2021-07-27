@@ -72,9 +72,39 @@ export class ValorationsComponent implements OnInit {
       numPeriod: form.controls.numPeriod.value
     };
     if(val.numPeriod==1){
-      val.period = "1er. Semestre";
+      val.period = "Enero";
     }else if(val.numPeriod==2){
-      val.period = "2do. Semestre";
+      val.period = "Febrero";
+    }
+    else if(val.numPeriod==3){
+      val.period = "Marzo";
+    }
+    else if(val.numPeriod==4){
+      val.period = "Abril";
+    }
+    else if(val.numPeriod==5){
+      val.period = "Mayo";
+    }
+    else if(val.numPeriod==6){
+      val.period = "Junio";
+    }
+    else if(val.numPeriod==7){
+      val.period = "Julio";
+    }
+    else if(val.numPeriod==8){
+      val.period = "Agosto";
+    }
+    else if(val.numPeriod==9){
+      val.period = "Septiembre";
+    }
+    else if(val.numPeriod==10){
+      val.period = "Octubre";
+    }
+    else if(val.numPeriod==11){
+      val.period = "Noviembre";
+    }
+    else if(val.numPeriod==12){
+      val.period = "Diciembre";
     }
     return val;
   }

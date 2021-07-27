@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CaregiverModel, Caregiver, RootCaregiver } from '../models/caregiver.model';
 import { map, retry } from 'rxjs/operators';
+import * as myglobals from './globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CaregiversService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
-  // private url = 'http://74.208.247.106:3000';
+  private url = myglobals.url;
 
   constructor(private http: HttpClient) { }
 

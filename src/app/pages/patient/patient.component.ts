@@ -141,8 +141,11 @@ export class PatientComponent implements OnInit{
     this.patient.registerdate = form.controls.registerdate.value;
     this.patient.gender = form.controls.gender.value;
     this.patient.phase = form.controls.phase.value;
-    this.patient.img = "https://img.icons8.com/color/48/000000/matrix-architect.png";
-
+    if(form.controls.gender.value === "Masculino"){
+      this.patient.img = "https://alzaidapi.acislab.com/male_avatar.png";
+    }else{
+      this.patient.img = "https://alzaidapi.acislab.com/female_avatar.png";
+    }
     this.patient.physicalLimitations = form.controls.physicalLimitations.value;
     this.patient.technicalSupport = form.controls.technicalSupport.value;
     this.patient.allergies = form.controls.allergies.value;

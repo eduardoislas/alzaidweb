@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { RootQuery } from '../models/chart.model';
+import * as myglobals from './globals';
 
 
 @Injectable({
@@ -9,9 +10,7 @@ import { RootQuery } from '../models/chart.model';
 })
 export class ChartsService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
-  // private url = 'http://localhost:3000';
+  private url = myglobals.url;
 
   constructor(private http: HttpClient, private chartsService: ChartsService) { }
 

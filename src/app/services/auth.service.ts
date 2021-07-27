@@ -3,15 +3,16 @@ import { HttpClient } from '@angular/common/http';
 import { UsuarioModel, LoginModel } from '../models/user.model';
 
 import { map } from 'rxjs/operators';
+import * as myglobals from './globals';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private url = 'https://alzaidapi.acislab.com/';
-  // private url = 'https://alzaid.herokuapp.com/';
-  // private url = 'http://localhost:3000/';
+
+  private url = myglobals.url;
 
   userToken: string;
 
@@ -30,7 +31,7 @@ export class AuthService {
   }
 
   login( usuario: UsuarioModel) {
-      return this.http.post(`${ this.url }login`, usuario)
+      return this.http.post(`${ this.url }/login`, usuario)
       .pipe(
         map((resp: LoginModel) => {
           this.guardarToken( resp['token']);

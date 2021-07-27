@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ValorationsModel, RootValorations, ScaleModel, RootScale } from '../models/scale.model';
 import { map } from 'rxjs/operators';
+import * as myglobals from './globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScalesService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
-  // private url = 'http://74.208.247.106:3000';
+  private url = myglobals.url;
 
   constructor(private http: HttpClient, private scalesService: ScalesService) { }
 
@@ -86,5 +85,12 @@ getScaleValCare( idc: string, idv: string ){
   return this.http.get(`${ this.url }/scale/val/${idc}&${idv}`)
 }
 ////////////////////////////////////////////
+
+
+// Obtener cuidadores por valoración
+getCaregiversValoration( idv: string){
+  return this.http.get(`${ this.url }/scale/valoration/${idv}`)
+}
+
 
 }

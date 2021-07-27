@@ -21,8 +21,7 @@ export class CatalogsComponent implements OnInit {
 
 
   ngOnInit() {
-    this.tipos = ['Todos','Actividad', 'Alergia', 'Apoyo técnico', 'Conducta','Diagnostico',
-          'Fase', 'Medicina'];
+    this.tipos = ['Todos','Actividad', 'Alergia', 'Apoyo técnico', 'Conducta','Diagnostico', 'Medicina'];
     this.cargando = true;
     this.catalogsService.getCatalogs()
     .subscribe((resp: any) => {

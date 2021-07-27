@@ -21,7 +21,8 @@ export class AutodiagnosisComponent implements OnInit {
   forma:FormGroup;
   mostrar = false;
   escalas = [
-    {scaleType: 1, scale: 'Autoeficacia', alias: 'RSCSE'},
+    // {scaleType: 1, scale: 'Autoeficacia', alias: 'RSCSE'},
+    {scaleType: 1, scale: 'Resiliencia', alias: 'CD-RISC'},
     {scaleType: 2, scale: 'Ansiedad', alias: 'HAD-A'},
     {scaleType: 3, scale: 'Depresión', alias: 'CES-D'},
     {scaleType: 4, scale: 'Sobrecarga', alias: 'ZARIT'},
@@ -47,6 +48,12 @@ export class AutodiagnosisComponent implements OnInit {
     this.scalesService.getValorations()
       .subscribe((resp:any) => {
         this.valorations = resp.valorations;
+        this.valorations.forEach(v => {
+          if (!v.status){
+            let index = this.valorations.indexOf(v);
+            this.valorations.splice(index,1);
+          }
+        });
       });
   }
 
@@ -72,7 +79,7 @@ export class AutodiagnosisComponent implements OnInit {
           text: 'Este instrumento ya fue realizado en esta valoración'
         });
       }else if(escala.scaleType === 1){
-        this.router.navigate(['/selfdiagnosis', {idv: this.idVal}]);
+        this.router.navigate(['/cdrisc', {idv: this.idVal}]);
       }else if(escala.scaleType === 2){
         this.router.navigate(['/hada', {idv: this.idVal}]);
       }else if(escala.scaleType === 3){

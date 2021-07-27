@@ -18,10 +18,20 @@
                     <div class="row text-center">
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="numPeriod">Periodo:</label>
+                                <label for="numPeriod">Mes de realización:</label>
                                 <select class="form-control" formControlName="numPeriod" id="numPeriod">
-                              <option value=1>1er. Semestre</option>
-                              <option value=2>2do. Semestre</option>
+                              <option value=1> Enero </option>
+                              <option value=2> Febrero </option>
+                              <option value=3> Marzo </option>
+                              <option value=4> Abril </option>
+                              <option value=5> Mayo </option>
+                              <option value=6> Junio </option>
+                              <option value=7> Julio </option>
+                              <option value=8> Agosto </option>
+                              <option value=9> Septiembre </option>
+                              <option value=10> Octubre </option>
+                              <option value=11> Noviembre </option>
+                              <option value=12> Diciembre </option>
                             </select>
                             </div>
                         </div>
@@ -36,7 +46,7 @@
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-primary w-25">
                             <i class="fa fa-save"></i>
-                          Guardar
+                          Agregar
                         </button>
                         </div>
                     </div>
@@ -52,7 +62,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Año</th>
-                        <th scope="col">Periodo</th>
+                        <th scope="col">Mes de realización</th>
                         <th scope="col">Estatus</th>
                         <th scope="col">Opciones</th>
                     </tr>
@@ -65,7 +75,7 @@
                         <td *ngIf="!v.status">Inactivo</td>
                         <td>
                             <button class="btn btn-info mr-1" [routerLink]="['/valorationsdetail', v._id ]">
-                                      <i class="fa fa-search"></i>
+                                      <i class="fa fa-book"></i>
                                   </button>
                             <button *ngIf="v.status" class="btn btn-danger mr-1 " (click)="cambiaStatus( v ) ">
                                       <i class="fa fa-arrow-down "></i>
@@ -79,6 +89,7 @@
             </table>
 
         </div>
+
 
     </div>
 </div>

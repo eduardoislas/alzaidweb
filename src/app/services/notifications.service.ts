@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { RootNotification, NotificationModel } from '../models/notification.model';
+import * as myglobals from './globals';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationsService {
 
-  private url = 'https://alzaidapi.acislab.com';
-  // private url = 'https://alzaid.herokuapp.com';
-  // private url = 'http://localhost:3000';
+  private url = myglobals.url;
 
   constructor(private http: HttpClient) { }
 

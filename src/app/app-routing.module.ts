@@ -38,6 +38,7 @@ import { BinnaclescaregiverComponent } from './pages/binnaclescaregiver/binnacle
 import { BinnaclecaregiverdetailComponent } from './pages/binnaclecaregiverdetail/binnaclecaregiverdetail.component';
 import { ActivitiespatientComponent } from './pages/activitiespatient/activitiespatient.component';
 import { ChartsComponent } from './pages/charts/charts.component';
+import { CdriscComponent } from './pages/cdrisc/cdrisc.component';
 
 
 const routes: Routes = [
@@ -62,12 +63,13 @@ const routes: Routes = [
   { path: 'binnaclepatientevaluation' , component: BinnaclepatientevaluationComponent },
   { path: 'activityprogram' , component: ActivityprogramComponent },
   { path: 'homeactivities' , component: HomeactivitiesComponent },
-  { path: 'valorations' , component: ValorationsComponent },
   { path: 'duke' , component: DukeComponent },
   { path: 'cesd' , component: CesdComponent },
   { path: 'hada' , component: HadaComponent },
+  { path: 'cdrisc' , component: CdriscComponent },
   { path: 'zarit' , component: ZaritComponent },
   { path: 'changepass' , component: ChangepassComponent },
+  { path: 'valorations' , component: ValorationsComponent },
   { path: 'valorationsdetail/:id' , component: ValorationsdetailComponent },
   { path: 'binnaclespatient/:id' , component: BinnaclespatientComponent },
   { path: 'binnaclepatientdetail/:id' , component: BinnaclepatientdetailComponent },
