@@ -39,6 +39,7 @@ import { BinnaclecaregiverdetailComponent } from './pages/binnaclecaregiverdetai
 import { ActivitiespatientComponent } from './pages/activitiespatient/activitiespatient.component';
 import { ChartsComponent } from './pages/charts/charts.component';
 import { CdriscComponent } from './pages/cdrisc/cdrisc.component';
+import { PhaseChangeComponent } from './pages/phase-change/phase-change.component'
 
 
 const routes: Routes = [
@@ -79,6 +80,7 @@ const routes: Routes = [
   { path: 'binnaclecaregiverdetail/:id' , component: BinnaclecaregiverdetailComponent },
   { path: 'activitiespatient' , component: ActivitiespatientComponent },
   { path: 'charts' , component: ChartsComponent },
+  { path: 'phase/:id' , component: PhaseChangeComponent },
   { path: '**', redirectTo: 'login' }
 ];
 

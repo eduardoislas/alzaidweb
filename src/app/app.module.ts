@@ -52,6 +52,7 @@ import { ChartHygieneComponent } from './shared/chart-hygiene/chart-hygiene.comp
 import { ChartBehaviorsComponent } from './shared/chart-behaviors/chart-behaviors.component';
 import { TokenInterceptor } from './services/token-interceptor';
 import { CdriscComponent } from './pages/cdrisc/cdrisc.component';
+import { PhaseChangeComponent } from './pages/phase-change/phase-change.component';
 
 registerLocaleData(localeEs, 'es');
 
@@ -98,7 +99,8 @@ registerLocaleData(localeEs, 'es');
     ChartsComponent,
     ChartHygieneComponent,
     ChartBehaviorsComponent,
-    CdriscComponent
+    CdriscComponent,
+    PhaseChangeComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,7 @@ export class PatientModel{
     registerdate: Date;
     gender: string;
     phase: string;
+    phaseHistory: PhaseHistory[];
     technicalSupport?: TechnicalSupport[];
     diagnosis?: any[];
     allergies?: any[];
@@ -36,4 +37,11 @@ export class Patient {
 export class PhysicalLimitation {
     _id: string;
     name: string;
+  }
+
+  export class PhaseHistory{
+    _id: string;
+    phase: string;
+    date: Date;
+    status: boolean;
   }

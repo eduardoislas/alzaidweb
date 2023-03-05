@@ -80,5 +80,11 @@ export class PatientsService {
       });
     }
 
+    changePhasePatient(id: string, newPhase: string){
+      return this.http.put(`${this.url}/patient/changephase/${id}`, {
+        newPhase
+      });
+    }
+
   }
 

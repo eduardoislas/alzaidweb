@@ -1,0 +1,110 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Cambio de fase</h1>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="row text-right">
+      <div class="col">
+        <button class="btn btn-danger" routerLink="/patients">
+          <i class="fa fa-arrow-left"></i>
+          Regresar
+        </button>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row animated fadeIn faster">
+      <div class="col">
+
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" [(ngModel)]="patient.name" name="firstName" class="form-control" readonly
+                  placeholder="Nombre">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input type="text" [(ngModel)]="patient.lastName" name="lastName" class="form-control" readonly
+                  placeholder="Apellido Paterno">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Apellido Materno</label>
+                <input type="text" [(ngModel)]="patient.lastNameSecond" name="lastNameSecond" class="form-control"
+                  readonly placeholder="Apellido Materno">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Fase actual</label>
+                <input type="text" [(ngModel)]="phase" name="phase" class="form-control" readonly
+                  placeholder="Fase actual">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="phaseList">Nueva Fase:</label>
+                <select class="form-control" [(ngModel)]="patient.phase" name="phaseList" id="phaseList">
+                  <option *ngFor="let phase of phases" [value]="phase.name">{{phase.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary w-25">
+              <i class="fa fa-save"></i>
+            Cambiar
+          </button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <div class="row animated fadeIn faster col-sm-12">
+      <h3 class="card-header">Historial de fases</h3>
+
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                  <th scope="col">Fase</th>
+                  <th scope="col">Fecha de alta en fase</th>
+                  <th scope="col">Estatus</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let ph of patient.phaseHistory">
+                  <td>{{ph.phase }}</td>
+                  <td>{{ph.date |date:"dd-MM-yyyy" }}</td>
+                  <td *ngIf="ph.status">Activo</td>
+                  <td *ngIf="!ph.status">Inactivo</td>
+              </tr>
+          </tbody>
+      </table> 
+
+  </div>
+
+
+  </div>
+</div>
