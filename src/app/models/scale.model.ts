@@ -1,4 +1,5 @@
 import { CaregiverAPIModel } from './caregiver.model';
+import { PatientModel } from './patient.model';
 
 export class ValorationsModel{
     _id?: string;
@@ -31,4 +32,20 @@ export class RootScale{
     success: boolean;
     count: number;
     scales: ScaleModel[];
+}
+
+export class EvaluationModel{
+    _id?: string;
+    date: Date;
+    score: number;
+    evaluationName: string;
+    patientPhase: string;
+    patient: PatientModel;
+}
+
+
+export class RootEvaluation{
+    success: boolean;
+    count: number;
+    evaluations: EvaluationModel[];
 }

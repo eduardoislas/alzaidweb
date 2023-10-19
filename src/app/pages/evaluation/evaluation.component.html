@@ -1,0 +1,126 @@
+<app-header></app-header>
+
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Captura de Resultado de Evaluaciones</h1>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+
+    <div class="row text-right">
+      <div class="col">
+        <button class="btn btn-danger" routerLink="/patients">
+          <i class="fa fa-arrow-left"></i>
+          Regresar
+        </button>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row animated fadeIn faster">
+      <div class="col">
+
+        <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" [(ngModel)]="patient.name" name="firstName" class="form-control" readonly
+                  placeholder="Nombre">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Apellido Paterno</label>
+                <input type="text" [(ngModel)]="patient.lastName" name="lastName" class="form-control" readonly
+                  placeholder="Apellido Paterno">
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Apellido Materno</label>
+                <input type="text" [(ngModel)]="patient.lastNameSecond" name="lastNameSecond" class="form-control"
+                  readonly placeholder="Apellido Materno">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Fase actual</label>
+                <input type="text" [(ngModel)]="patient.phase" name="phase" id="phase" class="form-control" readonly
+                  placeholder="Fase actual">
+              </div>
+            </div>
+
+              <div class="col-sm-3">
+                <div class="form-group">
+                  <label>Fecha</label>
+                  <input type="date" [(ngModel)]="evaluation.date" name="date" id="date" class="form-control"
+                    placeholder="Fecha de evaluación">
+                </div>
+              </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="evaluationList">Evaluación</label>
+                <select class="form-control" [(ngModel)]="evaluation.evaluationName" name="evaluationName" id="evaluationName">
+                  <option *ngFor="let ev of evaluations" [value]="ev.name">{{ev.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label>Score</label>
+                <input type="text" [(ngModel)]="evaluation.score" name="score" id="score" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary w-25">
+              <i class="fa fa-save"></i>
+            Guardar
+          </button>
+        </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <div class="row animated fadeIn faster col-sm-12">
+      <h3 class="card-header">Historial de evaluaciones</h3>
+
+      <table class="table table-striped">
+          <thead>
+              <tr>
+                <th scope="col">Fecha</th>
+                  <th scope="col">Fase</th>
+                  <th scope="col">Evaluación</th>
+                  <th scope="col">Puntuación</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let ep of evaluationsPatient">
+                <td>{{ep.date |date:"dd-MM-yyyy" }}</td>
+                  <td>{{ep.patientPhase }}</td>
+                  <td>{{ep.evaluationName}}</td>
+                  <td>{{ep.score}}</td>
+              </tr>
+          </tbody>
+      </table> 
+
+  </div>
+
+
+  </div>
+</div>

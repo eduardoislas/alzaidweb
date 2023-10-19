@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { PatientModel, RootPatient, Patient } from '../models/patient.model';
 import { map } from 'rxjs/operators';
 import * as myglobals from './globals';
+import { EvaluationModel, RootEvaluation } from '../models/scale.model';
 
 @Injectable({
   providedIn: 'root'
@@ -85,6 +86,40 @@ export class PatientsService {
         newPhase
       });
     }
+
+    // Crear evaluación de un paciente
+    createEvaluation(evaluation: EvaluationModel){
+      return this.http.post(`${ this.url }/patient/evaluation`, evaluation)
+        .pipe(
+          map( (resp: any) => {
+            evaluation._id = resp.evaluation._id;
+            return evaluation;
+          })
+        );
+    }
+
+    // Obtener escalas por ID del cuidador
+    obtenerEvaluacionesByID(id: string){
+      return this.http.get(`${ this.url }/patient/evaluation/${id}`)
+      .pipe(
+        map( (resp:any) => {
+          return this.crearArregloEvs(resp);
+        })
+      );
+      }
+      
+    private crearArregloEvs(evObj: RootEvaluation){
+      const ev: EvaluationModel[] = [];
+      if ( evObj.evaluations === null) {
+        return [];
+        }else{
+          Object.keys( evObj.evaluations).forEach( key => {
+            const eva: EvaluationModel = evObj.evaluations[key];
+            ev.push(eva);
+          }) ;
+          return ev;
+        }
+      }
 
   }
 
