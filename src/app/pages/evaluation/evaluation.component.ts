@@ -92,4 +92,30 @@ export class EvaluationComponent implements OnInit {
     });
   }
 
+  bajaEvaluation( eva: EvaluationModel, i: number){
+    Swal.fire({
+      title: '¿Está seguro?',
+      text: `Está seguro que desea eliminar la evaluación ${eva.evaluationName}`,
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: 'Si, adelante!'
+    }).then((res) => {
+      if (res.value) {
+        this.patientsService.bajaEvaluation( eva._id).subscribe(
+          () => {
+            this.evaluationsPatient.splice(i, 1);
+            this.ngOnInit();
+          Swal.fire('Eliminación', 'Se ha eliminado la evaluación.', 'success');
+        },
+        (error) => {
+          Swal.fire('Error', 'No se pudo eliminar la evaluación.', 'error');
+          console.error('Error al eliminar la evaluación:', error);
+        }
+      )}
+    });
+  }
+
 }

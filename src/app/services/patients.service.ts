@@ -121,5 +121,10 @@ export class PatientsService {
         }
       }
 
+      // Eliminar evaluaciones
+      bajaEvaluation( id: string ){
+        return this.http.delete(`${ this.url }/patient/evaluation/${ id }`)
+      }
+
   }
 
